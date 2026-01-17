@@ -7,20 +7,7 @@ public class SceneChanges : MonoBehaviour
 {
     public void ChangeScene(int direction)
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int sceneCount = SceneManager.sceneCountInBuildSettings;
-
-        int newIndex = currentIndex + direction;
-
-        if (newIndex >= sceneCount)
-        {
-            newIndex = 0;
-        }
-        else if (newIndex < 0)
-        {
-            newIndex = sceneCount - 1;
-        }
-
-        SceneManager.LoadScene(newIndex);
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index + direction);
     }
 }
