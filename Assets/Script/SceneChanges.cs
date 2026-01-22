@@ -5,9 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanges : MonoBehaviour
 {
+    public void StartGame()
+{
+    SceneManager.LoadScene(1);
+}
+
+    //keep all puzzles and main menu after player movement scenes
+    public int loopStartIndex = 0;
+    public int loopEndIndex = 3;
+
     public void ChangeScene(int direction)
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(index + direction);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + direction;
+
+        if (nextIndex > loopEndIndex)
+        {
+            nextIndex = loopStartIndex;
+        }
+        else if (nextIndex < loopStartIndex)
+        {
+            nextIndex = loopEndIndex;
+        }
+
+        SceneManager.LoadScene(nextIndex);
     }
 }
