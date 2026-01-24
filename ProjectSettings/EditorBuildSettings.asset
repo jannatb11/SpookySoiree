@@ -23,4 +23,43 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PickLock.unity
     guid: feb556fe657511d4cb1f2ce757e8566d
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Kitchen.unity
+    guid: 02fd6098666e1254e9ff3bf4f4a0f789
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/LRS1.unity
+    guid: 5a90643315689734ea7f18c0ce3a34e4
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/LRS2.unity
+    guid: b8238e6c62189fe47947ced9194669eb
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/LRS3.unity
+    guid: 79da325058394fe439553e60adb8ec59
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Dining.unity
+    guid: 614019160ce05174b8c51bbbfec4fd5c
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Character.unity
+    guid: dd28ae10f23c36d419e5fe06d99257db
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Storage.unity
+    guid: d65718b478b217e44a6b7564049d9b1e
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Hallway.unity
+    guid: 8bf02ce58b1352445b7f72002cc7c7fb
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/HS1.unity
+    guid: c82dcf682c1ab104e87959a6bda9d397
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Study.unity
+    guid: 29c87aa3ea8541140b1e684fa2f5fc1f
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/HS2.unity
+    guid: d3e7e0ad11f05c24b9d740ba32baa17f
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Bedroom.unity
+    guid: 89352b488397e084d9f1edb942b0f3ce
+  - enabled: 1
+    path: Assets/Scenes/NewMovementScenes/Lounge.unity
+    guid: 718e5a1adda28d243bb597a4f0079cba
   m_configObjects: {}
