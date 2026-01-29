@@ -4,23 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: a11783f36cf8d4320b7977453dce6ee2
-  - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: b1287391e9c6e44a8bd5acd7a516ff10
-  - enabled: 1
-    path: Assets/Scenes/Scene3.unity
-    guid: 7b01125eb773f469b99bb0e2d0703b1b
-  - enabled: 1
-    path: Assets/Scenes/Scene4.unity
-    guid: ffe67c706ee99764d9039a84b3d740fd
-  - enabled: 1
-    path: Assets/Scenes/SlidePuzzle.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/PickLock.unity
-    guid: feb556fe657511d4cb1f2ce757e8566d
+  m_Scenes: []
   m_configObjects: {}
