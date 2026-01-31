@@ -18,9 +18,12 @@ public class ButtonSound : MonoBehaviour
 
     private void Awake()
     {
+<<<<<<< Updated upstream
         retryButton = GameObject.Find("Retry"); // automatically find your Retry button
         if (retryButton != null)
             retryButton.SetActive(false); // hide at start
+=======
+>>>>>>> Stashed changes
     }
 
     public void Press()
@@ -30,6 +33,7 @@ public class ButtonSound : MonoBehaviour
 
         if (puzzleSolved) return;
 
+<<<<<<< Updated upstream
         if (buttonID == correctOrder[currentIndex])
         {
             currentIndex++;
@@ -54,6 +58,10 @@ public class ButtonSound : MonoBehaviour
             }
 
             Debug.Log("Wrong! Try Again!");
+=======
+   
+
+>>>>>>> Stashed changes
         }
 
         Debug.Log("Pressed: " + buttonID);

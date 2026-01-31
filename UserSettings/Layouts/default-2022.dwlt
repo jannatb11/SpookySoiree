@@ -119,7 +119,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 13971
+=======
+  controlID: 91
+>>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -140,12 +144,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< Updated upstream
     width: 1153.5
     height: 801
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
   controlID: 14025
+=======
+    width: 1036.5
+    height: 660
+  m_MinSize: {x: 200, y: 100}
+  m_MaxSize: {x: 16192, y: 16192}
+  vertical: 1
+  controlID: 48
+>>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -166,12 +179,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< Updated upstream
     width: 1153.5
     height: 446
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 14026
+=======
+    width: 1036.5
+    height: 402.5
+  m_MinSize: {x: 200, y: 50}
+  m_MaxSize: {x: 16192, y: 8096}
+  vertical: 0
+  controlID: 37
+>>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -190,8 +212,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< Updated upstream
     width: 286
     height: 446
+=======
+    width: 179
+    height: 402.5
+>>>>>>> Stashed changes
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
@@ -214,6 +241,7 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< Updated upstream
     x: 286
     y: 0
     width: 867.5
@@ -221,6 +249,15 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
+=======
+    x: 179
+    y: 0
+    width: 857.5
+    height: 402.5
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 14}
+>>>>>>> Stashed changes
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
@@ -242,9 +279,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 446
     width: 1153.5
     height: 355
+=======
+    y: 402.5
+    width: 1036.5
+    height: 257.5
+>>>>>>> Stashed changes
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 15}
@@ -268,12 +311,21 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< Updated upstream
     x: 1153.5
     y: 0
     width: 358.5
     height: 801
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+    x: 1036.5
+    y: 0
+    width: 243.5
+    height: 660
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> Stashed changes
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -299,10 +351,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< Updated upstream
     x: 286
     y: 96
     width: 865.5
     height: 425
+=======
+    x: 179
+    y: 72
+    width: 855.5
+    height: 381.5
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -319,7 +378,11 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+<<<<<<< Updated upstream
   m_TargetSize: {x: 865.5, y: 404}
+=======
+  m_TargetSize: {x: 855.5, y: 360.5}
+>>>>>>> Stashed changes
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -334,10 +397,17 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
+<<<<<<< Updated upstream
     m_HBaseRangeMin: -216.375
     m_HBaseRangeMax: 216.375
     m_VBaseRangeMin: -101
     m_VBaseRangeMax: 101
+=======
+    m_HBaseRangeMin: -213.875
+    m_HBaseRangeMax: 213.875
+    m_VBaseRangeMin: -90.125
+    m_VBaseRangeMax: 90.125
+>>>>>>> Stashed changes
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -346,7 +416,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -355,16 +425,24 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
+<<<<<<< Updated upstream
       width: 865.5
       height: 404
     m_Scale: {x: 2, y: 2}
     m_Translation: {x: 432.75, y: 202}
+=======
+      width: 855.5
+      height: 360.5
+    m_Scale: {x: 2, y: 2}
+    m_Translation: {x: 427.75, y: 180.25}
+>>>>>>> Stashed changes
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< Updated upstream
       x: -216.375
       y: -101
       width: 432.75
@@ -372,6 +450,15 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 2
   m_LastWindowPixelSize: {x: 1731, y: 850}
+=======
+      x: -213.875
+      y: -90.125
+      width: 427.75
+      height: 180.25
+    m_MinimalGUI: 1
+  m_defaultScale: 2
+  m_LastWindowPixelSize: {x: 1711, y: 763}
+>>>>>>> Stashed changes
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -399,9 +486,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 96
     width: 285
     height: 425
+=======
+    y: 72
+    width: 178
+    height: 381.5
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -415,9 +508,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: f8640000
       m_LastClickedID: 25848
       m_ExpandedIDs: 12f0ffff52f0fffffcf4ffff14f5ffff5af5ffff88f6ffffccf6ffff0afbffffbe640000
+=======
+      m_SelectedIDs: b8d2ffff
+      m_LastClickedID: -11592
+      m_ExpandedIDs: bad2ffff34d3ffff78d5ffff7ad5ffffe4d5ffffb8f6ffffd0f6ffff0ef7ffffa6f7ffff28f8ffff8af8ffffd6f8fffffafaffff30680000
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -461,10 +560,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< Updated upstream
     x: 286
     y: 96
     width: 865.5
     height: 425
+=======
+    x: 179
+    y: 72
+    width: 855.5
+    height: 381.5
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -992,9 +1098,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: 432.75, y: 202, z: 0}
     speed: 2
     m_Value: {x: 432.75, y: 202, z: 0}
+=======
+    m_Target: {x: 2.2463098, y: 369.23495, z: -3.2340221}
+    speed: 2
+    m_Value: {x: 2.2463098, y: 369.23495, z: -3.2340221}
+>>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1044,9 +1156,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< Updated upstream
     m_Target: 477.5736
     speed: 2
     m_Value: 477.5736
+=======
+    m_Target: 461.51346
+    speed: 2
+    m_Value: 461.51346
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1092,9 +1210,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 542
     width: 1152.5
     height: 334
+=======
+    y: 474.5
+    width: 1035.5
+    height: 236.5
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1125,6 +1249,7 @@ MonoBehaviour:
   m_StartGridSize: 96
   m_LastFolders:
   - Assets/Keys
+<<<<<<< Updated upstream
   m_LastFoldersGridSize: 96
   m_LastProjectPath: /Users/jannat/Desktop/Projects/SpookySoiree
   m_LockTracker:
@@ -1134,6 +1259,17 @@ MonoBehaviour:
     m_SelectedIDs: 74630000
     m_LastClickedID: 25460
     m_ExpandedIDs: 000000000c63000000ca9a3bffffff7f
+=======
+  m_LastFoldersGridSize: 57
+  m_LastProjectPath: C:\Users\Studio 411\Desktop\JannatBajwa_Projects\SpookySoiree
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 7.5}
+    m_SelectedIDs: 1a650000
+    m_LastClickedID: 25882
+    m_ExpandedIDs: 000000002663000000ca9a3b
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1161,7 +1297,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 000000000c63000000ca9a3bffffff7f
+=======
+    m_ExpandedIDs: 00000000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1186,10 +1326,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< Updated upstream
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 00000000
+=======
+    m_SelectedInstanceIDs: b8d2ffff
+    m_LastClickedInstanceID: -11592
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1238,9 +1385,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 610.4
     width: 1171
     height: 261
+=======
+    y: 542
+    width: 1035.5
+    height: 169
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1271,10 +1424,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< Updated upstream
     x: 1153.5
     y: 96
     width: 357.5
     height: 780
+=======
+    x: 1036.5
+    y: 72
+    width: 242.5
+    height: 639
+>>>>>>> Stashed changes
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1292,7 +1452,11 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
+<<<<<<< Updated upstream
   m_LastVerticalScrollValue: 731.09973
+=======
+  m_LastVerticalScrollValue: 635.65
+>>>>>>> Stashed changes
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
