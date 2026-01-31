@@ -92,6 +92,7 @@ public class RotationManagerScript : MonoBehaviour
             if(Mathf.Abs(goalRotation - currentRotation) < 20f){
                 points += 1;
                 Flip();
+                GameObject.Find("Mouse").GetComponent<MouseIndicatorScript>().LeftClick();
             } else{
                 lives -= 1;
                 if(lives <= 0){
@@ -104,6 +105,7 @@ public class RotationManagerScript : MonoBehaviour
             if(Mathf.Abs(goalRotation2 - currentRotation2) < 20f){
                 points += 1;
                 Flip2();
+                GameObject.Find("Mouse").GetComponent<MouseIndicatorScript>().RightClick();
             } else{
                 lives -= 1;
                 if(lives <= 0){
