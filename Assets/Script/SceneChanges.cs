@@ -12,7 +12,7 @@ public class SceneChanges : MonoBehaviour
 
     //keep all puzzles and main menu after player movement scenes
     public int loopStartIndex = 0;
-    public int loopEndIndex = 3;
+    public int loopEndIndex = 7;
 
     public void ChangeScene(int direction)
     {

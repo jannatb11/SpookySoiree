@@ -32,14 +32,12 @@ public class RotationManagerScript : MonoBehaviour
     public float barRotation;
     public bool barOut;
     public float barSpeed;
-    public bool secondOut;
 
     // Start is called before the first frame update
     void Start()
     {
         barSpeed = 30f;
         barOut = false;
-        secondOut = false;
         rotateBar = GameObject.Find("RotateBar");
         Rotator = GameObject.Find("Rotator");
         Goal = GameObject.Find("Goal Rotation");
@@ -121,11 +119,8 @@ public class RotationManagerScript : MonoBehaviour
         goalRotation = Random.Range(0f, 360f);
         Goal.transform.eulerAngles = new Vector3(0, 0, goalRotation);
         rotSpeed *= -1.075f;
-        if(points > 7){  
-            if(secondOut == false){
-                SecondOut();
-            }
-            
+        if(points > 10){   
+            container2.SetActive(true);
             if(rot2){
                 rot1 = false;
                 BarRotate(30);
@@ -140,19 +135,6 @@ public class RotationManagerScript : MonoBehaviour
             //MoveRandom();
         } else{
 
-        }
-    }
-    public void SecondOut(){
-        secondOut = true;
-        container2.SetActive(false);
-        container2.transform.localPosition = new Vector3(container2.transform.localPosition.x - 200, container2.transform.localPosition.y, container2.transform.localPosition.z);
-        container2.SetActive(true);
-        StartCoroutine(MoveSecondOut());
-    }
-    public IEnumerator MoveSecondOut(){
-        for(int i = 0; i < 100; i++){
-            container2.transform.localPosition = new Vector3(container2.transform.localPosition.x + 2, container2.transform.localPosition.y, container2.transform.localPosition.z);
-            yield return new WaitForSeconds(0.005f);
         }
     }
     public void MoveRandom(){
