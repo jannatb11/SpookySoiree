@@ -18,9 +18,9 @@ public class ButtonSound : MonoBehaviour
 
     private void Awake()
     {
-        retryButton = GameObject.Find("Retry"); // automatically find your Retry button
+        retryButton = GameObject.Find("Retry"); 
         if (retryButton != null)
-            retryButton.SetActive(false); // hide at start
+            retryButton.SetActive(false); 
     }
 
     public void Press()
@@ -38,7 +38,7 @@ public class ButtonSound : MonoBehaviour
             {
                 puzzleSolved = true;
                 if (retryButton != null)
-                    retryButton.SetActive(false); // hide retry when solved
+                    retryButton.SetActive(false); 
                 Debug.Log("Puzzle Solved!");
             }
         }
@@ -48,7 +48,7 @@ public class ButtonSound : MonoBehaviour
 
             if (!retryShown && retryButton != null)
             {
-                retryButton.SetActive(true); // show retry after wrong press
+                retryButton.SetActive(true); 
                 retryShown = true;
                 Debug.Log("Retry button activated!");
             }
@@ -66,7 +66,7 @@ public class ButtonSound : MonoBehaviour
         retryShown = false;
 
         if (retryButton != null)
-            retryButton.SetActive(false); // hide Retry again
+            retryButton.SetActive(false); 
 
         Debug.Log("Puzzle Reset");
     }
