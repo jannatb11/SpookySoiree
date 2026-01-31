@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ButtonSound : MonoBehaviour
+public class KeyPlay : MonoBehaviour
 {
     public int buttonID;
     public AudioSource audioSource;
     public AudioClip clip;
 
+    public GameObject winUI;
+    public GameObject xUI;
+
     private static int[] correctOrder = { 4, 6, 11 };
     private static int currentIndex = 0;
     private static bool puzzleSolved = false;
-    private static bool retryShown = false;
-
-    private GameObject retryButton;
 
     private void Awake()
     {
-        retryButton = GameObject.Find("Retry"); 
-        if (retryButton != null)
-            retryButton.SetActive(false); 
+        if (winUI != null)
+            winUI.SetActive(false);
+
+        if (xUI != null)
+            xUI.SetActive(false);
     }
 
     public void Press()
@@ -30,15 +31,18 @@ public class ButtonSound : MonoBehaviour
 
         if (puzzleSolved) return;
 
-        if (buttonID == correctOrder[currentIndex])
+        if (currentIndex < correctOrder.Length &&
+            buttonID == correctOrder[currentIndex])
         {
             currentIndex++;
+
+            if (xUI != null)
+                xUI.SetActive(false);
 
             if (currentIndex >= correctOrder.Length)
             {
                 puzzleSolved = true;
-                if (retryButton != null)
-                    retryButton.SetActive(false); 
+                winUI.SetActive(true);
                 Debug.Log("Puzzle Solved!");
             }
         }
@@ -46,28 +50,22 @@ public class ButtonSound : MonoBehaviour
         {
             currentIndex = 0;
 
-            if (!retryShown && retryButton != null)
+            if (xUI != null)
             {
-                retryButton.SetActive(true); 
-                retryShown = true;
-                Debug.Log("Retry button activated!");
+                xUI.SetActive(true);
+                StopAllCoroutines(); 
+                StartCoroutine(HideXAfterDelay());
             }
 
-            Debug.Log("Wrong! Try Again!");
+            Debug.Log("Wrong move!");
         }
 
         Debug.Log("Pressed: " + buttonID);
     }
 
-    public void Retry()
+    private IEnumerator HideXAfterDelay()
     {
-        currentIndex = 0;
-        puzzleSolved = false;
-        retryShown = false;
-
-        if (retryButton != null)
-            retryButton.SetActive(false); 
-
-        Debug.Log("Puzzle Reset");
+        yield return new WaitForSeconds(1f);
+        xUI.SetActive(false);
     }
 }
