@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
+    public static bool DialogueActive;
 
+    [Header("UI")]
     public GameObject dialoguePanel;
     public Text nameText;
     public Text dialogueText;
@@ -26,9 +28,17 @@ public class DialogueManager : MonoBehaviour
     private bool inBranch = false;
     private int branchEndIndex;
 
+    private GameObject currentSource;
+    private bool destroySourceOnYes;
+
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        DialogueActive = false;
 
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
@@ -38,16 +48,29 @@ public class DialogueManager : MonoBehaviour
         choiceButton2.onClick.AddListener(ChoiceNo);
     }
 
-    public void StartDialogue(string npcName, string[] dialogue, bool _hasChoices,
+    public void StartDialogue(
+        string speakerName,
+        string[] dialogue,
+        bool _hasChoices,
         int _choiceLineIndex,
-        int _yesStart, int _yesEnd,
-        int _noStart, int _noEnd)
+        int _yesStart,
+        int _yesEnd,
+        int _noStart,
+        int _noEnd,
+        GameObject sourceObject = null,
+        bool destroyOnYes = false
+    )
     {
+        if (DialogueActive)
+            return;
+
+        DialogueActive = true;
+
         dialoguePanel.SetActive(true);
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
-        nameText.text = npcName;
+        nameText.text = speakerName;
         lines = dialogue;
         index = 0;
 
@@ -60,6 +83,9 @@ public class DialogueManager : MonoBehaviour
         noEnd = _noEnd;
 
         inBranch = false;
+
+        currentSource = sourceObject;
+        destroySourceOnYes = destroyOnYes;
 
         dialogueText.text = lines[index];
     }
@@ -99,6 +125,18 @@ public class DialogueManager : MonoBehaviour
     void ChoiceYes()
     {
         StartBranch(yesStart, yesEnd);
+
+        if (destroySourceOnYes && currentSource != null)
+        {
+            ItemInteraction item = currentSource.GetComponent<ItemInteraction>();
+            if (item != null)
+            {
+                item.MarkAsCollected(); 
+            }
+
+            Destroy(currentSource);
+            currentSource = null;
+        }
     }
 
     void ChoiceNo()
@@ -108,6 +146,12 @@ public class DialogueManager : MonoBehaviour
 
     void StartBranch(int start, int end)
     {
+        if (start < 0 || start >= lines.Length || end < start)
+        {
+            EndDialogue();
+            return;
+        }
+
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
@@ -123,7 +167,11 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
+
         inBranch = false;
+        currentSource = null;
+        destroySourceOnYes = false;
+
+        DialogueActive = false;
     }
 }
-

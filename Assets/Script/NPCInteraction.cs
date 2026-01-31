@@ -18,6 +18,9 @@ public class NPCInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (DialogueManager.DialogueActive)
+            return;
+
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogueLines,
