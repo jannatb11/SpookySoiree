@@ -292,8 +292,8 @@ MonoBehaviour:
   buttonID: 12
   audioSource: {fileID: 573311367}
   clip: {fileID: 8300000, guid: 428f36bded83bb74cac3a284a12cd4f7, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!114 &573311364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,8 +619,8 @@ MonoBehaviour:
   buttonID: 8
   audioSource: {fileID: 934010276}
   clip: {fileID: 8300000, guid: 4038058abecbfd24ab472e18b33e84c2, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!114 &934010273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,8 +1118,8 @@ MonoBehaviour:
   buttonID: 3
   audioSource: {fileID: 1079559302}
   clip: {fileID: 8300000, guid: f4b69a7dd26b73344b42dfc401c624fe, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1079559302
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1299,19 +1299,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1182724918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1182724918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,8 +1353,8 @@ MonoBehaviour:
   buttonID: 0
   audioSource: {fileID: 0}
   clip: {fileID: 0}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!1 &1202261600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,8 +1516,8 @@ MonoBehaviour:
   buttonID: 7
   audioSource: {fileID: 1202261606}
   clip: {fileID: 8300000, guid: 4a87b2260314dba4b9b51372f1ea04fe, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1202261606
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1787,8 +1775,8 @@ MonoBehaviour:
   buttonID: 4
   audioSource: {fileID: 1334647077}
   clip: {fileID: 8300000, guid: 7f5030cf709ee1a428d6a113d98e6e67, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1334647077
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2046,8 +2034,8 @@ MonoBehaviour:
   buttonID: 11
   audioSource: {fileID: 1365007181}
   clip: {fileID: 8300000, guid: 3ff54e6522de1034a8cc59bb357540ca, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1365007181
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2305,8 +2293,8 @@ MonoBehaviour:
   buttonID: 1
   audioSource: {fileID: 1526561909}
   clip: {fileID: 8300000, guid: 58d0120522fcc6a40812f2632885b018, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1526561909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2458,8 +2446,8 @@ MonoBehaviour:
   buttonID: 9
   audioSource: {fileID: 1625153899}
   clip: {fileID: 8300000, guid: 4b6987266aafc9a428b506352128b46f, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!114 &1625153896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,8 +2903,8 @@ MonoBehaviour:
   buttonID: 5
   audioSource: {fileID: 1907032674}
   clip: {fileID: 8300000, guid: 337b39b014119ea4d9bee9fddece7917, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1907032674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3308,8 +3296,8 @@ MonoBehaviour:
   buttonID: 2
   audioSource: {fileID: 1944922549}
   clip: {fileID: 8300000, guid: cd5039d79bedb5943855c4de984c47c0, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!82 &1944922549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3461,8 +3449,8 @@ MonoBehaviour:
   buttonID: 6
   audioSource: {fileID: 1963571953}
   clip: {fileID: 8300000, guid: 99705963fda56c4458b1d3d45f0edcc8, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!114 &1963571950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3720,8 +3708,8 @@ MonoBehaviour:
   buttonID: 10
   audioSource: {fileID: 2047976226}
   clip: {fileID: 8300000, guid: 587d8f5381afbdf4a99b01281267a5ab, type: 3}
-  winUI: {fileID: 1182724915}
-  xUI: {fileID: 937917189}
+  winUIRef: {fileID: 1182724915}
+  xUIRef: {fileID: 937917189}
 --- !u!114 &2047976223
 MonoBehaviour:
   m_ObjectHideFlags: 0
