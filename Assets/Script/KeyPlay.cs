@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyPlay : MonoBehaviour
@@ -8,20 +7,34 @@ public class KeyPlay : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clip;
 
-    public GameObject winUI;
-    public GameObject xUI;
+    public static GameObject winUI;
+    public static GameObject xUI;
+
+    [Header("Assign UI ONCE (any button)")]
+    public GameObject winUIRef;
+    public GameObject xUIRef;
 
     private static int[] correctOrder = { 4, 6, 11 };
     private static int currentIndex = 0;
     private static bool puzzleSolved = false;
+    private static bool uiInitialized = false;
 
     private void Awake()
     {
-        if (winUI != null)
-            winUI.SetActive(false);
+        // Initialize UI only once
+        if (!uiInitialized)
+        {
+            winUI = winUIRef;
+            xUI = xUIRef;
 
-        if (xUI != null)
-            xUI.SetActive(false);
+            if (winUI != null)
+                winUI.SetActive(false);
+
+            if (xUI != null)
+                xUI.SetActive(false);
+
+            uiInitialized = true;
+        }
     }
 
     public void Press()
@@ -29,7 +42,8 @@ public class KeyPlay : MonoBehaviour
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip);
 
-        if (puzzleSolved) return;
+        if (puzzleSolved)
+            return;
 
         if (currentIndex < correctOrder.Length &&
             buttonID == correctOrder[currentIndex])
@@ -42,7 +56,10 @@ public class KeyPlay : MonoBehaviour
             if (currentIndex >= correctOrder.Length)
             {
                 puzzleSolved = true;
-                winUI.SetActive(true);
+
+                if (winUI != null)
+                    winUI.SetActive(true);
+
                 Debug.Log("Puzzle Solved!");
             }
         }
@@ -53,7 +70,7 @@ public class KeyPlay : MonoBehaviour
             if (xUI != null)
             {
                 xUI.SetActive(true);
-                StopAllCoroutines(); 
+                StopAllCoroutines();
                 StartCoroutine(HideXAfterDelay());
             }
 
@@ -66,6 +83,8 @@ public class KeyPlay : MonoBehaviour
     private IEnumerator HideXAfterDelay()
     {
         yield return new WaitForSeconds(1f);
-        xUI.SetActive(false);
+
+        if (xUI != null)
+            xUI.SetActive(false);
     }
 }
