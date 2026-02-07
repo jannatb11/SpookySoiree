@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("UI References")]
     public GameObject dialoguePanel;
+    public GameObject dialogueBackground;   // BLACK BOX
     public Text nameText;
     public Text dialogueText;
     public Button nextButton;
@@ -34,13 +35,17 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
         nextButton.onClick.AddListener(NextLine);
         yesButton.onClick.AddListener(YesChoice);
         noButton.onClick.AddListener(NoChoice);
 
         dialoguePanel.SetActive(false);
+        dialogueBackground.SetActive(false);
         choicePanel.SetActive(false);
     }
 
@@ -59,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         IsDialogueActive = true;
 
         dialoguePanel.SetActive(true);
+        dialogueBackground.SetActive(true);
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
@@ -82,7 +88,7 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
-        // If currently in a branch
+        // BRANCH MODE
         if (inBranch)
         {
             index++;
@@ -97,7 +103,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        // If at choice line
+        // CHOICE LINE
         if (hasChoices && index == choiceLineIndex)
         {
             dialogueText.text = lines[index];
@@ -106,7 +112,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        // Normal line
+        // NORMAL FLOW
         index++;
 
         if (index >= lines.Length)
@@ -118,25 +124,23 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = lines[index];
     }
 
-    private void YesChoice()
+    void YesChoice()
     {
-        // Start Yes branch
         StartBranch(yesStart, yesEnd);
 
-        // Collect the item if this dialogue is for an item
+        // Only items get collected
         if (currentItem != null)
         {
             currentItem.CollectItem();
         }
     }
 
-    private void NoChoice()
+    void NoChoice()
     {
-        // Start No branch
         StartBranch(noStart, noEnd);
     }
 
-    private void StartBranch(int start, int end)
+    void StartBranch(int start, int end)
     {
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
@@ -148,10 +152,12 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = lines[index];
     }
 
-    private void EndDialogue()
+    void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        dialogueBackground.SetActive(false);
         choicePanel.SetActive(false);
+
         IsDialogueActive = false;
         currentItem = null;
     }

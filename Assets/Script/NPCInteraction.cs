@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -16,7 +17,19 @@ public class NPCInteraction : MonoBehaviour
     public int noJumpToLine = 5;
     public int noEndLine = 6;
 
-    private void OnMouseDown()
+    private Button button;
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+
+        if (button != null)
+            button.onClick.AddListener(OnNPCClicked);
+        else
+            Debug.LogError("NPCInteraction: No Button found on NPC UI Image");
+    }
+
+    void OnNPCClicked()
     {
         if (DialogueManager.Instance.IsDialogueActive)
             return;
@@ -30,7 +43,7 @@ public class NPCInteraction : MonoBehaviour
             yesEndLine,
             noJumpToLine,
             noEndLine,
-            null   
+            null   // NPCs are not items
         );
     }
 }
