@@ -5,9 +5,12 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    [Header("UI References")]
+    public System.Action OnDialogueFinished;
+
+
     public GameObject dialoguePanel;
-    public GameObject dialogueBackground;   // BLACK BOX
+    public GameObject dialogueBackground;
+
     public Text nameText;
     public Text dialogueText;
     public Button nextButton;
@@ -16,8 +19,9 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
-    [Header("Dialogue State")]
     private string[] lines;
+    private string[] speakers;
+
     private int index;
 
     private bool hasChoices;
@@ -35,23 +39,21 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        Instance = this;
 
         nextButton.onClick.AddListener(NextLine);
         yesButton.onClick.AddListener(YesChoice);
         noButton.onClick.AddListener(NoChoice);
 
         dialoguePanel.SetActive(false);
-        dialogueBackground.SetActive(false);
         choicePanel.SetActive(false);
+        dialogueBackground.SetActive(false);
     }
 
     public void StartDialogue(
-        string speaker,
+        string defaultSpeaker,
         string[] dialogue,
+        string[] speakerNames,
         bool _hasChoices,
         int _choiceLineIndex,
         int _yesStart,
@@ -68,8 +70,8 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
-        nameText.text = speaker;
         lines = dialogue;
+        speakers = speakerNames;
         index = 0;
 
         hasChoices = _hasChoices;
@@ -83,37 +85,36 @@ public class DialogueManager : MonoBehaviour
         inBranch = false;
         currentItem = item;
 
+        ShowLine(defaultSpeaker);
+    }
+
+    void ShowLine(string fallbackSpeaker)
+    {
         dialogueText.text = lines[index];
+
+        if (speakers != null && index < speakers.Length && !string.IsNullOrEmpty(speakers[index]))
+            nameText.text = speakers[index];
+        else
+            nameText.text = fallbackSpeaker;
     }
 
     public void NextLine()
     {
-        // BRANCH MODE
-        if (inBranch)
+        index++;
+
+        if (inBranch && index > branchEnd)
         {
-            index++;
-
-            if (index > branchEnd)
-            {
-                EndDialogue();
-                return;
-            }
-
-            dialogueText.text = lines[index];
+            EndDialogue();
             return;
         }
 
-        // CHOICE LINE
-        if (hasChoices && index == choiceLineIndex)
+        if (!inBranch && hasChoices && index == choiceLineIndex)
         {
-            dialogueText.text = lines[index];
+            ShowLine(nameText.text);
             nextButton.gameObject.SetActive(false);
             choicePanel.SetActive(true);
             return;
         }
-
-        // NORMAL FLOW
-        index++;
 
         if (index >= lines.Length)
         {
@@ -121,18 +122,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        dialogueText.text = lines[index];
+        ShowLine(nameText.text);
     }
 
     void YesChoice()
     {
         StartBranch(yesStart, yesEnd);
 
-        // Only items get collected
         if (currentItem != null)
-        {
             currentItem.CollectItem();
-        }
     }
 
     void NoChoice()
@@ -149,7 +147,7 @@ public class DialogueManager : MonoBehaviour
         branchEnd = end;
         index = start;
 
-        dialogueText.text = lines[index];
+        ShowLine(nameText.text);
     }
 
     void EndDialogue()
@@ -159,6 +157,13 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
 
         IsDialogueActive = false;
+
+        // Unlock movement after intro dialogue
+        DialogueGate.introFinished = true;
+
         currentItem = null;
     }
+
+
 }
+

@@ -16,7 +16,12 @@ public class TravelScript : MonoBehaviour
     {
         
     }
-    public void Load(string sceneName){
+    public void Load(string sceneName)
+    {
+        if (!DialogueGate.introFinished)
+            return;
+
         SceneManager.LoadScene(sceneName);
     }
+
 }
