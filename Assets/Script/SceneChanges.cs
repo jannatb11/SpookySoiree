@@ -16,6 +16,10 @@ public class SceneChanges : MonoBehaviour
 
     public void ChangeScene(int direction)
     {
+        // Block leaving until intro dialogue is finished
+        if (!DialogueGate.introFinished)
+            return;
+
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         int nextIndex = currentIndex + direction;
 
@@ -30,4 +34,5 @@ public class SceneChanges : MonoBehaviour
 
         SceneManager.LoadScene(nextIndex);
     }
+
 }

@@ -1,36 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    public string npcName = "Bob";
+    public string npcName = "Toot";
 
     [TextArea(2, 5)]
     public string[] dialogueLines;
 
-    public bool hasChoices = true;
-    public int choiceLineIndex = 2;
+    public string[] speakerNames; // SAME length as dialogueLines
 
-    public int yesJumpToLine = 3;
-    public int yesEndLine = 4;
+    public bool hasChoices;
+    public int choiceLineIndex;
 
-    public int noJumpToLine = 5;
-    public int noEndLine = 6;
+    public int yesJumpToLine, yesEndLine;
+    public int noJumpToLine, noEndLine;
 
-    private void OnMouseDown()
+    private Button button;
+
+    void Awake()
     {
-        if (DialogueManager.Instance.IsDialogueActive)
-            return;
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OnNPCClicked);
+    }
+
+    void OnNPCClicked()
+    {
+        if (DialogueManager.Instance.IsDialogueActive) return;
 
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogueLines,
+            speakerNames,
             hasChoices,
             choiceLineIndex,
             yesJumpToLine,
             yesEndLine,
             noJumpToLine,
             noEndLine,
-            null   
+            null
         );
     }
 }

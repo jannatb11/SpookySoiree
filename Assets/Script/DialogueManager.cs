@@ -5,8 +5,12 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    [Header("UI References")]
+    public System.Action OnDialogueFinished;
+
+
     public GameObject dialoguePanel;
+    public GameObject dialogueBackground;
+
     public Text nameText;
     public Text dialogueText;
     public Button nextButton;
@@ -15,8 +19,9 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
-    [Header("Dialogue State")]
     private string[] lines;
+    private string[] speakers;
+
     private int index;
 
     private bool hasChoices;
@@ -42,11 +47,13 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
+        dialogueBackground.SetActive(false);
     }
 
     public void StartDialogue(
-        string speaker,
+        string defaultSpeaker,
         string[] dialogue,
+        string[] speakerNames,
         bool _hasChoices,
         int _choiceLineIndex,
         int _yesStart,
@@ -59,11 +66,12 @@ public class DialogueManager : MonoBehaviour
         IsDialogueActive = true;
 
         dialoguePanel.SetActive(true);
+        dialogueBackground.SetActive(true);
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
-        nameText.text = speaker;
         lines = dialogue;
+        speakers = speakerNames;
         index = 0;
 
         hasChoices = _hasChoices;
@@ -77,37 +85,36 @@ public class DialogueManager : MonoBehaviour
         inBranch = false;
         currentItem = item;
 
+        ShowLine(defaultSpeaker);
+    }
+
+    void ShowLine(string fallbackSpeaker)
+    {
         dialogueText.text = lines[index];
+
+        if (speakers != null && index < speakers.Length && !string.IsNullOrEmpty(speakers[index]))
+            nameText.text = speakers[index];
+        else
+            nameText.text = fallbackSpeaker;
     }
 
     public void NextLine()
     {
-        // If currently in a branch
-        if (inBranch)
+        index++;
+
+        if (inBranch && index > branchEnd)
         {
-            index++;
-
-            if (index > branchEnd)
-            {
-                EndDialogue();
-                return;
-            }
-
-            dialogueText.text = lines[index];
+            EndDialogue();
             return;
         }
 
-        // If at choice line
-        if (hasChoices && index == choiceLineIndex)
+        if (!inBranch && hasChoices && index == choiceLineIndex)
         {
-            dialogueText.text = lines[index];
+            ShowLine(nameText.text);
             nextButton.gameObject.SetActive(false);
             choicePanel.SetActive(true);
             return;
         }
-
-        // Normal line
-        index++;
 
         if (index >= lines.Length)
         {
@@ -115,28 +122,23 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        dialogueText.text = lines[index];
+        ShowLine(nameText.text);
     }
 
-    private void YesChoice()
+    void YesChoice()
     {
-        // Start Yes branch
         StartBranch(yesStart, yesEnd);
 
-        // Collect the item if this dialogue is for an item
         if (currentItem != null)
-        {
             currentItem.CollectItem();
-        }
     }
 
-    private void NoChoice()
+    void NoChoice()
     {
-        // Start No branch
         StartBranch(noStart, noEnd);
     }
 
-    private void StartBranch(int start, int end)
+    void StartBranch(int start, int end)
     {
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
@@ -145,14 +147,23 @@ public class DialogueManager : MonoBehaviour
         branchEnd = end;
         index = start;
 
-        dialogueText.text = lines[index];
+        ShowLine(nameText.text);
     }
 
-    private void EndDialogue()
+    void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        dialogueBackground.SetActive(false);
         choicePanel.SetActive(false);
+
         IsDialogueActive = false;
+
+        // Unlock movement after intro dialogue
+        DialogueGate.introFinished = true;
+
         currentItem = null;
     }
+
+
 }
+

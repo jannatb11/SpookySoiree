@@ -1,21 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
+    public GameObject daisyinv;
+    public GameObject pianoinv;
+    public GameObject mouseinv;
 
-    public Transform itemParent;
-    public GameObject itemIconPrefab;
+    void Start()
+    {
+        daisyinv.SetActive(PlayerPrefs.GetInt("DaisyCollected", 0) == 1);
+    }
+
 
     void Awake()
     {
-        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void AddItem(string itemName)
-    {
-        GameObject icon = Instantiate(itemIconPrefab, itemParent);
-        icon.GetComponentInChildren<Text>().text = itemName;
-    }
 }
+   
