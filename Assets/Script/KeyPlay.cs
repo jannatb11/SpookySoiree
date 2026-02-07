@@ -14,7 +14,7 @@ public class KeyPlay : MonoBehaviour
     public GameObject winUIRef;
     public GameObject xUIRef;
 
-    private static int[] correctOrder = { 4, 6, 11 };
+    private static int[] correctOrder = { 4, 6, 11, 11, 11, 6, 6, 4, 4};
     private static int currentIndex = 0;
     private static bool puzzleSolved = false;
     private static bool uiInitialized = false;
