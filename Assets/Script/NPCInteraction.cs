@@ -18,7 +18,7 @@ public class NPCInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (DialogueManager.DialogueActive)
+        if (DialogueManager.Instance.IsDialogueActive)
             return;
 
         DialogueManager.Instance.StartDialogue(
@@ -29,7 +29,8 @@ public class NPCInteraction : MonoBehaviour
             yesJumpToLine,
             yesEndLine,
             noJumpToLine,
-            noEndLine
+            noEndLine,
+            null   
         );
     }
 }
