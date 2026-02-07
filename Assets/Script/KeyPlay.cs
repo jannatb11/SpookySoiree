@@ -6,6 +6,7 @@ public class KeyPlay : MonoBehaviour
     public int buttonID;
     public AudioSource audioSource;
     public AudioClip clip;
+    public GameObject pianoinv;
 
     public static GameObject winUI;
     public static GameObject xUI;
@@ -13,7 +14,6 @@ public class KeyPlay : MonoBehaviour
     [Header("Assign UI ONCE (any button)")]
     public GameObject winUIRef;
     public GameObject xUIRef;
-
     private static int[] correctOrder = { 4, 6, 11, 11, 11, 6, 6, 4, 4};
     private static int currentIndex = 0;
     private static bool puzzleSolved = false;
@@ -21,7 +21,6 @@ public class KeyPlay : MonoBehaviour
 
     private void Awake()
     {
-        // Initialize UI only once
         if (!uiInitialized)
         {
             winUI = winUIRef;
@@ -34,8 +33,15 @@ public class KeyPlay : MonoBehaviour
                 xUI.SetActive(false);
 
             uiInitialized = true;
+
+
+            if (pianoinv != null)
+                pianoinv.SetActive(false);
+            else
+                Debug.LogWarning("No inv ");
         }
     }
+
 
     public void Press()
     {
@@ -61,6 +67,8 @@ public class KeyPlay : MonoBehaviour
                     winUI.SetActive(true);
 
                 Debug.Log("Puzzle Solved!");
+                pianoinv.SetActive(true);
+
             }
         }
         else
