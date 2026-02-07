@@ -4,18 +4,18 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-    public static bool DialogueActive;
 
-    [Header("UI")]
+    [Header("UI References")]
     public GameObject dialoguePanel;
     public Text nameText;
     public Text dialogueText;
     public Button nextButton;
 
     public GameObject choicePanel;
-    public Button choiceButton1;
-    public Button choiceButton2;
+    public Button yesButton;
+    public Button noButton;
 
+    [Header("Dialogue State")]
     private string[] lines;
     private int index;
 
@@ -25,31 +25,27 @@ public class DialogueManager : MonoBehaviour
     private int yesStart, yesEnd;
     private int noStart, noEnd;
 
-    private bool inBranch = false;
-    private int branchEndIndex;
+    private bool inBranch;
+    private int branchEnd;
 
-    private GameObject currentSource;
-    private bool destroySourceOnYes;
+    private ItemInteractionUI currentItem;
 
-    private void Awake()
+    public bool IsDialogueActive { get; private set; }
+
+    void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        Instance = this;
 
-        DialogueActive = false;
+        nextButton.onClick.AddListener(NextLine);
+        yesButton.onClick.AddListener(YesChoice);
+        noButton.onClick.AddListener(NoChoice);
 
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
-
-        nextButton.onClick.AddListener(NextLine);
-        choiceButton1.onClick.AddListener(ChoiceYes);
-        choiceButton2.onClick.AddListener(ChoiceNo);
     }
 
     public void StartDialogue(
-        string speakerName,
+        string speaker,
         string[] dialogue,
         bool _hasChoices,
         int _choiceLineIndex,
@@ -57,20 +53,16 @@ public class DialogueManager : MonoBehaviour
         int _yesEnd,
         int _noStart,
         int _noEnd,
-        GameObject sourceObject = null,
-        bool destroyOnYes = false
+        ItemInteractionUI item
     )
     {
-        if (DialogueActive)
-            return;
-
-        DialogueActive = true;
+        IsDialogueActive = true;
 
         dialoguePanel.SetActive(true);
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
-        nameText.text = speakerName;
+        nameText.text = speaker;
         lines = dialogue;
         index = 0;
 
@@ -83,29 +75,39 @@ public class DialogueManager : MonoBehaviour
         noEnd = _noEnd;
 
         inBranch = false;
-
-        currentSource = sourceObject;
-        destroySourceOnYes = destroyOnYes;
+        currentItem = item;
 
         dialogueText.text = lines[index];
     }
 
     public void NextLine()
     {
-        index++;
-
-        if (inBranch && index > branchEndIndex)
+        // If currently in a branch
+        if (inBranch)
         {
-            EndDialogue();
+            index++;
+
+            if (index > branchEnd)
+            {
+                EndDialogue();
+                return;
+            }
+
+            dialogueText.text = lines[index];
             return;
         }
 
-        if (!inBranch && hasChoices && index == choiceLineIndex)
+        // If at choice line
+        if (hasChoices && index == choiceLineIndex)
         {
             dialogueText.text = lines[index];
-            ShowChoices();
+            nextButton.gameObject.SetActive(false);
+            choicePanel.SetActive(true);
             return;
         }
+
+        // Normal line
+        index++;
 
         if (index >= lines.Length)
         {
@@ -116,62 +118,41 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = lines[index];
     }
 
-    void ShowChoices()
+    private void YesChoice()
     {
-        nextButton.gameObject.SetActive(false);
-        choicePanel.SetActive(true);
-    }
-
-    void ChoiceYes()
-    {
+        // Start Yes branch
         StartBranch(yesStart, yesEnd);
 
-        if (destroySourceOnYes && currentSource != null)
+        // Collect the item if this dialogue is for an item
+        if (currentItem != null)
         {
-            ItemInteraction item = currentSource.GetComponent<ItemInteraction>();
-            if (item != null)
-            {
-                item.MarkAsCollected(); 
-            }
-
-            Destroy(currentSource);
-            currentSource = null;
+            currentItem.CollectItem();
         }
     }
 
-    void ChoiceNo()
+    private void NoChoice()
     {
+        // Start No branch
         StartBranch(noStart, noEnd);
     }
 
-    void StartBranch(int start, int end)
+    private void StartBranch(int start, int end)
     {
-        if (start < 0 || start >= lines.Length || end < start)
-        {
-            EndDialogue();
-            return;
-        }
-
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
         inBranch = true;
-        branchEndIndex = end;
-
+        branchEnd = end;
         index = start;
+
         dialogueText.text = lines[index];
     }
 
-    void EndDialogue()
+    private void EndDialogue()
     {
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
-        nextButton.gameObject.SetActive(true);
-
-        inBranch = false;
-        currentSource = null;
-        destroySourceOnYes = false;
-
-        DialogueActive = false;
+        IsDialogueActive = false;
+        currentItem = null;
     }
 }
