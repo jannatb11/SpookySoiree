@@ -30,9 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/PickLock.unity
     guid: feb556fe657511d4cb1f2ce757e8566d
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/NewMovementScenes/Hallway.unity
     guid: 8bf02ce58b1352445b7f72002cc7c7fb
   - enabled: 1
+=======
+>>>>>>> origin/main
     path: Assets/Scenes/NewMovementScenes/Bedroom.unity
     guid: 89352b488397e084d9f1edb942b0f3ce
   - enabled: 1
@@ -42,6 +45,12 @@ EditorBuildSettings:
     path: Assets/Scenes/NewMovementScenes/Dining.unity
     guid: 614019160ce05174b8c51bbbfec4fd5c
   - enabled: 1
+<<<<<<< HEAD
+=======
+    path: Assets/Scenes/NewMovementScenes/Hallway.unity
+    guid: 8bf02ce58b1352445b7f72002cc7c7fb
+  - enabled: 1
+>>>>>>> origin/main
     path: Assets/Scenes/NewMovementScenes/HS1.unity
     guid: c82dcf682c1ab104e87959a6bda9d397
   - enabled: 1
@@ -68,7 +77,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewMovementScenes/Study.unity
     guid: 29c87aa3ea8541140b1e684fa2f5fc1f
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/ConnectFourPuzzle.unity
     guid: 933056d8d3dc955418f0fdcf7263d9dd
+=======
+>>>>>>> origin/main
   m_configObjects: {}
