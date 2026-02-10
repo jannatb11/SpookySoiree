@@ -18,7 +18,7 @@ public class TravelScript : MonoBehaviour
     }
     public void Load(string sceneName)
     {
-        if (!DialogueGate.introFinished)
+        if (!DialogueGate.introFinished && sceneName == "LRS3" && SceneManager.GetActiveScene().name == "Hallway")
             return;
 
         SceneManager.LoadScene(sceneName);
