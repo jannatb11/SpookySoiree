@@ -1,38 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanges : MonoBehaviour
 {
     public void StartGame()
-{
-    SceneManager.LoadScene(1);
-}
+    {
+        SceneManager.LoadScene(1);
+    }
 
-    //keep all puzzles and main menu after player movement scenes
+    // Scene loop limits
     public int loopStartIndex = 0;
     public int loopEndIndex = 7;
 
     public void ChangeScene(int direction)
     {
-        // Block leaving until intro dialogue is finished
-        if (!DialogueGate.introFinished)
-            return;
+        Scene currentScene = SceneManager.GetActiveScene();
 
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = currentIndex + direction;
+        //  Block leaving ONLY the Hallway until intro dialogue is finished
+        if (currentScene.name == "Hallway" && !DialogueGate.introFinished)
+        {
+            Debug.Log("Scene change blocked: intro not finished");
+            return;
+        }
+
+        int nextIndex = currentScene.buildIndex + direction;
 
         if (nextIndex > loopEndIndex)
-        {
             nextIndex = loopStartIndex;
-        }
         else if (nextIndex < loopStartIndex)
-        {
             nextIndex = loopEndIndex;
-        }
 
         SceneManager.LoadScene(nextIndex);
     }
-
 }

@@ -565,13 +565,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1205075530}
-  dialogueBackground: {fileID: 475156791}
+  backgroundBox: {fileID: 0}
   nameText: {fileID: 598926323}
   dialogueText: {fileID: 294704865}
   nextButton: {fileID: 516451052}
   choicePanel: {fileID: 260448796}
   yesButton: {fileID: 749661845}
   noButton: {fileID: 1575874476}
+  isIntroDialogue: 1
+  introLastLineIndex: 12
 --- !u!4 &357781641
 Transform:
   m_ObjectHideFlags: 0

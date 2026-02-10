@@ -8,7 +8,7 @@ public class ItemInteractionUI : MonoBehaviour
     [TextArea(2, 5)]
     public string[] dialogueLines;
 
-    public string[] speakerNames; // optional, same length as dialogueLines
+    public string[] speakerNames;
 
     public bool hasChoices = true;
     public int choiceLineIndex = 1;
@@ -22,20 +22,18 @@ public class ItemInteractionUI : MonoBehaviour
     void Awake()
     {
         button = GetComponent<Button>();
-
         if (button != null)
             button.onClick.AddListener(OnItemClicked);
     }
 
     void OnItemClicked()
     {
-        if (DialogueManager.Instance.IsDialogueActive) return;
-        if (collected) return;
+        if (DialogueManager.Instance.IsDialogueActive || collected) return;
 
         DialogueManager.Instance.StartDialogue(
-            itemName,          // fallback speaker
+            itemName,
             dialogueLines,
-            speakerNames,     
+            speakerNames,
             hasChoices,
             choiceLineIndex,
             yesStart,
@@ -49,8 +47,7 @@ public class ItemInteractionUI : MonoBehaviour
     public void CollectItem()
     {
         collected = true;
-
-        // Disable the whole UI image (parent)
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 }
+

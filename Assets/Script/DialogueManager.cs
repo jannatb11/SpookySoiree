@@ -5,23 +5,24 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    public System.Action OnDialogueFinished;
-
-
     public GameObject dialoguePanel;
-    public GameObject dialogueBackground;
-
+    public GameObject backgroundBox;
     public Text nameText;
     public Text dialogueText;
     public Button nextButton;
 
+    public SceneSwitcher sceneSwitcher;
+    
     public GameObject choicePanel;
     public Button yesButton;
     public Button noButton;
 
+    [Header("Intro Gate")]
+    public bool isIntroDialogue;
+    public int introLastLineIndex;
+
     private string[] lines;
     private string[] speakers;
-
     private int index;
 
     private bool hasChoices;
@@ -47,9 +48,11 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
-        dialogueBackground.SetActive(false);
+        if (backgroundBox != null)
+            backgroundBox.SetActive(false);
     }
 
+    //  THIS MATCHES YOUR NPCInteraction CALL
     public void StartDialogue(
         string defaultSpeaker,
         string[] dialogue,
@@ -66,7 +69,9 @@ public class DialogueManager : MonoBehaviour
         IsDialogueActive = true;
 
         dialoguePanel.SetActive(true);
-        dialogueBackground.SetActive(true);
+        if (backgroundBox != null)
+            backgroundBox.SetActive(true);
+
         choicePanel.SetActive(false);
         nextButton.gameObject.SetActive(true);
 
@@ -85,20 +90,10 @@ public class DialogueManager : MonoBehaviour
         inBranch = false;
         currentItem = item;
 
-        ShowLine(defaultSpeaker);
+        UpdateLine();
     }
 
-    void ShowLine(string fallbackSpeaker)
-    {
-        dialogueText.text = lines[index];
-
-        if (speakers != null && index < speakers.Length && !string.IsNullOrEmpty(speakers[index]))
-            nameText.text = speakers[index];
-        else
-            nameText.text = fallbackSpeaker;
-    }
-
-    public void NextLine()
+    void NextLine()
     {
         index++;
 
@@ -110,7 +105,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!inBranch && hasChoices && index == choiceLineIndex)
         {
-            ShowLine(nameText.text);
+            UpdateLine();
             nextButton.gameObject.SetActive(false);
             choicePanel.SetActive(true);
             return;
@@ -122,7 +117,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        ShowLine(nameText.text);
+        UpdateLine();
+    }
+
+    void UpdateLine()
+    {
+        dialogueText.text = lines[index];
+
+        if (speakers != null && index < speakers.Length && !string.IsNullOrEmpty(speakers[index]))
+            nameText.text = speakers[index];
     }
 
     void YesChoice()
@@ -147,23 +150,28 @@ public class DialogueManager : MonoBehaviour
         branchEnd = end;
         index = start;
 
-        ShowLine(nameText.text);
+        UpdateLine();
     }
 
     void EndDialogue()
     {
         dialoguePanel.SetActive(false);
-        dialogueBackground.SetActive(false);
         choicePanel.SetActive(false);
+        if (backgroundBox != null)
+            backgroundBox.SetActive(false);
 
         IsDialogueActive = false;
-
-        // Unlock movement after intro dialogue
-        DialogueGate.introFinished = true;
-
         currentItem = null;
+
+        if (isIntroDialogue)
+        {
+            DialogueGate.introFinished = true;
+            Debug.Log("Intro finished — movement unlocked");
+        }
+
+        if (sceneSwitcher != null)
+        {
+            sceneSwitcher.TriggerSceneSwitch();
+        }
     }
-
-
 }
-
