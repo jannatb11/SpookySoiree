@@ -68,6 +68,7 @@ public class KeyPlay : MonoBehaviour
 
                 Debug.Log("Puzzle Solved!");
                 pianoinv.SetActive(true);
+                GlobalUnlocksScript.completedPianoPuzzle = true;
 
             }
         }
