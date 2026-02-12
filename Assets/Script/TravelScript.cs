@@ -26,6 +26,10 @@ public class TravelScript : MonoBehaviour
             Debug.Log("Kitchen locked.");
             return;
         }
+        if(sceneName == "ConnectFourPuzzle" && !(GlobalUnlocksScript.completedPianoPuzzle && GlobalUnlocksScript.completedLockPuzzle)){
+            Debug.Log("Complete the Lockpick and Piano puzzle first.");
+            return;
+        }
 
         SceneManager.LoadScene(sceneName);
     }
