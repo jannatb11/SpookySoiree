@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
+    public event System.Action OnDialogueEnd;
+
+    [Header("UI")]
     public GameObject dialoguePanel;
     public GameObject backgroundBox;
     public Text nameText;
@@ -18,6 +22,10 @@ public class DialogueManager : MonoBehaviour
     [Header("Intro Gate")]
     public bool isIntroDialogue;
     public int introLastLineIndex;
+
+    [Header("Scene Transition")]
+    public bool switchSceneOnEnd;
+    public string sceneToLoad;
 
     private string[] lines;
     private string[] speakers;
@@ -33,7 +41,7 @@ public class DialogueManager : MonoBehaviour
     private int branchEnd;
 
     private ItemInteractionUI currentItem;
-    private NPCInteraction currentNPC; //  NEW
+    private NPCInteraction currentNPC;
 
     public bool IsDialogueActive { get; private set; }
 
@@ -63,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         int _noStart,
         int _noEnd,
         ItemInteractionUI item,
-        NPCInteraction npc //  NEW PARAMETER
+        NPCInteraction npc
     )
     {
         IsDialogueActive = true;
@@ -91,7 +99,7 @@ public class DialogueManager : MonoBehaviour
         inBranch = false;
 
         currentItem = item;
-        currentNPC = npc; //  STORE NPC
+        currentNPC = npc;
 
         UpdateLine();
     }
@@ -127,8 +135,12 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueText.text = lines[index];
 
-        if (speakers != null && index < speakers.Length && !string.IsNullOrEmpty(speakers[index]))
+        if (speakers != null &&
+            index < speakers.Length &&
+            !string.IsNullOrEmpty(speakers[index]))
+        {
             nameText.text = speakers[index];
+        }
     }
 
     void YesChoice()
@@ -166,7 +178,15 @@ public class DialogueManager : MonoBehaviour
 
         IsDialogueActive = false;
 
-        //  REMOVE NPC IF NEEDED
+        //  SWITCH SCENE FIRST (IMPORTANT)
+        if (switchSceneOnEnd && !string.IsNullOrEmpty(sceneToLoad))
+        {
+            GameProgress.talkedToGurt = true; //  Unlock permanently
+            SceneManager.LoadScene(sceneToLoad);
+            return;
+        }
+
+        // Remove NPC if not switching scene
         if (currentNPC != null)
         {
             currentNPC.RemoveNPC();
@@ -175,11 +195,12 @@ public class DialogueManager : MonoBehaviour
         currentItem = null;
         currentNPC = null;
 
-        // Unlock intro movement
         if (isIntroDialogue && index >= introLastLineIndex)
         {
             DialogueGate.introFinished = true;
             Debug.Log("Intro finished — movement unlocked");
         }
+
+        OnDialogueEnd?.Invoke();
     }
 }

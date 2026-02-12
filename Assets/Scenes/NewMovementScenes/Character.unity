@@ -605,6 +605,8 @@ MonoBehaviour:
   noButton: {fileID: 284008499}
   isIntroDialogue: 0
   introLastLineIndex: 0
+  switchSceneOnEnd: 1
+  sceneToLoad: Kitchen
 --- !u!4 &505239190
 Transform:
   m_ObjectHideFlags: 0
@@ -1963,11 +1965,11 @@ Transform:
   m_GameObject: {fileID: 1605208128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -156.90128, y: -36.519943, z: 1.1063046}
+  m_LocalPosition: {x: 407.59872, y: 229.48006, z: 1.1063046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2144109208}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850860172
 GameObject:
@@ -2478,7 +2480,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1605208130}
   - {fileID: 590047701}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2498,3 +2499,4 @@ SceneRoots:
   - {fileID: 505239190}
   - {fileID: 1165254637}
   - {fileID: 2144109208}
+  - {fileID: 1605208130}
