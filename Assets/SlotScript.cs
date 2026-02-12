@@ -42,6 +42,9 @@ public class SlotScript : MonoBehaviour
 
     }
     public void AddPiece(){
+        if(transform.parent.GetComponent<BoardPieceScript>().rotation == 0 || ((currentColor == "yellow" || currentColor == "red") && (gms.currentPiece == "yellow" || gms.currentPiece == "red"))){
+            return;
+        }
         currentColor = gms.currentPiece;
         gms.ClearPiece();
     }
