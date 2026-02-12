@@ -11,8 +11,6 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Button nextButton;
 
-    public SceneSwitcher sceneSwitcher;
-    
     public GameObject choicePanel;
     public Button yesButton;
     public Button noButton;
@@ -35,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     private int branchEnd;
 
     private ItemInteractionUI currentItem;
+    private NPCInteraction currentNPC; //  NEW
 
     public bool IsDialogueActive { get; private set; }
 
@@ -48,11 +47,11 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
+
         if (backgroundBox != null)
             backgroundBox.SetActive(false);
     }
 
-    //  THIS MATCHES YOUR NPCInteraction CALL
     public void StartDialogue(
         string defaultSpeaker,
         string[] dialogue,
@@ -63,12 +62,14 @@ public class DialogueManager : MonoBehaviour
         int _yesEnd,
         int _noStart,
         int _noEnd,
-        ItemInteractionUI item
+        ItemInteractionUI item,
+        NPCInteraction npc //  NEW PARAMETER
     )
     {
         IsDialogueActive = true;
 
         dialoguePanel.SetActive(true);
+
         if (backgroundBox != null)
             backgroundBox.SetActive(true);
 
@@ -88,7 +89,9 @@ public class DialogueManager : MonoBehaviour
         noEnd = _noEnd;
 
         inBranch = false;
+
         currentItem = item;
+        currentNPC = npc; //  STORE NPC
 
         UpdateLine();
     }
@@ -157,21 +160,26 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         choicePanel.SetActive(false);
+
         if (backgroundBox != null)
             backgroundBox.SetActive(false);
 
         IsDialogueActive = false;
-        currentItem = null;
 
-        if (isIntroDialogue)
+        //  REMOVE NPC IF NEEDED
+        if (currentNPC != null)
+        {
+            currentNPC.RemoveNPC();
+        }
+
+        currentItem = null;
+        currentNPC = null;
+
+        // Unlock intro movement
+        if (isIntroDialogue && index >= introLastLineIndex)
         {
             DialogueGate.introFinished = true;
             Debug.Log("Intro finished — movement unlocked");
-        }
-
-        if (sceneSwitcher != null)
-        {
-            sceneSwitcher.TriggerSceneSwitch();
         }
     }
 }

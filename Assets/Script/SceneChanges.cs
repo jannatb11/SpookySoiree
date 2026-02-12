@@ -15,20 +15,21 @@ public class SceneChanges : MonoBehaviour
     public void ChangeScene(int direction)
     {
         Scene currentScene = SceneManager.GetActiveScene();
-
-        //  Block leaving ONLY the Hallway until intro dialogue is finished
-        if (currentScene.name == "Hallway" && !DialogueGate.introFinished)
-        {
-            Debug.Log("Scene change blocked: intro not finished");
-            return;
-        }
-
         int nextIndex = currentScene.buildIndex + direction;
 
         if (nextIndex > loopEndIndex)
             nextIndex = loopStartIndex;
         else if (nextIndex < loopStartIndex)
             nextIndex = loopEndIndex;
+
+        Scene nextScene = SceneManager.GetSceneByBuildIndex(nextIndex);
+
+        //  BLOCK Kitchen unless unlocked
+        if (nextScene.name == "Kitchen" && !DialogueGate.gurtUnlockedKitchen)
+        {
+            Debug.Log("Kitchen locked. Talk to Gurt first.");
+            return;
+        }
 
         SceneManager.LoadScene(nextIndex);
     }

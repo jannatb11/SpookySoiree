@@ -20,6 +20,12 @@ public class TravelScript : MonoBehaviour
     {
         if (!DialogueGate.introFinished && sceneName == "LRS3" && SceneManager.GetActiveScene().name == "Hallway")
             return;
+        
+        if (sceneName == "Kitchen" && !DialogueGate.gurtUnlockedKitchen)
+        {
+            Debug.Log("Kitchen locked.");
+            return;
+        }
 
         SceneManager.LoadScene(sceneName);
     }

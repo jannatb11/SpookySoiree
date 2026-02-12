@@ -11,33 +11,60 @@ public class SceneSwitcher : MonoBehaviour
 
     private bool triggered;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        // Start fully transparent
+        Color c = fadeImage.color;
+        c.a = 0f;
+        fadeImage.color = c;
+    }
+
     public void TriggerSceneSwitch()
     {
         if (triggered) return;
         triggered = true;
+
         StartCoroutine(FadeAndSwitch());
     }
 
     IEnumerator FadeAndSwitch()
     {
-        fadeImage.gameObject.SetActive(true);
         fadeImage.raycastTarget = false;
 
-        Color c = fadeImage.color;
-        c.a = 0f;
-        fadeImage.color = c;
-
         float t = 0f;
+        Color c = fadeImage.color;
 
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
-            c.a = Mathf.Lerp(0f, 1f, t / fadeDuration);
+            c.a = Mathf.Lerp(0, 1, t / fadeDuration);
             fadeImage.color = c;
             yield return null;
         }
 
+        //  Unlock Kitchen here
+        DialogueGate.gurtUnlockedKitchen = true;
+
         SceneManager.LoadScene(targetSceneName);
     }
 
+
+    IEnumerator Fade(float startAlpha, float endAlpha)
+    {
+        float t = 0f;
+        Color c = fadeImage.color;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            c.a = Mathf.Lerp(startAlpha, endAlpha, t / fadeDuration);
+            fadeImage.color = c;
+            yield return null;
+        }
+
+        c.a = endAlpha;
+        fadeImage.color = c;
+    }
 }
