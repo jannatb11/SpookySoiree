@@ -1,38 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanges : MonoBehaviour
 {
     public void StartGame()
-{
-    SceneManager.LoadScene(1);
-}
+    {
+        SceneManager.LoadScene(1);
+    }
 
-    //keep all puzzles and main menu after player movement scenes
+    // Scene loop limits
     public int loopStartIndex = 0;
     public int loopEndIndex = 7;
 
     public void ChangeScene(int direction)
     {
-        // Block leaving until intro dialogue is finished
-        if (!DialogueGate.introFinished)
-            return;
-
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = currentIndex + direction;
+        Scene currentScene = SceneManager.GetActiveScene();
+        int nextIndex = currentScene.buildIndex + direction;
 
         if (nextIndex > loopEndIndex)
-        {
             nextIndex = loopStartIndex;
-        }
         else if (nextIndex < loopStartIndex)
-        {
             nextIndex = loopEndIndex;
+
+        Scene nextScene = SceneManager.GetSceneByBuildIndex(nextIndex);
+
+        //  BLOCK Kitchen unless unlocked
+        if (nextScene.name == "Kitchen" && !DialogueGate.gurtUnlockedKitchen)
+        {
+            Debug.Log("Kitchen locked. Talk to Gurt first.");
+            return;
         }
 
         SceneManager.LoadScene(nextIndex);
     }
-
 }

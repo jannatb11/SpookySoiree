@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class ItemInteractionUI : MonoBehaviour
 {
-    public string itemName = "Plant";
+    public string itemName = "Key";
 
     [TextArea(2, 5)]
     public string[] dialogueLines;
 
-    public string[] speakerNames; // optional, same length as dialogueLines
+    public string[] speakerNames; // ADD THIS
 
     public bool hasChoices = true;
     public int choiceLineIndex = 1;
@@ -33,24 +33,23 @@ public class ItemInteractionUI : MonoBehaviour
         if (collected) return;
 
         DialogueManager.Instance.StartDialogue(
-            itemName,          // fallback speaker
+            itemName,
             dialogueLines,
-            speakerNames,     
+            speakerNames,   // NEW
             hasChoices,
             choiceLineIndex,
             yesStart,
             yesEnd,
             noStart,
             noEnd,
-            this
+            this,           // item reference
+            null            // no NPC
         );
     }
 
     public void CollectItem()
     {
         collected = true;
-
-        // Disable the whole UI image (parent)
-        gameObject.transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
