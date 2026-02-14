@@ -221,5 +221,6 @@ public class RotationManagerScript : MonoBehaviour
     void Win(){
         winScreen.SetActive(true);
         GlobalUnlocksScript.completedLockPuzzle = true;
+
     }
 }
