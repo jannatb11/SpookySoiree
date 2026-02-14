@@ -19,6 +19,9 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
+    [Header("Scene Arrows")]
+    public GameObject sceneArrows;   // DRAG YOUR ARROW PARENT HERE
+
     [Header("Intro Gate")]
     public bool isIntroDialogue;
     public int introLastLineIndex;
@@ -75,6 +78,10 @@ public class DialogueManager : MonoBehaviour
     )
     {
         IsDialogueActive = true;
+
+        //  HIDE SCENE ARROWS
+        if (sceneArrows != null)
+            sceneArrows.SetActive(false);
 
         dialoguePanel.SetActive(true);
 
@@ -178,15 +185,19 @@ public class DialogueManager : MonoBehaviour
 
         IsDialogueActive = false;
 
-        //  SWITCH SCENE FIRST (IMPORTANT)
+        //  SHOW SCENE ARROWS AGAIN
+        if (sceneArrows != null)
+            sceneArrows.SetActive(true);
+
+        //  Scene Switch (Gurt case)
         if (switchSceneOnEnd && !string.IsNullOrEmpty(sceneToLoad))
         {
-            GameProgress.talkedToGurt = true; //  Unlock permanently
+            GameProgress.talkedToGurt = true;
             SceneManager.LoadScene(sceneToLoad);
             return;
         }
 
-        // Remove NPC if not switching scene
+        // Remove NPC if needed
         if (currentNPC != null)
         {
             currentNPC.RemoveNPC();
@@ -204,3 +215,4 @@ public class DialogueManager : MonoBehaviour
         OnDialogueEnd?.Invoke();
     }
 }
+
