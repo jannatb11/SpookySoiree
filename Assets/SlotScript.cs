@@ -24,8 +24,11 @@ public class SlotScript : MonoBehaviour
         if(above){
             SlotScript ss = above.GetComponent<SlotScript>();
             if(ss.currentColor != "" && transform.parent.GetComponent<BoardPieceScript>().rotating == false && above.transform.parent.GetComponent<BoardPieceScript>().rotating == false && currentColor == ""){
-                currentColor = ss.currentColor;
-                ss.currentColor = "";
+                if(transform.parent == above.transform.parent || ((transform.parent.GetComponent<BoardPieceScript>().rotation == 0 || transform.parent.GetComponent<BoardPieceScript>().rotation == 360) && (above.transform.parent.GetComponent<BoardPieceScript>().rotation == 0 || above.transform.parent.GetComponent<BoardPieceScript>().rotation == 360))){
+                    currentColor = ss.currentColor;
+                    ss.currentColor = "";
+                }
+
             }
         }
         switch(currentColor){
@@ -42,7 +45,7 @@ public class SlotScript : MonoBehaviour
 
     }
     public void AddPiece(){
-        if(transform.parent.GetComponent<BoardPieceScript>().rotation == 0 || ((currentColor == "yellow" || currentColor == "red") && (gms.currentPiece == "yellow" || gms.currentPiece == "red"))){
+        if((transform.parent.GetComponent<BoardPieceScript>().rotation == 0 || transform.parent.GetComponent<BoardPieceScript>().rotation == 360) || ((currentColor == "yellow" || currentColor == "red") && (gms.currentPiece == "yellow" || gms.currentPiece == "red"))){
             return;
         }
         currentColor = gms.currentPiece;
