@@ -12,6 +12,8 @@ public class InventoryManager : MonoBehaviour
         //daisyinv.SetActive(PlayerPrefs.GetInt("DaisyCollected", 0) == 1);
         daisyinv.SetActive(false);
         daisyinv2.SetActive(true);
+        DontDestroyOnLoad(pianoinv);
+
     }
 
 
