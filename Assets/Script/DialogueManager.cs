@@ -1,26 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-
-    public event System.Action OnDialogueEnd;
 
     [Header("UI")]
     public GameObject dialoguePanel;
     public GameObject backgroundBox;
     public Text nameText;
     public Text dialogueText;
-    public Button nextButton;
 
+    [Header("Choice UI")]
     public GameObject choicePanel;
     public Button yesButton;
     public Button noButton;
 
+    [Header("Typing Settings")]
+    public float typingSpeed = 0.03f;
+
     [Header("Scene Arrows")]
-    public GameObject sceneArrows;   // DRAG YOUR ARROW PARENT HERE
+    public GameObject sceneArrows;
 
     [Header("Intro Gate")]
     public bool isIntroDialogue;
@@ -36,15 +38,17 @@ public class DialogueManager : MonoBehaviour
 
     private bool hasChoices;
     private int choiceLineIndex;
-
     private int yesStart, yesEnd;
     private int noStart, noEnd;
 
     private bool inBranch;
     private int branchEnd;
 
-    private ItemInteractionUI currentItem;
+    private bool lineFullyDisplayed;
+    private Coroutine typingCoroutine;
+
     private NPCInteraction currentNPC;
+    private ItemInteractionUI currentItem;
 
     public bool IsDialogueActive { get; private set; }
 
@@ -52,7 +56,6 @@ public class DialogueManager : MonoBehaviour
     {
         Instance = this;
 
-        nextButton.onClick.AddListener(NextLine);
         yesButton.onClick.AddListener(YesChoice);
         noButton.onClick.AddListener(NoChoice);
 
@@ -61,6 +64,30 @@ public class DialogueManager : MonoBehaviour
 
         if (backgroundBox != null)
             backgroundBox.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (!IsDialogueActive)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Don't allow click-to-continue if choices are visible
+            if (choicePanel.activeSelf)
+                return;
+
+            if (!lineFullyDisplayed)
+            {
+                StopCoroutine(typingCoroutine);
+                dialogueText.text = lines[index];
+                lineFullyDisplayed = true;
+            }
+            else
+            {
+                NextLine();
+            }
+        }
     }
 
     public void StartDialogue(
@@ -79,7 +106,6 @@ public class DialogueManager : MonoBehaviour
     {
         IsDialogueActive = true;
 
-        //  HIDE SCENE ARROWS
         if (sceneArrows != null)
             sceneArrows.SetActive(false);
 
@@ -89,7 +115,6 @@ public class DialogueManager : MonoBehaviour
             backgroundBox.SetActive(true);
 
         choicePanel.SetActive(false);
-        nextButton.gameObject.SetActive(true);
 
         lines = dialogue;
         speakers = speakerNames;
@@ -105,27 +130,52 @@ public class DialogueManager : MonoBehaviour
 
         inBranch = false;
 
-        currentItem = item;
         currentNPC = npc;
+        currentItem = item;
 
-        UpdateLine();
+        ShowLine();
+    }
+
+    void ShowLine()
+    {
+        dialogueText.text = "";
+        lineFullyDisplayed = false;
+
+        if (speakers != null &&
+            index < speakers.Length &&
+            !string.IsNullOrEmpty(speakers[index]))
+        {
+            nameText.text = speakers[index];
+        }
+
+        typingCoroutine = StartCoroutine(TypeLine(lines[index]));
+    }
+
+    IEnumerator TypeLine(string line)
+    {
+        foreach (char letter in line)
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        lineFullyDisplayed = true;
+
+        //  Show choices when we reach the choice line
+        if (!inBranch && hasChoices && index == choiceLineIndex)
+        {
+            choicePanel.SetActive(true);
+        }
     }
 
     void NextLine()
     {
         index++;
 
+        // End branch
         if (inBranch && index > branchEnd)
         {
             EndDialogue();
-            return;
-        }
-
-        if (!inBranch && hasChoices && index == choiceLineIndex)
-        {
-            UpdateLine();
-            nextButton.gameObject.SetActive(false);
-            choicePanel.SetActive(true);
             return;
         }
 
@@ -135,19 +185,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        UpdateLine();
-    }
-
-    void UpdateLine()
-    {
-        dialogueText.text = lines[index];
-
-        if (speakers != null &&
-            index < speakers.Length &&
-            !string.IsNullOrEmpty(speakers[index]))
-        {
-            nameText.text = speakers[index];
-        }
+        ShowLine();
     }
 
     void YesChoice()
@@ -165,31 +203,36 @@ public class DialogueManager : MonoBehaviour
 
     void StartBranch(int start, int end)
     {
-        choicePanel.SetActive(false);
-        nextButton.gameObject.SetActive(true);
+        choicePanel.SetActive(false); //  HIDE choice panel properly
 
         inBranch = true;
         branchEnd = end;
         index = start;
 
-        UpdateLine();
+        ShowLine();
     }
 
     void EndDialogue()
     {
         dialoguePanel.SetActive(false);
-        choicePanel.SetActive(false);
+        choicePanel.SetActive(false); //  Ensure hidden
 
         if (backgroundBox != null)
             backgroundBox.SetActive(false);
 
         IsDialogueActive = false;
 
-        //  SHOW SCENE ARROWS AGAIN
         if (sceneArrows != null)
             sceneArrows.SetActive(true);
 
-        //  Scene Switch (Gurt case)
+        //  Intro gate unlock
+        if (isIntroDialogue && index >= introLastLineIndex)
+        {
+            DialogueGate.introFinished = true;
+            Debug.Log("Intro finished — movement unlocked");
+        }
+
+        //  Scene switch (Gurt)
         if (switchSceneOnEnd && !string.IsNullOrEmpty(sceneToLoad))
         {
             GameProgress.talkedToGurt = true;
@@ -197,22 +240,12 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        // Remove NPC if needed
         if (currentNPC != null)
         {
             currentNPC.RemoveNPC();
         }
 
-        currentItem = null;
         currentNPC = null;
-
-        if (isIntroDialogue && index >= introLastLineIndex)
-        {
-            DialogueGate.introFinished = true;
-            Debug.Log("Intro finished — movement unlocked");
-        }
-
-        OnDialogueEnd?.Invoke();
+        currentItem = null;
     }
 }
-
