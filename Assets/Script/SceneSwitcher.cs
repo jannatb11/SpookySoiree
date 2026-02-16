@@ -19,6 +19,9 @@ public class SceneSwitcher : MonoBehaviour
         Color c = fadeImage.color;
         c.a = 0f;
         fadeImage.color = c;
+
+        // When a new scene loads, fade back in
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void TriggerSceneSwitch()
@@ -33,23 +36,22 @@ public class SceneSwitcher : MonoBehaviour
     {
         fadeImage.raycastTarget = false;
 
-        float t = 0f;
-        Color c = fadeImage.color;
+        // Fade OUT (0 -> 1)
+        yield return StartCoroutine(Fade(0f, 1f));
 
-        while (t < fadeDuration)
-        {
-            t += Time.deltaTime;
-            c.a = Mathf.Lerp(0, 1, t / fadeDuration);
-            fadeImage.color = c;
-            yield return null;
-        }
-
-        //  Unlock Kitchen here
-        DialogueGate.gurtUnlockedKitchen = true;
+        // Unlock kitchen using NEW system
+        GameProgress.kitchenUnlocked = true;
 
         SceneManager.LoadScene(targetSceneName);
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Fade back IN (1 -> 0)
+        StartCoroutine(Fade(1f, 0f));
+
+        triggered = false;
+    }
 
     IEnumerator Fade(float startAlpha, float endAlpha)
     {

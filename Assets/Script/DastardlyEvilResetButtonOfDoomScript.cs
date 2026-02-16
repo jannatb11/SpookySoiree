@@ -18,7 +18,7 @@ public class DastardlyEvilResetButtonOfDoomScript : MonoBehaviour
     }
     public void Lethe(){
         GameState.removedNPCs = new HashSet<string>();
-        GameProgress.talkedToGurt = false;
+        
         DialogueGate.introFinished = false; 
         DialogueGate.gurtUnlockedKitchen = false;
         GlobalUnlocksScript.completedLockPuzzle = false;

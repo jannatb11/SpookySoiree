@@ -7,12 +7,13 @@ public class KitchenDoor : MonoBehaviour
 
     public void TryEnterKitchen()
     {
-        if (!GameProgress.talkedToGurt)
+        if (!GameProgress.kitchenUnlocked)
         {
             Debug.Log("Kitchen is locked. Talk to Gurt first.");
             return;
         }
 
+        Debug.Log("Entering Kitchen...");
         SceneManager.LoadScene(kitchenSceneName);
     }
 }

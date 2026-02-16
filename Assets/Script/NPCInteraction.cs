@@ -1,44 +1,40 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [Header("NPC Settings")]
-    public string npcID; // MUST be unique for each NPC
-    public string npcName = "Toot";
+    [Header("NPC Info")]
+    public string npcName;
 
-    [TextArea(2, 5)]
+    [Header("Dialogue")]
     public string[] dialogueLines;
-
     public string[] speakerNames;
 
     [Header("Choices")]
     public bool hasChoices;
     public int choiceLineIndex;
-    public int yesJumpToLine, yesEndLine;
-    public int noJumpToLine, noEndLine;
+    public int yesJumpToLine;
+    public int yesEndLine;
+    public int noJumpToLine;
+    public int noEndLine;
 
-    [Header("Removal")]
-    public bool removeAfterDialogue;
+    [Header("Unlock Settings")]
+    public bool unlockIntro;
+    public bool unlockKitchen;
 
-    private Button button;
+    [Header("After Dialogue")]
+    public bool disappearAfterDialogue = false;
 
-    void Awake()
+
+    [Header("Scene Teleport")]
+    public bool teleportAfterDialogue = false;
+    public SceneSwitcher sceneSwitcher;
+
+
+
+    public void Interact()
     {
-        // If this NPC was already removed before, destroy it instantly
-        if (GameState.removedNPCs.Contains(npcID))
-        {
-            Destroy(gameObject);
+        if (DialogueManager.Instance.IsDialogueActive)
             return;
-        }
-
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnNPCClicked);
-    }
-
-    void OnNPCClicked()
-    {
-        if (DialogueManager.Instance.IsDialogueActive) return;
 
         DialogueManager.Instance.StartDialogue(
             npcName,
@@ -51,15 +47,36 @@ public class NPCInteraction : MonoBehaviour
             noJumpToLine,
             noEndLine,
             null,
-            this // PASS THIS NPC
+            this
         );
     }
 
-    public void RemoveNPC()
+    public void OnDialogueComplete()
     {
-        if (!removeAfterDialogue) return;
+        ApplyUnlocks();
+    }
 
-        GameState.removedNPCs.Add(npcID);
-        Destroy(gameObject);
+    public void ApplyUnlocks()
+    {
+        if (unlockIntro)
+        {
+            GameProgress.introFinished = true;
+            Debug.Log("Intro unlocked by " + npcName);
+        }
+
+        if (unlockKitchen)
+        {
+            GameProgress.kitchenUnlocked = true;
+            Debug.Log("Kitchen unlocked by " + npcName);
+        }
+
+        if (teleportAfterDialogue && sceneSwitcher != null)
+        {
+            sceneSwitcher.TriggerSceneSwitch();
+        }
+
+        if (disappearAfterDialogue)
+            gameObject.SetActive(false);
     }
 }
+
