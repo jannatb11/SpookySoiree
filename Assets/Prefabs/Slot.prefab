@@ -110,9 +110,10 @@ GameObject:
   - component: {fileID: 568443347675419589}
   - component: {fileID: 4457895929266208490}
   - component: {fileID: 5314895234996430702}
+  - component: {fileID: 9125029631506475195}
   m_Layer: 5
   m_Name: Slot
-  m_TagString: Untagged
+  m_TagString: Connect4Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,3 +331,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 20
+--- !u!114 &9125029631506475195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565481539495288992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c7399091378b1458eb96f866b16484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correct: 0
+  desiredColor: {r: 0, g: 0, b: 0, a: 0}

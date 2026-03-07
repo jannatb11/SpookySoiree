@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - inv
+  - Connect4Slot
+  - Connect4BoardPiece
   layers:
   - Default
   - TransparentFX

@@ -18,9 +18,7 @@ public class BoardPieceScript : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(0, 0, rotation);
-        if(Input.GetKeyDown(KeyCode.K)){
-            Rotate();
-        }
+        
     }
     public void Rotate(){
         if(!rotating){
@@ -42,7 +40,7 @@ public class BoardPieceScript : MonoBehaviour
         float num = 0f;
         while(rotation != goalRot){
             rotation = Mathf.Lerp(startRot, goalRot, num);
-            num += Time.deltaTime * 2.5f;
+            num += Time.deltaTime * 5f;
             yield return new WaitForSeconds(0.01f);
         }
         rotating = false;
