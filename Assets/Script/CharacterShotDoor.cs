@@ -7,8 +7,7 @@ public class CharacterShotDoor : MonoBehaviour
 
     public void TryEnterCharacterShot()
     {
-        //  If player already talked to Gurt -> lock room
-        if (GameProgress.talkedToGurt)
+        if (GameProgress.kitchenUnlocked)
         {
             Debug.Log("Character Shot room is now locked.");
             return;

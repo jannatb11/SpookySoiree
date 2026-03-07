@@ -32,6 +32,8 @@ public class RotationManagerScript : MonoBehaviour
     public float barRotation;
     public bool barOut;
     public float barSpeed;
+    public GameObject mouseinv;
+
 
     // Start is called before the first frame update
     void Start()
@@ -221,6 +223,8 @@ public class RotationManagerScript : MonoBehaviour
     void Win(){
         winScreen.SetActive(true);
         GlobalUnlocksScript.completedLockPuzzle = true;
+        mouseinv.SetActive(true);
+
 
     }
 }

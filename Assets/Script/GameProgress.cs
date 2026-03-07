@@ -1,8 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameProgress
 {
-    public static bool talkedToGurt = false;
+    // Dialogue progress
+    public static bool introFinished = false;
+
+    
+
+    // Kitchen access
+    public static bool kitchenUnlocked = false;
 }

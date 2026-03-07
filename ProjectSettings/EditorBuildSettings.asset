@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0d79e7cf7b1cf42c08f263ca82df6331
+  - enabled: 1
     path: Assets/Scenes/NewMovementScenes/Study.unity
     guid: 29c87aa3ea8541140b1e684fa2f5fc1f
   - enabled: 1
@@ -50,9 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Inventory.unity
     guid: e6546025707f5ad46bdcbfda22c0ba44
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 0d79e7cf7b1cf42c08f263ca82df6331
   - enabled: 1
     path: Assets/Scenes/PianoPuzzle.unity
     guid: f15ffe5c4ca15ca48830ae81b764a788
