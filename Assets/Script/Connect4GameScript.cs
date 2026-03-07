@@ -21,6 +21,9 @@ public class Connect4GameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        CheckWin();
+        
         if(piece != null){
             piece.transform.position = new Vector3(Input.mousePosition.x - 5, Input.mousePosition.y - 5, 0);
         }
@@ -58,5 +61,29 @@ public class Connect4GameScript : MonoBehaviour
     public void ClearPiece(){
         Destroy(piece);
         currentPiece = "";
+    }
+    public void CheckWin(){
+        foreach(GameObject boardPiece in GameObject.FindGameObjectsWithTag("Connect4BoardPiece")){
+            if(boardPiece.GetComponent<BoardPieceScript>().rotation == 0 || boardPiece.GetComponent<BoardPieceScript>().rotation == 360){
+
+            } else{
+                return;
+            }
+        }
+        bool win = true;
+        foreach(GameObject slot in GameObject.FindGameObjectsWithTag("Connect4Slot")){
+            win = (win && slot.GetComponent<SlotWinScript>().correct);
+            if(win == false){
+                break;
+            }
+        }
+        if(win){
+            Win();
+        }else{
+            
+        }
+    }
+    public void Win(){
+        transform.Find("Victory Text").gameObject.SetActive(true);
     }
 }
