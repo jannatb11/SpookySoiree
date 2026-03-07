@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Connect4GameScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Connect4GameScript : MonoBehaviour
     public Color yellow;
     public Color red;
     public Color BG;
+    public int instructions = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,9 @@ public class Connect4GameScript : MonoBehaviour
         }
     }
     public void ClickYellow(){
+        if(instructions < 2){
+            Instructions();
+        }
         if(currentPiece != "yellow"){
             ClearPiece();
             currentPiece = "yellow";
@@ -50,6 +55,9 @@ public class Connect4GameScript : MonoBehaviour
         
     }
     public void ClickRed(){
+        if(instructions < 2){
+            Instructions();
+        }
         if(currentPiece != "red"){
             ClearPiece();
             currentPiece = "red";
@@ -85,5 +93,16 @@ public class Connect4GameScript : MonoBehaviour
     }
     public void Win(){
         transform.Find("Victory Text").gameObject.SetActive(true);
+    }
+    public void Instructions(){
+        TextMeshProUGUI readout = GameObject.Find("Instructions").GetComponent<TextMeshProUGUI>();
+        instructions += 1;
+        if(instructions < 1){
+            readout.text = "Instructions: \nClick on a piece of the board to rotate it.";
+        } else if(instructions < 2){
+            readout.text = "Instructions: \nClick on a piece of the board to rotate it.\nClick on a colored chip to select it and place it in a slot.\nYou can only place chips on a rotated piece.";
+        } else{
+            readout.text = "Instructions: \nClick on a piece of the board to rotate it.\nClick on a colored chip to select it and place it in a slot.\nYou can only place chips on a rotated piece.\nMatch the pattern on the left.";
+        }
     }
 }
