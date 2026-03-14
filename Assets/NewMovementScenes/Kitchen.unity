@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 144195592}
   - component: {fileID: 144195594}
   - component: {fileID: 144195593}
+  - component: {fileID: 144195595}
   m_Layer: 5
   m_Name: Daisy
   m_TagString: Untagged
@@ -862,6 +863,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144195591}
   m_CullTransparentMesh: 1
+--- !u!95 &144195595
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144195591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 431248a9698ecb74e814406364dd6e47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &174167472
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +895,7 @@ GameObject:
   - component: {fileID: 174167473}
   - component: {fileID: 174167475}
   - component: {fileID: 174167474}
+  - component: {fileID: 174167476}
   m_Layer: 5
   m_Name: Gurt
   m_TagString: Untagged
@@ -896,8 +919,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.211014, y: -24.702}
-  m_SizeDelta: {x: 292.7887, y: 181.7851}
+  m_AnchoredPosition: {x: 23.696, y: -21.731}
+  m_SizeDelta: {x: 170.217, y: 159.92}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!114 &174167474
 MonoBehaviour:
@@ -919,7 +942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ad9254693083934789ecfe91ccdfeb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cc9ed7eafe03914b8b07ad9d2fd2c93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -937,6 +960,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174167472}
   m_CullTransparentMesh: 1
+--- !u!95 &174167476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174167472}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6adf71cd719e1db43b0a705d286b3866, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &192691423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1307,7 @@ RectTransform:
   - {fileID: 382908518}
   - {fileID: 981263484}
   - {fileID: 1411739887}
+  - {fileID: 1820496187}
   - {fileID: 523787408}
   - {fileID: 1349632666}
   - {fileID: 981572563}
@@ -1332,6 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Daisy_1
   npcName: Daisy
+  animator: {fileID: 144195595}
   dialogueLines:
   - "I missed you, Daisy. Moving here has been a hassle, especially since I couldn't
     talk to you!\r"
@@ -1509,6 +1555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneButton: {fileID: 0}
+  ContinueArrow: {fileID: 0}
+  popupUI: {fileID: 0}
 --- !u!114 &536701844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,6 +2024,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneButton: {fileID: 0}
+  ContinueArrow: {fileID: 0}
+  popupUI: {fileID: 0}
 --- !u!1 &704581367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2389,6 @@ RectTransform:
   - {fileID: 1107850408}
   - {fileID: 72395966}
   - {fileID: 1525405812}
-  - {fileID: 1820496187}
   m_Father: {fileID: 19461848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2674,6 +2725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneButton: {fileID: 0}
+  ContinueArrow: {fileID: 0}
+  popupUI: {fileID: 0}
 --- !u!1 &1308915833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,8 +3226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108, y: -25.2}
-  m_SizeDelta: {x: 222.1136, y: 159.92}
+  m_AnchoredPosition: {x: -132.97351, y: -25.2}
+  m_SizeDelta: {x: 172.1665, y: 159.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411739888
 MonoBehaviour:
@@ -3189,6 +3243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_2
   npcName: Gurt
+  animator: {fileID: 174167476}
   dialogueLines:
   - DAISY?!?!?!!?!?!?
   - "Gurt gurt gurble, I\u2019ll give you a moment alone. "
@@ -4054,16 +4109,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820496186}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 989537950}
+  m_Father: {fileID: 478201340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 171, y: 129.1}
+  m_AnchoredPosition: {x: 171, y: 129.10004}
   m_SizeDelta: {x: 70, y: 70.9464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820496188
