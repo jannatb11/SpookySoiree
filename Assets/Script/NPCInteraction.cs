@@ -3,6 +3,7 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour
 {
     [Header("NPC Info")]
+    public string npcID; // MUST BE UNIQUE
     public string npcName;
 
     [Header("Dialogue")]
@@ -24,12 +25,19 @@ public class NPCInteraction : MonoBehaviour
     [Header("After Dialogue")]
     public bool disappearAfterDialogue = false;
 
-
     [Header("Scene Teleport")]
     public bool teleportAfterDialogue = false;
     public SceneSwitcher sceneSwitcher;
 
-
+    void Awake()
+    {
+        // If NPC was already removed earlier, destroy it immediately
+        if (GameState.removedNPCs.Contains(npcID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     public void Interact()
     {
@@ -76,7 +84,11 @@ public class NPCInteraction : MonoBehaviour
         }
 
         if (disappearAfterDialogue)
-            gameObject.SetActive(false);
+        {
+            // Save NPC as removed
+            GameState.removedNPCs.Add(npcID);
+
+            Destroy(gameObject);
+        }
     }
 }
-

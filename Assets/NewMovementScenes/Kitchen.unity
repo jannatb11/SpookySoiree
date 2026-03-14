@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: Daisy_1
   npcName: Daisy
   dialogueLines:
   - "I missed you, Daisy. Moving here has been a hassle, especially since I couldn't
@@ -1475,7 +1476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &536701842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3195,6 +3196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: Gurt_2
   npcName: Gurt
   dialogueLines:
   - DAISY?!?!?!!?!?!?
@@ -3894,7 +3896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652006336
 RectTransform:
   m_ObjectHideFlags: 0
