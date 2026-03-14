@@ -3,8 +3,11 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour
 {
     [Header("NPC Info")]
-    public string npcID; // MUST BE UNIQUE
+    public string npcID;
     public string npcName;
+
+    [Header("Animation")]
+    public Animator animator;
 
     [Header("Dialogue")]
     public string[] dialogueLines;
@@ -31,7 +34,6 @@ public class NPCInteraction : MonoBehaviour
 
     void Awake()
     {
-        // If NPC was already removed earlier, destroy it immediately
         if (GameState.removedNPCs.Contains(npcID))
         {
             Destroy(gameObject);
@@ -43,6 +45,10 @@ public class NPCInteraction : MonoBehaviour
     {
         if (DialogueManager.Instance.IsDialogueActive)
             return;
+
+        // Start talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", true);
 
         DialogueManager.Instance.StartDialogue(
             npcName,
@@ -61,6 +67,10 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+        // Stop talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", false);
+
         ApplyUnlocks();
     }
 
@@ -85,9 +95,7 @@ public class NPCInteraction : MonoBehaviour
 
         if (disappearAfterDialogue)
         {
-            // Save NPC as removed
             GameState.removedNPCs.Add(npcID);
-
             Destroy(gameObject);
         }
     }
