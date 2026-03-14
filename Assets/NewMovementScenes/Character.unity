@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.24523596}
-  m_AnchoredPosition: {x: 4.3952, y: 1.0809937}
+  m_AnchoredPosition: {x: 4.3951416, y: 1.0809937}
   m_SizeDelta: {x: -390.3091, y: -36.8408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &13268525
@@ -1203,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &686568366
 Transform:
   m_ObjectHideFlags: 0
@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1717363491}
-  fadeDuration: 3
+  fadeDuration: 0
   targetSceneName: Kitchen
 --- !u!4 &1605208130
 Transform:
@@ -2641,10 +2641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Gurt
   dialogueLines:
-  - "Alright, it seems like the movers have moved everything in\u2026 that's good.\r"
-  - "I\u2019ll put these somewhere....\r"
-  - Just when the player was going to start, a short, well-mannered person poofed
-    in.
   - Gurt gurt gurble, to you, my dear. How are you this fine evening?
   - "Huh?!? Who are you?\r"
   - "How did you get inside my house? What are you????!?!?!?\r"
@@ -2652,7 +2648,7 @@ MonoBehaviour:
   - "\u201CGurt gurt gurble\u201D?"
   - "Yes, indeed. I come from a long line of strong, hardworking, and amazingly beautiful
     Gurts. Virtues that will be held for all time.\r"
-  - That's great. Where did you come from?
+  - "That's great. But how did you get in\u2026\u2026 "
   - 'Why, I was invited in, of course. Never mind that now, though.
 
 '
@@ -2661,20 +2657,16 @@ MonoBehaviour:
     gurble.
 
 '
-  - 'I discovered something that might interest you. If you would kindly follow me,
-    gurble.
-
-'
   speakerNames:
-  - Player
-  - Player
-  - ' '
   - Gurt
   - Player
   - Player
   - Gurt
   - Player
   - Gurt
+  - Player
+  - Gurt
+  - Player
   - Player
   - Gurt
   - Player
