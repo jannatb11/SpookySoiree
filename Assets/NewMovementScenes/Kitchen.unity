@@ -1475,7 +1475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &536701842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1508,9 +1508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneButton: {fileID: 1156230938}
-  ContinueArrow: {fileID: 536701841}
-  popupUI: {fileID: 643751364}
 --- !u!114 &536701844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,7 +1944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49714182d20bac74098322d04ed8d324, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6704a66ad01f3044bbb503d9f633b4b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1977,9 +1974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneButton: {fileID: 1156230938}
-  ContinueArrow: {fileID: 536701841}
-  popupUI: {fileID: 643751364}
 --- !u!1 &704581367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,9 +2673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380f7ac3d57bfa3478d2b07dc670ca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneButton: {fileID: 1156230938}
-  ContinueArrow: {fileID: 536701841}
-  popupUI: {fileID: 643751364}
 --- !u!1 &1308915833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,7 +3171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128.41, y: -24}
+  m_AnchoredPosition: {x: -108, y: -25.2}
   m_SizeDelta: {x: 222.1136, y: 159.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411739888
