@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    public string npcName = "Bob";
+    [Header("NPC Info")]
+    public string npcID;
+    public string npcName;
 
-    [TextArea(2, 5)]
+    [Header("Animation")]
+    public Animator animator;
+
+    [Header("Dialogue")]
     public string[] dialogueLines;
 
     public bool hasChoices = true;
@@ -18,6 +23,22 @@ public class NPCInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (GameState.removedNPCs.Contains(npcID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    public void Interact()
+    {
+        if (DialogueManager.Instance.IsDialogueActive)
+            return;
+
+        // Start talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", true);
+
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogueLines,
@@ -28,5 +49,40 @@ public class NPCInteraction : MonoBehaviour
             noJumpToLine,
             noEndLine
         );
+    }
+
+    public void OnDialogueComplete()
+    {
+        // Stop talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", false);
+
+        ApplyUnlocks();
+    }
+
+    public void ApplyUnlocks()
+    {
+        if (unlockIntro)
+        {
+            GameProgress.introFinished = true;
+            Debug.Log("Intro unlocked by " + npcName);
+        }
+
+        if (unlockKitchen)
+        {
+            GameProgress.kitchenUnlocked = true;
+            Debug.Log("Kitchen unlocked by " + npcName);
+        }
+
+        if (teleportAfterDialogue && sceneSwitcher != null)
+        {
+            sceneSwitcher.TriggerSceneSwitch();
+        }
+
+        if (disappearAfterDialogue)
+        {
+            GameState.removedNPCs.Add(npcID);
+            Destroy(gameObject);
+        }
     }
 }
