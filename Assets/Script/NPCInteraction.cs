@@ -8,7 +8,7 @@ public class NPCInteraction : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
-
+    
     [Header("Dialogue")]
     public string[] dialogueLines;
     public string[] speakerNames;
