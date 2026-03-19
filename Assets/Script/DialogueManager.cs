@@ -15,6 +15,11 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
+    [Header("Text Colors")]
+    public Color npcTextColor = Color.yellow;
+    public Color playerTextColor = Color.white;
+    public string playerName = "Player"; // MUST match speaker name
+
     [Header("UI To Disable During Dialogue")]
     public GameObject[] uiToHide;
     public Button[] buttonsToDisable;
@@ -131,8 +136,21 @@ public class DialogueManager : MonoBehaviour
         canContinue = false;
         dialogueText.text = "";
 
+        // Set speaker name
         if (speakerNames != null && speakerNames.Length > index)
+        {
             speakerText.text = speakerNames[index];
+
+            //  CHANGE TEXT COLOR BASED ON SPEAKER
+            if (speakerNames[index] == playerName)
+            {
+                dialogueText.color = playerTextColor;
+            }
+            else
+            {
+                dialogueText.color = npcTextColor;
+            }
+        }
 
         foreach (char letter in lines[index])
         {
