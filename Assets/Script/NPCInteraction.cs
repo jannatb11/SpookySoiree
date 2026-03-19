@@ -2,14 +2,9 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [Header("NPC Info")]
-    public string npcID;
-    public string npcName;
+    public string npcName = "Bob";
 
-    [Header("Animation")]
-    public Animator animator;
-
-    [Header("Dialogue")]
+    [TextArea(2, 5)]
     public string[] dialogueLines;
     public string[] speakerNames;
 
@@ -34,22 +29,6 @@ public class NPCInteraction : MonoBehaviour
 
     void Awake()
     {
-        if (GameState.removedNPCs.Contains(npcID))
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    public void Interact()
-    {
-        if (DialogueManager.Instance.IsDialogueActive)
-            return;
-
-        // Start talking animation
-        if (animator != null)
-            animator.SetBool("isTalking", true);
-
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogueLines,
@@ -63,40 +42,5 @@ public class NPCInteraction : MonoBehaviour
             null,
             this
         );
-    }
-
-    public void OnDialogueComplete()
-    {
-        // Stop talking animation
-        if (animator != null)
-            animator.SetBool("isTalking", false);
-
-        ApplyUnlocks();
-    }
-
-    public void ApplyUnlocks()
-    {
-        if (unlockIntro)
-        {
-            GameProgress.introFinished = true;
-            Debug.Log("Intro unlocked by " + npcName);
-        }
-
-        if (unlockKitchen)
-        {
-            GameProgress.kitchenUnlocked = true;
-            Debug.Log("Kitchen unlocked by " + npcName);
-        }
-
-        if (teleportAfterDialogue && sceneSwitcher != null)
-        {
-            sceneSwitcher.TriggerSceneSwitch();
-        }
-
-        if (disappearAfterDialogue)
-        {
-            GameState.removedNPCs.Add(npcID);
-            Destroy(gameObject);
-        }
     }
 }
