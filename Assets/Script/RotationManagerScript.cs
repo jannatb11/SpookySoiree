@@ -32,6 +32,8 @@ public class RotationManagerScript : MonoBehaviour
     public float barRotation;
     public bool barOut;
     public float barSpeed;
+    public GameObject mouseinv;
+
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +94,7 @@ public class RotationManagerScript : MonoBehaviour
             if(Mathf.Abs(goalRotation - currentRotation) < 20f){
                 points += 1;
                 Flip();
+                GameObject.Find("Mouse").GetComponent<MouseIndicatorScript>().LeftClick();
             } else{
                 lives -= 1;
                 if(lives <= 0){
@@ -104,6 +107,7 @@ public class RotationManagerScript : MonoBehaviour
             if(Mathf.Abs(goalRotation2 - currentRotation2) < 20f){
                 points += 1;
                 Flip2();
+                GameObject.Find("Mouse").GetComponent<MouseIndicatorScript>().RightClick();
             } else{
                 lives -= 1;
                 if(lives <= 0){
@@ -218,5 +222,9 @@ public class RotationManagerScript : MonoBehaviour
     }
     void Win(){
         winScreen.SetActive(true);
+        GlobalUnlocksScript.completedLockPuzzle = true;
+        mouseinv.SetActive(true);
+
+
     }
 }

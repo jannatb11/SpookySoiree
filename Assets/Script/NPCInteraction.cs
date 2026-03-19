@@ -11,17 +11,28 @@ public class NPCInteraction : MonoBehaviour
 
     [Header("Dialogue")]
     public string[] dialogueLines;
+    public string[] speakerNames;
 
-    public bool hasChoices = true;
-    public int choiceLineIndex = 2;
+    [Header("Choices")]
+    public bool hasChoices;
+    public int choiceLineIndex;
+    public int yesJumpToLine;
+    public int yesEndLine;
+    public int noJumpToLine;
+    public int noEndLine;
 
-    public int yesJumpToLine = 3;
-    public int yesEndLine = 4;
+    [Header("Unlock Settings")]
+    public bool unlockIntro;
+    public bool unlockKitchen;
 
-    public int noJumpToLine = 5;
-    public int noEndLine = 6;
+    [Header("After Dialogue")]
+    public bool disappearAfterDialogue = false;
 
-    private void OnMouseDown()
+    [Header("Scene Teleport")]
+    public bool teleportAfterDialogue = false;
+    public SceneSwitcher sceneSwitcher;
+
+    void Awake()
     {
         if (GameState.removedNPCs.Contains(npcID))
         {
@@ -42,12 +53,15 @@ public class NPCInteraction : MonoBehaviour
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogueLines,
+            speakerNames,
             hasChoices,
             choiceLineIndex,
             yesJumpToLine,
             yesEndLine,
             noJumpToLine,
-            noEndLine
+            noEndLine,
+            null,
+            this
         );
     }
 
