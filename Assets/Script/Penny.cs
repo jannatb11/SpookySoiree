@@ -30,7 +30,7 @@ public class Penny : MonoBehaviour
         if (!clicked)
         {
             clicked = true;
-            sr.color = Color.gray; 
+            sr.color = Color.yellow; 
             GM.Instance.PennyClicked(this);
         }
     }
