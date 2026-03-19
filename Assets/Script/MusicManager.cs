@@ -8,7 +8,6 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        // If a music manager already exists, destroy this one
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -16,12 +15,11 @@ public class MusicManager : MonoBehaviour
         }
 
         Instance = this;
-
-        // Keep this object between scenes
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    //  CALL THIS FROM START BUTTON
+    public void PlayMusic()
     {
         if (!audioSource.isPlaying)
         {
