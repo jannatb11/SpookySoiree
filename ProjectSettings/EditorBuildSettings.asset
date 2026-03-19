@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Puzzles/MainMenu.unity
+    path: Assets/NewMovementScenes/MainMenu.unity
     guid: 0d79e7cf7b1cf42c08f263ca82df6331
   - enabled: 1
     path: Assets/NewMovementScenes/Study.unity
