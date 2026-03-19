@@ -13,7 +13,7 @@ public class Penny : MonoBehaviour
         clicked = false;
         spawnTime = Time.time;
         sr = GetComponent<SpriteRenderer>();
-        sr.color = Color.red; 
+        sr.color = Color.green; 
         gameObject.SetActive(true);
     }
 
