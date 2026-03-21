@@ -13,6 +13,12 @@ public class NPCInteraction : MonoBehaviour
     public string[] dialogueLines;
     public string[] speakerNames;
 
+    [Header("Spawn Conditions")]
+    public bool requireDaisyToAppear;
+
+    [Header("Unlock Flags")]
+    public bool unlockDaisyProgress;
+
     [Header("Choices")]
     public bool hasChoices;
     public int choiceLineIndex;
@@ -32,11 +38,21 @@ public class NPCInteraction : MonoBehaviour
     public bool teleportAfterDialogue = false;
     public SceneSwitcher sceneSwitcher;
 
+
+
     void Awake()
     {
+        // Already removed check
         if (GameState.removedNPCs.Contains(npcID))
         {
             Destroy(gameObject);
+            return;
+        }
+
+        // NEW: Hide until Daisy is talked to
+        if (requireDaisyToAppear && !GameState.talkedToDaisy)
+        {
+            gameObject.SetActive(false);
             return;
         }
     }
@@ -77,21 +93,20 @@ public class NPCInteraction : MonoBehaviour
     public void ApplyUnlocks()
     {
         if (unlockIntro)
-        {
             GameProgress.introFinished = true;
-            Debug.Log("Intro unlocked by " + npcName);
-        }
 
         if (unlockKitchen)
-        {
             GameProgress.kitchenUnlocked = true;
-            Debug.Log("Kitchen unlocked by " + npcName);
+
+        
+        if (unlockDaisyProgress)
+        {
+            GameState.talkedToDaisy = true;
+            Debug.Log("Daisy progression unlocked!");
         }
 
         if (teleportAfterDialogue && sceneSwitcher != null)
-        {
             sceneSwitcher.TriggerSceneSwitch();
-        }
 
         if (disappearAfterDialogue)
         {

@@ -7,6 +7,9 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
+
+
+
     [Header("UI")]
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
@@ -14,6 +17,18 @@ public class DialogueManager : MonoBehaviour
     public GameObject choicePanel;
     public Button yesButton;
     public Button noButton;
+
+
+    [System.Serializable]
+    public class CharacterColor
+    {
+        public string characterName;
+        public Color textColor;
+    }
+
+    [Header("Character Colors")]
+    public CharacterColor[] characterColors;
+    public Color defaultColor = Color.white;
 
     [Header("Text Colors")]
     public Color npcTextColor = Color.yellow;
@@ -24,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] uiToHide;
     public Button[] buttonsToDisable;
 
+    
 
     [Header("Typing")]
     public float typingSpeed = 0.03f;
@@ -136,20 +152,13 @@ public class DialogueManager : MonoBehaviour
         canContinue = false;
         dialogueText.text = "";
 
-        // Set speaker name
         if (speakerNames != null && speakerNames.Length > index)
         {
-            speakerText.text = speakerNames[index];
+            string speaker = speakerNames[index];
+            speakerText.text = speaker;
 
-            //  CHANGE TEXT COLOR BASED ON SPEAKER
-            if (speakerNames[index] == playerName)
-            {
-                dialogueText.color = playerTextColor;
-            }
-            else
-            {
-                dialogueText.color = npcTextColor;
-            }
+            //  APPLY CHARACTER COLOR
+            dialogueText.color = GetColorForSpeaker(speaker);
         }
 
         foreach (char letter in lines[index])
@@ -228,5 +237,16 @@ public class DialogueManager : MonoBehaviour
         {
             btn.interactable = true;
         }
+    }
+
+    Color GetColorForSpeaker(string speaker)
+    {
+        foreach (var c in characterColors)
+        {
+            if (c.characterName == speaker)
+                return c.textColor;
+        }
+
+        return defaultColor;
     }
 }

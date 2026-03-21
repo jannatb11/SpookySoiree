@@ -526,7 +526,11 @@ MonoBehaviour:
   choicePanel: {fileID: 371998041}
   yesButton: {fileID: 605188143}
   noButton: {fileID: 1710821045}
-  npcTextColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
+  characterColors:
+  - characterName: Trevor
+    textColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
   uiToHide:
@@ -715,6 +719,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371998041}
   m_CullTransparentMesh: 0
+--- !u!1 &374824117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374824119}
+  - component: {fileID: 374824118}
+  m_Layer: 0
+  m_Name: NPCSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &374824118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374824117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e82b7f9f9dcbf148ba885c0447d4dc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcsToEnable:
+  - {fileID: 2116297883}
+--- !u!4 &374824119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374824117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 513.0216, y: 283.7194, z: -2.844844}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &422406735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,8 +1716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8623, y: -181.08932}
-  m_SizeDelta: {x: 470.6867, y: 87.6904}
+  m_AnchoredPosition: {x: 2.8623, y: -188.7101}
+  m_SizeDelta: {x: 470.6867, y: 102.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693933968
 MonoBehaviour:
@@ -3554,6 +3604,8 @@ MonoBehaviour:
   - Trevor Quantavious Jason Jr
   - Trevor Quantavious Jason Jr
   - Player
+  requireDaisyToAppear: 1
+  unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
   yesJumpToLine: 3
@@ -3748,3 +3800,4 @@ SceneRoots:
   - {fileID: 1522804087}
   - {fileID: 1209609104}
   - {fileID: 248098438}
+  - {fileID: 374824119}
