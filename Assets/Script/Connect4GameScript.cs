@@ -18,6 +18,9 @@ public class Connect4GameScript : MonoBehaviour
     void Start()
     {
         currentPiece = "";
+        GameObject IM = GameObject.Find("InventoryManager");
+        IM.SetActive(false);
+        IM.SetActive(true);
     }
 
     // Update is called once per frame
