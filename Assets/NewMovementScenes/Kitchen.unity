@@ -1398,6 +1398,8 @@ MonoBehaviour:
   - Daisy
   - Daisy
   - Daisy
+  requireDaisyToAppear: 0
+  unlockDaisyProgress: 1
   hasChoices: 0
   choiceLineIndex: 2
   yesJumpToLine: 3
@@ -3276,6 +3278,8 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
+  requireDaisyToAppear: 0
+  unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
   yesJumpToLine: 3

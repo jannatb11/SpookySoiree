@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] uiToHide;
     public Button[] buttonsToDisable;
 
+    
 
     [Header("Typing")]
     public float typingSpeed = 0.03f;
