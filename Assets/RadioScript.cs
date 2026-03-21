@@ -19,7 +19,7 @@ public class RadioScript : MonoBehaviour
     }
     public void SwitchTrack(){
         int index = tracks.IndexOf(currentTrack);
-        if(index < currentTrack.length - 1){
+        if(index < tracks.Count - 1){
             currentTrack = tracks[index + 1];
         } else{
             currentTrack = tracks[0];
