@@ -630,6 +630,13 @@ MonoBehaviour:
   choicePanel: {fileID: 1989346916}
   yesButton: {fileID: 1778964167}
   noButton: {fileID: 619052600}
+  characterColors:
+  - characterName: Door
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  npcTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  playerName: Player
   uiToHide: []
   buttonsToDisable:
   - {fileID: 0}
@@ -2299,7 +2306,7 @@ GameObject:
   - component: {fileID: 1850860175}
   - component: {fileID: 1850860174}
   m_Layer: 5
-  m_Name: GurtButton
+  m_Name: DoorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2347,6 +2354,8 @@ MonoBehaviour:
   speakerNames:
   - Player
   - Player
+  requireDaisyToAppear: 0
+  unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
   yesJumpToLine: 3
