@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/NewMovementScenes/MainMenu.unity
     guid: 0d79e7cf7b1cf42c08f263ca82df6331
   - enabled: 1
     path: Assets/NewMovementScenes/Study.unity
@@ -48,19 +48,19 @@ EditorBuildSettings:
     path: Assets/NewMovementScenes/Bedroom.unity
     guid: 89352b488397e084d9f1edb942b0f3ce
   - enabled: 1
-    path: Assets/Scenes/ConnectFourPuzzle.unity
+    path: Assets/Puzzles/ConnectFourPuzzle.unity
     guid: 933056d8d3dc955418f0fdcf7263d9dd
   - enabled: 1
-    path: Assets/Scenes/Inventory.unity
+    path: Assets/Puzzles/Inventory.unity
     guid: e6546025707f5ad46bdcbfda22c0ba44
   - enabled: 1
-    path: Assets/Scenes/PianoPuzzle.unity
+    path: Assets/Puzzles/PianoPuzzle.unity
     guid: f15ffe5c4ca15ca48830ae81b764a788
   - enabled: 1
-    path: Assets/Scenes/PickLock.unity
+    path: Assets/Puzzles/PickLock.unity
     guid: feb556fe657511d4cb1f2ce757e8566d
   - enabled: 1
-    path: Assets/Scenes/SlidePuzzle.unity
+    path: Assets/Puzzles/SlidePuzzle.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/NewMovementScenes/Door.unity

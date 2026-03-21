@@ -506,7 +506,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461888219}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 222920dd86c4bd644990a4ad6f5b3186, type: 3}
@@ -2338,7 +2338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: 
   npcName: Gurt
+  animator: {fileID: 0}
   dialogueLines:
   - "Alright, it seems like the movers have moved everything in\u2026 that's good.\r"
   - Let me head inside and check it out!
@@ -2351,7 +2353,7 @@ MonoBehaviour:
   yesEndLine: 4
   noJumpToLine: 5
   noEndLine: 6
-  unlockIntro: 0
+  unlockIntro: 1
   unlockKitchen: 0
   disappearAfterDialogue: 1
   teleportAfterDialogue: 1

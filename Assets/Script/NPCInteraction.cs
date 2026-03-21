@@ -3,8 +3,12 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour
 {
     [Header("NPC Info")]
+    public string npcID;
     public string npcName;
 
+    [Header("Animation")]
+    public Animator animator;
+    
     [Header("Dialogue")]
     public string[] dialogueLines;
     public string[] speakerNames;
@@ -24,17 +28,27 @@ public class NPCInteraction : MonoBehaviour
     [Header("After Dialogue")]
     public bool disappearAfterDialogue = false;
 
-
     [Header("Scene Teleport")]
     public bool teleportAfterDialogue = false;
     public SceneSwitcher sceneSwitcher;
 
-
+    void Awake()
+    {
+        if (GameState.removedNPCs.Contains(npcID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     public void Interact()
     {
         if (DialogueManager.Instance.IsDialogueActive)
             return;
+
+        // Start talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", true);
 
         DialogueManager.Instance.StartDialogue(
             npcName,
@@ -53,6 +67,10 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+        // Stop talking animation
+        if (animator != null)
+            animator.SetBool("isTalking", false);
+
         ApplyUnlocks();
     }
 
@@ -76,7 +94,9 @@ public class NPCInteraction : MonoBehaviour
         }
 
         if (disappearAfterDialogue)
-            gameObject.SetActive(false);
+        {
+            GameState.removedNPCs.Add(npcID);
+            Destroy(gameObject);
+        }
     }
 }
-

@@ -222,7 +222,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461888219}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 222920dd86c4bd644990a4ad6f5b3186, type: 3}
@@ -974,7 +974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f80e328eb61ce04fba6eae5cb5fc6c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0bba6628756fc346a741e87d2dee552, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
