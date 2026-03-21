@@ -526,7 +526,11 @@ MonoBehaviour:
   choicePanel: {fileID: 371998041}
   yesButton: {fileID: 605188143}
   noButton: {fileID: 1710821045}
-  npcTextColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
+  characterColors:
+  - characterName: Trevor
+    textColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
   uiToHide:
@@ -1666,8 +1670,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8623, y: -181.08932}
-  m_SizeDelta: {x: 470.6867, y: 87.6904}
+  m_AnchoredPosition: {x: 2.8623, y: -188.7101}
+  m_SizeDelta: {x: 470.6867, y: 102.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693933968
 MonoBehaviour:

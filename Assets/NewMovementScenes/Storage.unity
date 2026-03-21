@@ -232,6 +232,10 @@ MonoBehaviour:
   choicePanel: {fileID: 1473293594}
   yesButton: {fileID: 1711020643}
   noButton: {fileID: 1303265971}
+  characterColors:
+  - characterName: Kosmo
+    textColor: {r: 0.10980393, g: 0.4784314, b: 0.58431375, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
   npcTextColor: {r: 0.10980393, g: 0.4784314, b: 0.58431375, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player

@@ -3395,6 +3395,10 @@ MonoBehaviour:
   choicePanel: {fileID: 1592551326}
   yesButton: {fileID: 255074176}
   noButton: {fileID: 1939398705}
+  characterColors:
+  - characterName: Albe
+    textColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
   npcTextColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player

@@ -32,6 +32,8 @@ public class NPCInteraction : MonoBehaviour
     public bool teleportAfterDialogue = false;
     public SceneSwitcher sceneSwitcher;
 
+    
+
     void Awake()
     {
         if (GameState.removedNPCs.Contains(npcID))

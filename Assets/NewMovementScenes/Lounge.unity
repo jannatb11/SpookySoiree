@@ -2243,6 +2243,10 @@ MonoBehaviour:
   choicePanel: {fileID: 1302524020}
   yesButton: {fileID: 188123071}
   noButton: {fileID: 9217420}
+  characterColors:
+  - characterName: LilBuffy
+    textColor: {r: 1, g: 0.9215687, b: 0.015686275, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
   npcTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player

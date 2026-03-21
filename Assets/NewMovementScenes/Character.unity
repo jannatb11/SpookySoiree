@@ -555,6 +555,13 @@ MonoBehaviour:
   choicePanel: {fileID: 1989346916}
   yesButton: {fileID: 1778964167}
   noButton: {fileID: 619052600}
+  characterColors:
+  - characterName: Gurt
+    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  npcTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  playerName: Player
   uiToHide:
   - {fileID: 530225633}
   buttonsToDisable:
@@ -2682,7 +2689,7 @@ MonoBehaviour:
 
 '
   speakerNames:
-  - Gurt
+  - ???
   - Player
   - Player
   - Gurt
