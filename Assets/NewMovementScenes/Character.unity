@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4279803433
   m_fontColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2698,10 +2698,9 @@ MonoBehaviour:
   - Player
   - Gurt
   - Player
-  - Player
   - Gurt
-  - Player
-  - Gurt
+  requireDaisyToAppear: 0
+  unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
   yesJumpToLine: 3
