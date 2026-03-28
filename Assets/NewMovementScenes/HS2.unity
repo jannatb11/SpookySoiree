@@ -3577,8 +3577,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2431de496cbe6548a1492643649870e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequence: []
-  resetDelay: 0.1
+  sequence:
+  - painting: {fileID: 1456949666}
+    color: {r: 1, g: 0, b: 0.10462141, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1106168466}
+    color: {r: 0, g: 1, b: 0.051528692, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1871561653}
+    color: {r: 1, g: 0.9477787, b: 0, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1106168466}
+    color: {r: 1, g: 0.9477787, b: 0, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1456949666}
+    color: {r: 1, g: 0.9477787, b: 0, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1106168466}
+    color: {r: 0, g: 1, b: 0.050980397, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1871561653}
+    color: {r: 0, g: 1, b: 0.050980397, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1106168466}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    duration: 1.5
+  - painting: {fileID: 1456949666}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    duration: 1.5
+  resetDelay: 0.5
   loopDelay: 1.5
 --- !u!4 &2047582480
 Transform:
