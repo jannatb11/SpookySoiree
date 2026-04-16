@@ -76,7 +76,7 @@ public class RotationManagerScript : MonoBehaviour
             currentRotation2 = Rotator2.transform.eulerAngles.z;
             Rotator2.transform.Rotate(0, 0, rotSpeed2 * Time.deltaTime);
         }
-        if(points > 15){
+        if(points > 25){
             Win();
         }
         container.transform.eulerAngles = new Vector3(0, 0, 0);

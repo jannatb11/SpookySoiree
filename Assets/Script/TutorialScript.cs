@@ -10,15 +10,9 @@ public class TutorialScript : MonoBehaviour
 
     public void Awake()
     {
-        if(ContinueArrow != null){
-            ContinueArrow.SetActive(true);
-        }
-        if(popupUI != null){
-            popupUI.SetActive(false);
-        }
-        if(SceneButton != null){
-            SceneButton.SetActive(false);
-        }
+        ContinueArrow.SetActive(true);
+        popupUI.SetActive(false);
+        SceneButton.SetActive(false);
     }
 
     /*public void ShowContinueArrow()

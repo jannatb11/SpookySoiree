@@ -135,13 +135,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Disable buttons
-        if(buttonsToDisable.Length > 0){
-            foreach (Button btn in buttonsToDisable)
-            {
-                if(btn != null){
-                    btn.interactable = false;
-                }
-            }
+        foreach (Button btn in buttonsToDisable)
+        {
+            btn.interactable = false;
         }
     }
 
@@ -237,13 +233,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Re-enable buttons
-        if(buttonsToDisable.Length > 0){
-            foreach (Button btn in buttonsToDisable)
-            {
-                if(btn != null){
-                    btn.interactable = true;
-                }
-            }
+        foreach (Button btn in buttonsToDisable)
+        {
+            btn.interactable = true;
         }
     }
 

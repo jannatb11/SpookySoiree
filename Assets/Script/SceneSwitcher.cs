@@ -56,12 +56,7 @@ public class SceneSwitcher : MonoBehaviour
     IEnumerator Fade(float startAlpha, float endAlpha)
     {
         float t = 0f;
-        Color c;
-        if(fadeImage != null){
-            c = fadeImage.color;
-        } else{
-            c = new Color(255, 255, 255);
-        }
+        Color c = fadeImage.color;
 
         while (t < fadeDuration)
         {
@@ -72,8 +67,6 @@ public class SceneSwitcher : MonoBehaviour
         }
 
         c.a = endAlpha;
-        if(fadeImage != null){
-            fadeImage.color = c;
-        }
+        fadeImage.color = c;
     }
 }
