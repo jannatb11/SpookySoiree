@@ -137,7 +137,9 @@ public class DialogueManager : MonoBehaviour
         // Disable buttons
         foreach (Button btn in buttonsToDisable)
         {
-            btn.interactable = false;
+            if(btn != null){
+                btn.interactable = false;
+            }
         }
     }
 
@@ -235,7 +237,9 @@ public class DialogueManager : MonoBehaviour
         // Re-enable buttons
         foreach (Button btn in buttonsToDisable)
         {
-            btn.interactable = true;
+            if(btn != null){
+                btn.interactable = true;
+            }
         }
     }
 
