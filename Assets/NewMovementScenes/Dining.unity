@@ -3605,7 +3605,7 @@ MonoBehaviour:
   - Trevor Quantavious Jason Jr
   - Trevor Quantavious Jason Jr
   - Player
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
