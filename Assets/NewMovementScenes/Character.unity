@@ -530,6 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505239190}
   - component: {fileID: 505239189}
+  - component: {fileID: 505239191}
   m_Layer: 0
   m_Name: DialougeManager
   m_TagString: Untagged
@@ -566,7 +567,8 @@ MonoBehaviour:
   - {fileID: 530225633}
   buttonsToDisable:
   - {fileID: 530225635}
-  typingSpeed: 0.03
+  typingSpeed: 0.04
+  audioSource: {fileID: 505239191}
 --- !u!4 &505239190
 Transform:
   m_ObjectHideFlags: 0
@@ -582,6 +584,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &505239191
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505239188}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &530225633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2409,7 @@ RectTransform:
   - {fileID: 1300196716}
   - {fileID: 643258889}
   - {fileID: 1486283568}
+  - {fileID: 591848923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2823,6 +2922,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_1
   npcName: Gurt
+  voiceClips:
+  - {fileID: 8300000, guid: 0dcd5b5187b802640b4a74e3b205de3a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: efc910b60f0705a4fb506f29a9363772, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: ebf64d60011e78941bbfab2d6e344feb, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 686a68616daab4d4cae95485179e8d3b, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 13c4adcb991bab44e8b71a6871fc30df, type: 3}
   animator: {fileID: 657842779}
   dialogueLines:
   - Gurt gurt gurble, to you, my dear. How are you this fine evening?
@@ -2830,7 +2940,7 @@ MonoBehaviour:
   - "How did you get inside my house? What are you????!?!?!?\r"
   - Why, I am Gurt. Gurt gurt gurble!
   - "\u201CGurt gurt gurble\u201D?"
-  - "Yes, indeed. I come from a long line of strong, hardworking, and amazingly beautiful
+  - "Yes, indeed. I come from a long line of hardworking, strong, and amazingly beautiful
     Gurts. Virtues that will be held for all time.\r"
   - "That's great. But how did you get in\u2026\u2026 "
   - 'Why, I was invited in, of course. Never mind that now, though.
@@ -2848,9 +2958,6 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
-  - Player
-  - Gurt
-  - Player
   - Player
   - Gurt
   - Player

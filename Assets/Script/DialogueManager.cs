@@ -7,9 +7,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-
-
-
     [Header("UI")]
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
@@ -17,7 +14,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject choicePanel;
     public Button yesButton;
     public Button noButton;
-
 
     [System.Serializable]
     public class CharacterColor
@@ -33,19 +29,21 @@ public class DialogueManager : MonoBehaviour
     [Header("Text Colors")]
     public Color npcTextColor = Color.yellow;
     public Color playerTextColor = Color.white;
-    public string playerName = "Player"; // MUST match speaker name
+    public string playerName = "Player";
 
     [Header("UI To Disable During Dialogue")]
     public GameObject[] uiToHide;
     public Button[] buttonsToDisable;
 
-    
-
     [Header("Typing")]
     public float typingSpeed = 0.03f;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+
     private string[] lines;
     private string[] speakerNames;
+    private AudioClip[] voiceClips; //  simple per-line clips
 
     private int index;
     private bool isTyping;
@@ -58,12 +56,9 @@ public class DialogueManager : MonoBehaviour
     private int noJumpToLine;
 
     private NPCInteraction currentNPC;
-
     private Coroutine typingCoroutine;
 
     public bool IsDialogueActive => isDialogueActive;
-
-    
 
     void Awake()
     {
@@ -85,6 +80,10 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = lines[index];
                 isTyping = false;
                 canContinue = true;
+
+                // stop voice when skipping
+                if (audioSource != null)
+                    audioSource.Stop();
             }
             else if (canContinue && !choicePanel.activeSelf)
             {
@@ -94,25 +93,27 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue(
-    string npcName,
-    string[] dialogueLines,
-    string[] speakerNames,
-    bool hasChoices,
-    int choiceLineIndex,
-    int yesJumpToLine,
-    int yesEndLine,
-    int noJumpToLine,
-    int noEndLine,
-    ItemInteractionUI itemReference,
-    NPCInteraction npcReference
-)
+        string npcName,
+        string[] dialogueLines,
+        string[] speakerNames,
+        bool hasChoices,
+        int choiceLineIndex,
+        int yesJumpToLine,
+        int yesEndLine,
+        int noJumpToLine,
+        int noEndLine,
+        ItemInteractionUI itemReference,
+        NPCInteraction npcReference,
+        AudioClip[] voiceClips // NEW
+    )
     {
-        //  NEW SAFETY CHECK
         if (isDialogueActive)
             return;
 
         this.lines = dialogueLines;
         this.speakerNames = speakerNames;
+        this.voiceClips = voiceClips; //  store clips
+
         this.hasChoices = hasChoices;
         this.choiceLineIndex = choiceLineIndex;
         this.yesJumpToLine = yesJumpToLine;
@@ -128,18 +129,13 @@ public class DialogueManager : MonoBehaviour
 
         StartTyping();
 
-        // Hide UI objects
         foreach (GameObject obj in uiToHide)
-        {
             obj.SetActive(false);
-        }
 
-        // Disable buttons
         foreach (Button btn in buttonsToDisable)
         {
-            if(btn != null){
+            if (btn != null)
                 btn.interactable = false;
-            }
         }
     }
 
@@ -159,8 +155,18 @@ public class DialogueManager : MonoBehaviour
             string speaker = speakerNames[index];
             speakerText.text = speaker;
 
-            //  APPLY CHARACTER COLOR
             dialogueText.color = GetColorForSpeaker(speaker);
+        }
+
+        //  PLAY VOICE FOR THIS LINE
+        if (audioSource != null &&
+            voiceClips != null &&
+            index < voiceClips.Length &&
+            voiceClips[index] != null)
+        {
+            audioSource.Stop();
+            audioSource.clip = voiceClips[index];
+            audioSource.Play();
         }
 
         foreach (char letter in lines[index])
@@ -222,24 +228,22 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
         isDialogueActive = false;
 
+        if (audioSource != null)
+            audioSource.Stop();
+
         if (currentNPC != null)
         {
             currentNPC.OnDialogueComplete();
             currentNPC = null;
         }
 
-        // Show UI objects again
         foreach (GameObject obj in uiToHide)
-        {
             obj.SetActive(true);
-        }
 
-        // Re-enable buttons
         foreach (Button btn in buttonsToDisable)
         {
-            if(btn != null){
+            if (btn != null)
                 btn.interactable = true;
-            }
         }
     }
 

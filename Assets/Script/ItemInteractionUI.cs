@@ -10,6 +10,9 @@ public class ItemInteractionUI : MonoBehaviour
 
     public string[] speakerNames;
 
+    [Header("Voice Lines")] //  NEW
+    public AudioClip[] voiceClips;
+
     public bool hasChoices;
     public int choiceLineIndex;
     public int yesStart, yesEnd;
@@ -33,7 +36,8 @@ public class ItemInteractionUI : MonoBehaviour
             noStart,
             noEnd,
             this,      // item reference
-            null       // no NPC
+            null,      // no NPC
+            voiceClips //  PASS VOICE CLIPS
         );
     }
 
