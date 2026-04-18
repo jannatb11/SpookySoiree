@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class KeyPlay : MonoBehaviour
@@ -13,8 +13,9 @@ public class KeyPlay : MonoBehaviour
     public GameObject xUI;
 
     private int[] correctOrder = { 4, 6, 11, 11, 11, 6, 6, 4, 4 };
-    private int currentIndex = 0;
-    private bool puzzleSolved = false;
+
+    private static int currentIndex = 0;
+    private static bool puzzleSolved = false;
 
     private void Awake()
     {
@@ -26,6 +27,15 @@ public class KeyPlay : MonoBehaviour
 
         if (pianoinv != null)
             pianoinv.SetActive(GlobalUnlocksScript.completedPianoPuzzle);
+    }
+
+    private void OnEnable()
+    {
+        if (!GlobalUnlocksScript.completedPianoPuzzle)
+        {
+            currentIndex = 0;
+            puzzleSolved = false;
+        }
     }
 
     public void Press()
@@ -53,10 +63,12 @@ public class KeyPlay : MonoBehaviour
 
                 if (pianoinv != null)
                     pianoinv.SetActive(true);
-
+                                                                                                                                          
                 GlobalUnlocksScript.completedPianoPuzzle = true;
 
                 Debug.Log("Puzzle Solved!");
+                winUI.SetActive(true);
+
             }
         }
         else
@@ -73,7 +85,7 @@ public class KeyPlay : MonoBehaviour
             Debug.Log("Wrong move!");
         }
 
-        Debug.Log("Pressed: " + buttonID);
+        Debug.Log("Pressed: " + buttonID + " | Index: " + currentIndex);
     }
 
     private IEnumerator HideXAfterDelay()
