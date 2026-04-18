@@ -35,7 +35,6 @@ public class InventoryManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Finds UI objects by name in the current scene
     void ReconnectUI()
     {
         daisyinv = GameObject.Find("daisyinv");
@@ -43,7 +42,6 @@ public class InventoryManager : MonoBehaviour
         pianoinv = GameObject.Find("pianoinv");
         mouseinv = GameObject.Find("mouseinv");
 
-        // Ensure button is active at start if Daisy not collected
         if (daisyinv2 != null && !hasDaisy)
             daisyinv2.SetActive(true);
 
