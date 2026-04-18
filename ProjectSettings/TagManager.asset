@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - inv
+  - Connect4Slot
+  - Connect4BoardPiece
+  - Penny
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ontop
+    uniqueID: 2150721203
     locked: 0
