@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class KeyPlay : MonoBehaviour
@@ -8,47 +8,42 @@ public class KeyPlay : MonoBehaviour
     public AudioClip clip;
     public GameObject pianoinv;
 
-    public static GameObject winUI;
-    public static GameObject xUI;
+    [Header("UI References")]
+    public GameObject winUI;
+    public GameObject xUI;
 
-    [Header("Assign UI ONCE (any button)")]
-    public GameObject winUIRef;
-    public GameObject xUIRef;
-    private static int[] correctOrder = { 4, 6, 11, 11, 11, 6, 6, 4, 4};
+    private int[] correctOrder = { 4, 6, 11, 11, 11, 6, 6, 4, 4 };
+
     private static int currentIndex = 0;
     private static bool puzzleSolved = false;
-    private static bool uiInitialized = false;
 
     private void Awake()
     {
-        if (!uiInitialized)
-        {
-            winUI = winUIRef;
-            xUI = xUIRef;
+        if (winUI != null)
+            winUI.SetActive(false);
 
-            if (winUI != null)
-                winUI.SetActive(false);
+        if (xUI != null)
+            xUI.SetActive(false);
 
-            if (xUI != null)
-                xUI.SetActive(false);
-
-            uiInitialized = true;
-
-
-            if (pianoinv != null)
-                pianoinv.SetActive(false);
-            else
-                Debug.LogWarning("No inv ");
-        }
+        if (pianoinv != null)
+            pianoinv.SetActive(GlobalUnlocksScript.completedPianoPuzzle);
     }
 
+    private void OnEnable()
+    {
+        if (!GlobalUnlocksScript.completedPianoPuzzle)
+        {
+            currentIndex = 0;
+            puzzleSolved = false;
+        }
+    }
 
     public void Press()
     {
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip);
 
-        if (puzzleSolved)
+        if (puzzleSolved || GlobalUnlocksScript.completedPianoPuzzle)
             return;
 
         if (currentIndex < correctOrder.Length &&
@@ -66,9 +61,13 @@ public class KeyPlay : MonoBehaviour
                 if (winUI != null)
                     winUI.SetActive(true);
 
-                Debug.Log("Puzzle Solved!");
-                pianoinv.SetActive(true);
+                if (pianoinv != null)
+                    pianoinv.SetActive(true);
+                                                                                                                                          
                 GlobalUnlocksScript.completedPianoPuzzle = true;
+
+                Debug.Log("Puzzle Solved!");
+                winUI.SetActive(true);
 
             }
         }
@@ -86,7 +85,7 @@ public class KeyPlay : MonoBehaviour
             Debug.Log("Wrong move!");
         }
 
-        Debug.Log("Pressed: " + buttonID);
+        Debug.Log("Pressed: " + buttonID + " | Index: " + currentIndex);
     }
 
     private IEnumerator HideXAfterDelay()
