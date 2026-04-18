@@ -6,6 +6,9 @@ public class NPCInteraction : MonoBehaviour
     public string npcID;
     public string npcName;
 
+    [Header("Voice Lines")]
+    public AudioClip[] voiceClips;
+
     [Header("Animation")]
     public Animator animator;
     
@@ -67,18 +70,19 @@ public class NPCInteraction : MonoBehaviour
             animator.SetBool("isTalking", true);
 
         DialogueManager.Instance.StartDialogue(
-            npcName,
-            dialogueLines,
-            speakerNames,
-            hasChoices,
-            choiceLineIndex,
-            yesJumpToLine,
-            yesEndLine,
-            noJumpToLine,
-            noEndLine,
-            null,
-            this
-        );
+        npcName,
+        dialogueLines,
+        speakerNames,
+        hasChoices,
+        choiceLineIndex,
+        yesJumpToLine,
+        yesEndLine,
+        noJumpToLine,
+        noEndLine,
+        null,
+        this,
+        voiceClips //  NEW
+ );
     }
 
     public void OnDialogueComplete()
