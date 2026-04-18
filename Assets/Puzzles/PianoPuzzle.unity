@@ -236,7 +236,6 @@ RectTransform:
   - {fileID: 1963571948}
   - {fileID: 1202261601}
   - {fileID: 1182724916}
-  - {fileID: 647355020}
   - {fileID: 937917190}
   - {fileID: 1124294385}
   m_Father: {fileID: 0}
@@ -420,9 +419,9 @@ MonoBehaviour:
   buttonID: 12
   audioSource: {fileID: 573311367}
   clip: {fileID: 8300000, guid: 428f36bded83bb74cac3a284a12cd4f7, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!114 &573311364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,145 +624,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &647355015
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 647355020}
-  - component: {fileID: 647355019}
-  - component: {fileID: 647355018}
-  - component: {fileID: 647355017}
-  - component: {fileID: 647355021}
-  m_Layer: 5
-  m_Name: pianoinv
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &647355017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647355015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 647355018}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &647355018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647355015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.20576358, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &647355019
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647355015}
-  m_CullTransparentMesh: 1
---- !u!224 &647355020
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647355015}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 12043759}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -399.18, y: 215}
-  m_SizeDelta: {x: 70, y: 70}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &647355021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647355015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 703a85e815745e44784156f2e00cef2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonID: 0
-  audioSource: {fileID: 0}
-  clip: {fileID: 0}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
 --- !u!1 &896709796
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,9 +747,9 @@ MonoBehaviour:
   buttonID: 8
   audioSource: {fileID: 934010276}
   clip: {fileID: 8300000, guid: 4038058abecbfd24ab472e18b33e84c2, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!114 &934010273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1387,9 +1247,9 @@ MonoBehaviour:
   buttonID: 3
   audioSource: {fileID: 1079559302}
   clip: {fileID: 8300000, guid: f4b69a7dd26b73344b42dfc401c624fe, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1079559302
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1514,7 +1374,7 @@ RectTransform:
   m_GameObject: {fileID: 1124294384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1680675317}
@@ -1522,7 +1382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -2.1317, y: 633.81}
+  m_AnchoredPosition: {x: -0.43735, y: 625.59}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124294386
@@ -1831,9 +1691,9 @@ MonoBehaviour:
   buttonID: 0
   audioSource: {fileID: 0}
   clip: {fileID: 0}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!1 &1202261600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,9 +1855,9 @@ MonoBehaviour:
   buttonID: 7
   audioSource: {fileID: 1202261606}
   clip: {fileID: 8300000, guid: 4a87b2260314dba4b9b51372f1ea04fe, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1202261606
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2330,9 +2190,9 @@ MonoBehaviour:
   buttonID: 4
   audioSource: {fileID: 1334647077}
   clip: {fileID: 8300000, guid: 7f5030cf709ee1a428d6a113d98e6e67, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1334647077
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2590,9 +2450,9 @@ MonoBehaviour:
   buttonID: 11
   audioSource: {fileID: 1365007181}
   clip: {fileID: 8300000, guid: 3ff54e6522de1034a8cc59bb357540ca, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1365007181
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2724,8 +2584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.166, y: -4.9004}
-  m_SizeDelta: {x: 1200, y: 650}
+  m_AnchoredPosition: {x: -6.201, y: 0.341}
+  m_SizeDelta: {x: 1235.384, y: 723.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457649481
 MonoBehaviour:
@@ -2970,9 +2830,9 @@ MonoBehaviour:
   buttonID: 1
   audioSource: {fileID: 1526561909}
   clip: {fileID: 8300000, guid: 58d0120522fcc6a40812f2632885b018, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1526561909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3124,9 +2984,9 @@ MonoBehaviour:
   buttonID: 9
   audioSource: {fileID: 1625153899}
   clip: {fileID: 8300000, guid: 4b6987266aafc9a428b506352128b46f, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!114 &1625153896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3866,9 +3726,9 @@ MonoBehaviour:
   buttonID: 5
   audioSource: {fileID: 1907032674}
   clip: {fileID: 8300000, guid: 337b39b014119ea4d9bee9fddece7917, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1907032674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4260,9 +4120,9 @@ MonoBehaviour:
   buttonID: 2
   audioSource: {fileID: 1944922549}
   clip: {fileID: 8300000, guid: cd5039d79bedb5943855c4de984c47c0, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!82 &1944922549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4414,9 +4274,9 @@ MonoBehaviour:
   buttonID: 6
   audioSource: {fileID: 1963571953}
   clip: {fileID: 8300000, guid: 99705963fda56c4458b1d3d45f0edcc8, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!114 &1963571950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4749,9 +4609,9 @@ MonoBehaviour:
   buttonID: 10
   audioSource: {fileID: 2047976226}
   clip: {fileID: 8300000, guid: 587d8f5381afbdf4a99b01281267a5ab, type: 3}
-  pianoinv: {fileID: 647355015}
-  winUIRef: {fileID: 1182724915}
-  xUIRef: {fileID: 937917189}
+  pianoinv: {fileID: 0}
+  winUI: {fileID: 1182724915}
+  xUI: {fileID: 937917189}
 --- !u!114 &2047976223
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +11,9 @@ public class InventoryManager : MonoBehaviour
     private GameObject pianoinv;
     private GameObject mouseinv;
 
-    private bool hasDaisy = false;
-    private bool hasPiano = false;
-    private bool hasMouse = false;
+    private bool hasDaisy;
+    private bool hasPiano;
+    private bool hasMouse;
 
     void Awake()
     {
@@ -26,68 +25,62 @@ public class InventoryManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        ReconnectUI();
-        UpdateUI();
+        StartCoroutine(SetupUI());
     }
 
-    void ReconnectUI()
+    IEnumerator SetupUI()
+    {
+        yield return null;
+
+        FindUI();
+        RefreshUI();
+    }
+
+    void FindUI()
     {
         daisyinv = GameObject.Find("daisyinv");
         daisyinv2 = GameObject.Find("daisyinv2");
         pianoinv = GameObject.Find("pianoinv");
         mouseinv = GameObject.Find("mouseinv");
-
-        if (daisyinv2 != null && !hasDaisy)
-            daisyinv2.SetActive(true);
-
-        if (daisyinv != null && !hasDaisy)
-            daisyinv.SetActive(false);
-
-        if (pianoinv != null && !hasPiano)
-            pianoinv.SetActive(false);
-
-        if (mouseinv != null && !hasMouse)
-            mouseinv.SetActive(false);
     }
+
+
+    void RefreshUI()
+    {
+        if (daisyinv != null) daisyinv.SetActive(hasDaisy);
+        if (daisyinv2 != null) daisyinv2.SetActive(!hasDaisy);
+
+        if (pianoinv != null) pianoinv.SetActive(hasPiano);
+        if (mouseinv != null) mouseinv.SetActive(hasMouse);
+    }
+
 
     public void CollectDaisy()
     {
-        if (!hasDaisy)
-        {
-            hasDaisy = true;
-            if (daisyinv2 != null) daisyinv2.SetActive(false);
-            if (daisyinv != null) daisyinv.SetActive(true);
-        }
+        hasDaisy = true;
+        RefreshUI();
     }
 
     public void CollectPiano()
     {
-        if (!hasPiano)
-        {
-            hasPiano = true;
-            if (pianoinv != null) pianoinv.SetActive(true);
-        }
+        hasPiano = true;
+        RefreshUI();
     }
 
     public void CollectMouse()
     {
-        if (!hasMouse)
-        {
-            hasMouse = true;
-            if (mouseinv != null) mouseinv.SetActive(true);
-        }
-    }
-
-    void UpdateUI()
-    {
-        if (daisyinv != null) daisyinv.SetActive(hasDaisy);
-        if (daisyinv2 != null) daisyinv2.SetActive(!hasDaisy);
-        if (pianoinv != null) pianoinv.SetActive(hasPiano);
-        if (mouseinv != null) mouseinv.SetActive(hasMouse);
+        hasMouse = true;
+        RefreshUI();
     }
 }
