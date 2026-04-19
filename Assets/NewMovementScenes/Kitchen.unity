@@ -285,27 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b09c8410691634a95da5fd57850f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeDoor:
-    stateName: Answer the door
-    lines:
-    - Why are you still here?
-    - The door wont Answer itself.
-    - Go answer it
-    speakers:
-    - Daisy
-    - Daisy
-    - Diasy
-    voiceClips: []
-  afterDoor:
-    stateName: 
-    lines: []
-    speakers: []
-    voiceClips: []
-  afterAllNPCs:
-    stateName: 
-    lines: []
-    speakers: []
-    voiceClips: []
   daisyDialogueLines:
   - Oh, it seems like someone is knocking on the door?
   - "Huh\u2026 I should probably check."
@@ -316,15 +295,30 @@ MonoBehaviour:
   - Daisy
   daisyVoiceClips:
   - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
-  daisyRepeatLines:
-  - Why are you still here?
-  - "The door isn\u2019t going to open itself."
-  - "Go already\u2026"
-  daisyRepeatSpeakers:
-  - Daisy
-  - Daisy
-  - Daisy
-  daisyRepeatVoiceClips: []
+  beforeDoor:
+    stateName: Answer the door
+    conversations:
+    - lines:
+      - The door won't answer itself.
+      speakers:
+      - Daisy
+      voiceClips: []
+    - lines:
+      - Are you just going to stand here or are you gonna answer the door?
+      speakers:
+      - Daisy
+      voiceClips: []
+    - lines:
+      - Go answer it.
+      speakers:
+      - Daisy
+      voiceClips: []
+  afterDoor:
+    stateName: Party
+    conversations: []
+  afterAllNPCs:
+    stateName: 
+    conversations: []
 --- !u!4 &19461848
 Transform:
   m_ObjectHideFlags: 0
