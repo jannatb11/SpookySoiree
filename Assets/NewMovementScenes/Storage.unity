@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 234798836}
   - component: {fileID: 234798835}
+  - component: {fileID: 234798837}
   m_Layer: 0
   m_Name: DialougeManager
   m_TagString: Untagged
@@ -319,6 +320,7 @@ MonoBehaviour:
   buttonsToDisable:
   - {fileID: 530225635}
   typingSpeed: 0.03
+  audioSource: {fileID: 234798837}
 --- !u!4 &234798836
 Transform:
   m_ObjectHideFlags: 0
@@ -334,6 +336,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &234798837
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234798834}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &235277900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,12 +1588,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Kosmo_1
   npcName: Kosmo
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: f812be8c5d8a7844fb993acd6d0e6d50, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 4165dcf23df2a5148bff61828bb5a4de, type: 3}
+  - {fileID: 0}
   animator: {fileID: 235277902}
   dialogueLines:
   - What... are you?
   - What... are YOU?
   - Huh?
-  - Huh? Nah, I am just joking with you!
+  - Huh?... Nah, I am just joking with you!
   - "Oh\u2026"
   - Anyway, I am Kosmo, and I am delighted to meet you.
   - You too...
@@ -1507,7 +1613,10 @@ MonoBehaviour:
   - Player
   - Kosmo
   - Player
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2

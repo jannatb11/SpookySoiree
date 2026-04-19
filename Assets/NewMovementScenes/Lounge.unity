@@ -2073,6 +2073,7 @@ MonoBehaviour:
   buttonsToDisable:
   - {fileID: 530225635}
   typingSpeed: 0.03
+  audioSource: {fileID: 0}
 --- !u!1 &1298059076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2928,6 +2929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Lil_Buffy_1
   npcName: Lil buffy
+  voiceClips: []
   animator: {fileID: 1403932570}
   dialogueLines:
   - Hi!
@@ -2941,7 +2943,10 @@ MonoBehaviour:
   - Lil Buffy
   - Lil Buffy
   - Player
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2

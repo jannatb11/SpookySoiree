@@ -1042,6 +1042,7 @@ MonoBehaviour:
   buttonsToDisable:
   - {fileID: 530225635}
   typingSpeed: 0.03
+  audioSource: {fileID: 0}
 --- !u!1 &713311107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Sarah_1
   npcName: Sarah
+  voiceClips: []
   animator: {fileID: 356025944}
   dialogueLines:
   - 'Hello, how are you? '
@@ -1829,7 +1831,10 @@ MonoBehaviour:
   - Player
   - Sarah
   - Player
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2

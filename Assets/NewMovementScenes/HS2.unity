@@ -1284,6 +1284,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Albe_1
   npcName: Albe
+  voiceClips:
+  - {fileID: 8300000, guid: 9428e5d1e23bdbf458d8ca0c95d71ee6, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: bf83c33739fd9eb4aa5aee7843fd8774, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 2bacbaa7a7bfde54c8147abc2596f34d, type: 3}
   animator: {fileID: 203251436}
   dialogueLines:
   - Excuse me, is there Red 40 in this Jello?
@@ -1298,7 +1304,10 @@ MonoBehaviour:
   - ???
   - Player
   - ???
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
@@ -2229,7 +2238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2661,7 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3412,7 +3421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3642,6 +3651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2061842009}
   - component: {fileID: 2061842008}
+  - component: {fileID: 2061842010}
   m_Layer: 0
   m_Name: DialougeManager
   m_TagString: Untagged
@@ -3668,8 +3678,8 @@ MonoBehaviour:
   yesButton: {fileID: 255074176}
   noButton: {fileID: 1939398705}
   characterColors:
-  - characterName: Albe
-    textColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 0}
+  - characterName: ???
+    textColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   npcTextColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
   playerTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3680,7 +3690,8 @@ MonoBehaviour:
   buttonsToDisable:
   - {fileID: 530225635}
   - {fileID: 230038697}
-  typingSpeed: 0.03
+  typingSpeed: 0.04
+  audioSource: {fileID: 2061842010}
 --- !u!4 &2061842009
 Transform:
   m_ObjectHideFlags: 0
@@ -3696,6 +3707,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2061842010
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061842007}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

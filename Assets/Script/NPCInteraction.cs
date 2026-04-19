@@ -11,13 +11,18 @@ public class NPCInteraction : MonoBehaviour
 
     [Header("Animation")]
     public Animator animator;
-    
+
     [Header("Dialogue")]
     public string[] dialogueLines;
     public string[] speakerNames;
 
     [Header("Spawn Conditions")]
     public bool requireDaisyToAppear;
+    public bool requireDoorToAppear;
+    public bool requireAllDoorNPCs; //  FINAL NPC USES THIS
+
+    [Header("Progress Tracking")]
+    public bool countsForDoorProgress;
 
     [Header("Unlock Flags")]
     public bool unlockDaisyProgress;
@@ -41,19 +46,31 @@ public class NPCInteraction : MonoBehaviour
     public bool teleportAfterDialogue = false;
     public SceneSwitcher sceneSwitcher;
 
-
-
     void Awake()
     {
-        // Already removed check
+        // Remove permanently if flagged
         if (GameState.removedNPCs.Contains(npcID))
         {
             Destroy(gameObject);
             return;
         }
 
-        // NEW: Hide until Daisy is talked to
+        // Daisy condition
         if (requireDaisyToAppear && !GameState.talkedToDaisy)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        // Door condition
+        if (requireDoorToAppear && !GameState.openedDoor)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        // Final NPC condition
+        if (requireAllDoorNPCs && !GameState.allDoorNPCsTalkedTo)
         {
             gameObject.SetActive(false);
             return;
@@ -65,31 +82,54 @@ public class NPCInteraction : MonoBehaviour
         if (DialogueManager.Instance.IsDialogueActive)
             return;
 
-        // Start talking animation
         if (animator != null)
             animator.SetBool("isTalking", true);
 
         DialogueManager.Instance.StartDialogue(
-        npcName,
-        dialogueLines,
-        speakerNames,
-        hasChoices,
-        choiceLineIndex,
-        yesJumpToLine,
-        yesEndLine,
-        noJumpToLine,
-        noEndLine,
-        null,
-        this,
-        voiceClips //  NEW
- );
+            npcName,
+            dialogueLines,
+            speakerNames,
+            hasChoices,
+            choiceLineIndex,
+            yesJumpToLine,
+            yesEndLine,
+            noJumpToLine,
+            noEndLine,
+            null,
+            this,
+            voiceClips
+        );
     }
 
     public void OnDialogueComplete()
     {
-        // Stop talking animation
         if (animator != null)
             animator.SetBool("isTalking", false);
+
+        //  Track NPC progress
+        if (countsForDoorProgress)
+        {
+            GameState.talkedToNPCs.Add(npcID);
+            Debug.Log("Talked to: " + npcID);
+
+            //  Check if ALL required NPCs are done
+            if (GameState.talkedToNPCs.Count >= GameState.requiredDoorNPCCount)
+            {
+                GameState.allDoorNPCsTalkedTo = true;
+                Debug.Log("All door NPCs talked to!");
+
+                //  INSTANTLY reveal final NPC
+                GameObject finalNPC = GameObject.Find("FinalNPC");
+                if (finalNPC != null)
+                {
+                    finalNPC.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("FinalNPC not found in scene!");
+                }
+            }
+        }
 
         ApplyUnlocks();
     }
@@ -102,7 +142,6 @@ public class NPCInteraction : MonoBehaviour
         if (unlockKitchen)
             GameProgress.kitchenUnlocked = true;
 
-        
         if (unlockDaisyProgress)
         {
             GameState.talkedToDaisy = true;

@@ -413,6 +413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248098438}
   - component: {fileID: 248098437}
+  - component: {fileID: 248098439}
   m_Layer: 0
   m_Name: DialougeManager
   m_TagString: Untagged
@@ -439,7 +440,7 @@ MonoBehaviour:
   yesButton: {fileID: 605188143}
   noButton: {fileID: 1710821045}
   characterColors:
-  - characterName: Trevor
+  - characterName: ???
     textColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   npcTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -451,6 +452,7 @@ MonoBehaviour:
   - {fileID: 530225635}
   - {fileID: 1239778389}
   typingSpeed: 0.03
+  audioSource: {fileID: 248098439}
 --- !u!4 &248098438
 Transform:
   m_ObjectHideFlags: 0
@@ -466,6 +468,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &248098439
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248098436}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &371998041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,8 +1713,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8623, y: -188.7101}
-  m_SizeDelta: {x: 470.6867, y: 102.93}
+  m_AnchoredPosition: {x: 2.8623, y: -181.72968}
+  m_SizeDelta: {x: 470.6867, y: 88.9691}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693933968
 MonoBehaviour:
@@ -1833,8 +1931,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 429.84, y: 57.744995}
-  m_SizeDelta: {x: 480, y: 115.49}
+  m_AnchoredPosition: {x: 429.84, y: 62.68654}
+  m_SizeDelta: {x: 480, y: 105.6069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &909997821
 MonoBehaviour:
@@ -3199,8 +3297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5210948, y: -196.65805}
-  m_SizeDelta: {x: 470.69, y: 87.686}
+  m_AnchoredPosition: {x: 3.5210948, y: -191.02867}
+  m_SizeDelta: {x: 470.69, y: 76.4273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1789049298
 CanvasRenderer:
@@ -3239,7 +3337,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280032405
   m_fontColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3508,26 +3606,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Trevor_1
   npcName: Trevor
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 88dc46651cf67c843a4e425e7bdc7d2d, type: 3}
+  - {fileID: 8300000, guid: af0108c38c6726749a92f1caa268bc0e, type: 3}
+  - {fileID: 0}
   animator: {fileID: 440408319}
   dialogueLines:
   - "Hi\u2026. What is your name?"
   - "\u2026\u2026"
   - "\u2026\u2026?"
   - "Uh\u2026 why are you holding a large metal can for?"
-  - Umm, excuse me?!?!!? This is actually my waifu, Meow Mon Chan.
-  - "She is the love of my life, my reason to exist. She even convinced me to come\u2026 "
-  - "Huh, what is it, darling? Huh, uh, huh\u2026 "
+  - Umm, actually!, This is actually my waifu, Meow Mon Chan.
+  - "She is the love of my life, th-the to exist. She even convinced me to come...
+    Huh, what is it, darling? Huh, uh, huh\u2026 "
   - "Ok\u2026\u2026"
   speakerNames:
   - Player
-  - Trevor Quantavious Jason Jr
+  - ???
   - Player
   - Player
-  - Trevor Quantavious Jason Jr
-  - Trevor Quantavious Jason Jr
-  - Trevor Quantavious Jason Jr
+  - ???
+  - ???
   - Player
-  requireDaisyToAppear: 1
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
   unlockDaisyProgress: 0
   hasChoices: 0
   choiceLineIndex: 2
