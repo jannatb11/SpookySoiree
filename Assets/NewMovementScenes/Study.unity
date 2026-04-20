@@ -393,9 +393,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356025942}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6adf71cd719e1db43b0a705d286b3866, type: 2}
+  m_Controller: {fileID: 9100000, guid: 83e053975cc7a594b9e8f77a3713c124, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf2c2062f3e8712438552cd85b9b3ce4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a97a64f1e2dc91044b925b8ab5980f89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1796,8 +1796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132.97351, y: 20.449}
-  m_SizeDelta: {x: 172.1665, y: 251.22}
+  m_AnchoredPosition: {x: -144, y: 15.395}
+  m_SizeDelta: {x: 172.1665, y: 292.0728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906235658
 MonoBehaviour:
@@ -1827,11 +1827,11 @@ MonoBehaviour:
   - Player
   - Sarah
   - Player
-  isNPCSpeaking: 
+  isNPCSpeaking: 010001000100
   voiceClips: []
   animator: {fileID: 356025944}
   requireDaisyToAppear: 0
-  requireDoorToAppear: 1
+  requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0

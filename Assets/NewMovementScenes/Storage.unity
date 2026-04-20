@@ -476,9 +476,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235277900}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6adf71cd719e1db43b0a705d286b3866, type: 2}
+  m_Controller: {fileID: 9100000, guid: 76f0eb5b526260c448f5078355f3a091, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eab4e25f9607b432f943c182555268e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59c2da57adbbf3142a6bd16170d1772e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1602,7 +1602,7 @@ MonoBehaviour:
   - Player
   - Kosmo
   - Player
-  isNPCSpeaking: 
+  isNPCSpeaking: 00010001000100
   voiceClips:
   - {fileID: 0}
   - {fileID: 0}
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   - {fileID: 0}
   animator: {fileID: 235277902}
   requireDaisyToAppear: 0
-  requireDoorToAppear: 1
+  requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0
