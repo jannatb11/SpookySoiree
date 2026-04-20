@@ -556,19 +556,15 @@ MonoBehaviour:
   choicePanel: {fileID: 1989346916}
   yesButton: {fileID: 1778964167}
   noButton: {fileID: 619052600}
-  characterColors:
-  - characterName: Gurt
-    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
-  uiToHide:
-  - {fileID: 530225633}
-  buttonsToDisable:
-  - {fileID: 530225635}
   typingSpeed: 0.03
   audioSource: {fileID: 505239191}
+  characterColors:
+  - characterName: Gurt
+    textColor: {r: 0.11764707, g: 0.48627454, b: 0.058823533, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &505239190
 Transform:
   m_ObjectHideFlags: 0
@@ -2693,18 +2689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_1
   npcName: Gurt
-  voiceClips:
-  - {fileID: 8300000, guid: 0dcd5b5187b802640b4a74e3b205de3a, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: efc910b60f0705a4fb506f29a9363772, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: ebf64d60011e78941bbfab2d6e344feb, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 686a68616daab4d4cae95485179e8d3b, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 13c4adcb991bab44e8b71a6871fc30df, type: 3}
-  animator: {fileID: 657842779}
   dialogueLines:
   - Gurt gurt gurble, to you, my dear. How are you this fine evening?
   - "Huh?!? Who are you?\r"
@@ -2733,19 +2717,29 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
+  isNPCSpeaking: 01000001000100010001
+  voiceClips:
+  - {fileID: 8300000, guid: 0dcd5b5187b802640b4a74e3b205de3a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: efc910b60f0705a4fb506f29a9363772, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: ebf64d60011e78941bbfab2d6e344feb, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 686a68616daab4d4cae95485179e8d3b, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 13c4adcb991bab44e8b71a6871fc30df, type: 3}
+  animator: {fileID: 657842779}
   requireDaisyToAppear: 0
+  requireDoorToAppear: 0
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 0
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
-  unlockKitchen: 1
-  disappearAfterDialogue: 1
+  unlockKitchen: 0
   teleportAfterDialogue: 1
   sceneSwitcher: {fileID: 1605208129}
+  disappearAfterDialogue: 1
 --- !u!114 &1850860175
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,44 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
+    [Header("Names")]
+    public string playerName = "Player";
+
+    [Header("Typing")]
+    public float typingSpeed = 0.03f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    // =========================
+    // DIALOGUE DATA
+    // =========================
+    private string[] lines;
+    private string[] speakerNames;
+    private bool[] isNPCSpeaking;
+    private AudioClip[] voiceClips;
+
+    private int index;
+    private bool isTyping;
+    private bool canContinue;
+    private bool isDialogueActive;
+
+    private bool hasChoices;
+    private int choiceLineIndex;
+    private int yesJumpToLine;
+    private int noJumpToLine;
+
+    // TRIGGERS
+    private NPCInteraction currentNPC;
+    private ItemInteractionUI currentItem;
+
+    private Coroutine typingCoroutine;
+
+    public bool IsDialogueActive => isDialogueActive;
+
+    // =========================
+    // COLOR SYSTEM (RESTORED)
+    // =========================
     [System.Serializable]
     public class CharacterColor
     {
@@ -25,40 +63,6 @@ public class DialogueManager : MonoBehaviour
     [Header("Character Colors")]
     public CharacterColor[] characterColors;
     public Color defaultColor = Color.white;
-
-    [Header("Text Colors")]
-    public Color npcTextColor = Color.yellow;
-    public Color playerTextColor = Color.white;
-    public string playerName = "Player";
-
-    [Header("UI To Disable During Dialogue")]
-    public GameObject[] uiToHide;
-    public Button[] buttonsToDisable;
-
-    [Header("Typing")]
-    public float typingSpeed = 0.03f;
-
-    [Header("Audio")]
-    public AudioSource audioSource;
-
-    private string[] lines;
-    private string[] speakerNames;
-    private AudioClip[] voiceClips; //  simple per-line clips
-
-    private int index;
-    private bool isTyping;
-    private bool canContinue;
-    private bool isDialogueActive;
-    private bool hasChoices;
-    private int choiceLineIndex;
-
-    private int yesJumpToLine;
-    private int noJumpToLine;
-
-    private NPCInteraction currentNPC;
-    private Coroutine typingCoroutine;
-
-    public bool IsDialogueActive => isDialogueActive;
 
     void Awake()
     {
@@ -81,7 +85,6 @@ public class DialogueManager : MonoBehaviour
                 isTyping = false;
                 canContinue = true;
 
-                // stop voice when skipping
                 if (audioSource != null)
                     audioSource.Stop();
             }
@@ -92,10 +95,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // =========================
+    // START DIALOGUE
+    // =========================
     public void StartDialogue(
         string npcName,
         string[] dialogueLines,
         string[] speakerNames,
+        bool[] isNPCSpeaking,
         bool hasChoices,
         int choiceLineIndex,
         int yesJumpToLine,
@@ -104,7 +111,7 @@ public class DialogueManager : MonoBehaviour
         int noEndLine,
         ItemInteractionUI itemReference,
         NPCInteraction npcReference,
-        AudioClip[] voiceClips //  NEW
+        AudioClip[] voiceClips
     )
     {
         if (isDialogueActive)
@@ -112,7 +119,8 @@ public class DialogueManager : MonoBehaviour
 
         this.lines = dialogueLines;
         this.speakerNames = speakerNames;
-        this.voiceClips = voiceClips; //  store clips
+        this.isNPCSpeaking = isNPCSpeaking;
+        this.voiceClips = voiceClips;
 
         this.hasChoices = hasChoices;
         this.choiceLineIndex = choiceLineIndex;
@@ -120,6 +128,7 @@ public class DialogueManager : MonoBehaviour
         this.noJumpToLine = noJumpToLine;
 
         currentNPC = npcReference;
+        currentItem = itemReference;
 
         index = 0;
         isDialogueActive = true;
@@ -128,15 +137,6 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
 
         StartTyping();
-
-        foreach (GameObject obj in uiToHide)
-            obj.SetActive(false);
-
-        foreach (Button btn in buttonsToDisable)
-        {
-            if (btn != null)
-                btn.interactable = false;
-        }
     }
 
     void StartTyping()
@@ -150,15 +150,33 @@ public class DialogueManager : MonoBehaviour
         canContinue = false;
         dialogueText.text = "";
 
-        if (speakerNames != null && speakerNames.Length > index)
-        {
-            string speaker = speakerNames[index];
-            speakerText.text = speaker;
+        // =========================
+        // SPEAKER NAME + COLOR FIX
+        // =========================
+        string speaker = "Unknown";
 
-            dialogueText.color = GetColorForSpeaker(speaker);
+        if (speakerNames != null && index < speakerNames.Length)
+            speaker = speakerNames[index];
+
+        speakerText.text = speaker;
+        dialogueText.color = GetColorForSpeaker(speaker);
+
+        // =========================
+        // ANIMATION CONTROL
+        // =========================
+        bool npcSpeaking =
+            isNPCSpeaking != null &&
+            index < isNPCSpeaking.Length &&
+            isNPCSpeaking[index];
+
+        if (currentNPC != null && currentNPC.animator != null)
+        {
+            currentNPC.animator.SetBool("isTalking", npcSpeaking);
         }
 
-        //  PLAY VOICE FOR THIS LINE
+        // =========================
+        // VOICE
+        // =========================
         if (audioSource != null &&
             voiceClips != null &&
             index < voiceClips.Length &&
@@ -169,9 +187,12 @@ public class DialogueManager : MonoBehaviour
             audioSource.Play();
         }
 
-        foreach (char letter in lines[index])
+        // =========================
+        // TYPE TEXT
+        // =========================
+        foreach (char c in lines[index])
         {
-            dialogueText.text += letter;
+            dialogueText.text += c;
             yield return new WaitForSeconds(typingSpeed);
         }
 
@@ -179,9 +200,7 @@ public class DialogueManager : MonoBehaviour
         canContinue = true;
 
         if (hasChoices && index == choiceLineIndex)
-        {
             ShowChoice();
-        }
     }
 
     void NextLine()
@@ -231,28 +250,33 @@ public class DialogueManager : MonoBehaviour
         if (audioSource != null)
             audioSource.Stop();
 
+        // NPC trigger
         if (currentNPC != null)
         {
             currentNPC.OnDialogueComplete();
             currentNPC = null;
         }
 
-        foreach (GameObject obj in uiToHide)
-            obj.SetActive(true);
-
-        foreach (Button btn in buttonsToDisable)
+        // Item trigger
+        if (currentItem != null)
         {
-            if (btn != null)
-                btn.interactable = true;
+            currentItem.OnDialogueComplete();
+            currentItem = null;
         }
     }
 
+    // =========================
+    // COLOR LOOKUP (FIX)
+    // =========================
     Color GetColorForSpeaker(string speaker)
     {
-        foreach (var c in characterColors)
+        if (characterColors != null)
         {
-            if (c.characterName == speaker)
-                return c.textColor;
+            foreach (var c in characterColors)
+            {
+                if (c.characterName == speaker)
+                    return c.textColor;
+            }
         }
 
         return defaultColor;

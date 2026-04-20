@@ -1284,13 +1284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Albe_1
   npcName: Albe
-  voiceClips:
-  - {fileID: 8300000, guid: 9428e5d1e23bdbf458d8ca0c95d71ee6, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: bf83c33739fd9eb4aa5aee7843fd8774, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 2bacbaa7a7bfde54c8147abc2596f34d, type: 3}
-  animator: {fileID: 203251436}
   dialogueLines:
   - Excuse me, is there Red 40 in this Jello?
   - Uhhhh, maybe?
@@ -1304,22 +1297,24 @@ MonoBehaviour:
   - ???
   - Player
   - ???
+  isNPCSpeaking: 0100010001
+  voiceClips:
+  - {fileID: 8300000, guid: 9428e5d1e23bdbf458d8ca0c95d71ee6, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: bf83c33739fd9eb4aa5aee7843fd8774, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 2bacbaa7a7bfde54c8147abc2596f34d, type: 3}
+  animator: {fileID: 203251436}
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &538717677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3677,21 +3672,17 @@ MonoBehaviour:
   choicePanel: {fileID: 1592551326}
   yesButton: {fileID: 255074176}
   noButton: {fileID: 1939398705}
+  playerName: Player
+  typingSpeed: 0.04
+  audioSource: {fileID: 2061842010}
   characterColors:
   - characterName: ???
     textColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  - characterName: Daisy
+    textColor: {r: 0.9529412, g: 0.90588236, b: 0.2901961, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerName: Player
-  uiToHide:
-  - {fileID: 530225633}
-  - {fileID: 230038695}
-  buttonsToDisable:
-  - {fileID: 530225635}
-  - {fileID: 230038697}
-  typingSpeed: 0.04
-  audioSource: {fileID: 2061842010}
 --- !u!4 &2061842009
 Transform:
   m_ObjectHideFlags: 0

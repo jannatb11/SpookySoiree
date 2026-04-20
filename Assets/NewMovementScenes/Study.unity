@@ -1030,19 +1030,17 @@ MonoBehaviour:
   choicePanel: {fileID: 1983222623}
   yesButton: {fileID: 833455712}
   noButton: {fileID: 0}
+  playerName: Player
+  typingSpeed: 0.03
+  audioSource: {fileID: 0}
   characterColors:
   - characterName: Sarah
     textColor: {r: 0.8431373, g: 0.70980394, b: 0.5137255, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  - characterName: Daisy
+    textColor: {r: 0.9529412, g: 0.90588236, b: 0.2901961, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 0.8431373, g: 0.70980394, b: 0.5137255, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerName: Player
-  uiToHide:
-  - {fileID: 530225633}
-  buttonsToDisable:
-  - {fileID: 530225635}
-  typingSpeed: 0.03
-  audioSource: {fileID: 0}
 --- !u!1 &713311107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,8 +1813,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Sarah_1
   npcName: Sarah
-  voiceClips: []
-  animator: {fileID: 356025944}
   dialogueLines:
   - 'Hello, how are you? '
   - Hi, and you are?
@@ -1831,22 +1827,19 @@ MonoBehaviour:
   - Player
   - Sarah
   - Player
+  isNPCSpeaking: 
+  voiceClips: []
+  animator: {fileID: 356025944}
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &906235659
 MonoBehaviour:
   m_ObjectHideFlags: 0

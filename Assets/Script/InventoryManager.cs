@@ -20,9 +20,10 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Daisy FIRST Dialogue")]
     public string[] daisyDialogueLines;
-    public string[] daisySpeakerNames;
+    public bool[] daisyIsNPCSpeaking;
     public AudioClip[] daisyVoiceClips;
 
+    public string[] daisySpeakerNames;
     // ========================
     //  NEW CONVERSATION SYSTEM
     // ========================
@@ -31,8 +32,9 @@ public class InventoryManager : MonoBehaviour
     public class DaisyConversation
     {
         public string[] lines;
-        public string[] speakers;
+        public bool[] isNPCSpeaking;
         public AudioClip[] voiceClips;
+        public string[] speakerNames;
     }
 
     [System.Serializable]
@@ -168,15 +170,16 @@ public class InventoryManager : MonoBehaviour
             hasTalkedToDaisy = true;
 
             DialogueManager.Instance.StartDialogue(
-                "Daisy",
-                daisyDialogueLines,
-                daisySpeakerNames,
-                false,
-                0, 0, 0, 0, 0,
-                null,
-                null,
-                daisyVoiceClips
-            );
+            "Daisy",
+             daisyDialogueLines,
+             daisySpeakerNames,
+             daisyIsNPCSpeaking,
+             false,
+             0, 0, 0, 0, 0,
+             null,
+             null,
+             daisyVoiceClips
+             );
             return;
         }
 
@@ -211,14 +214,15 @@ public class InventoryManager : MonoBehaviour
         // ========================
 
         DialogueManager.Instance.StartDialogue(
-            "Daisy",
-            convo.lines,
-            convo.speakers,
-            false,
-            0, 0, 0, 0, 0,
-            null,
-            null,
-            convo.voiceClips
+        "Daisy",
+        convo.lines,
+        convo.speakerNames,
+        convo.isNPCSpeaking,
+        false,
+        0, 0, 0, 0, 0,
+        null,
+        null,
+        convo.voiceClips
         );
     }
 }

@@ -439,20 +439,17 @@ MonoBehaviour:
   choicePanel: {fileID: 371998041}
   yesButton: {fileID: 605188143}
   noButton: {fileID: 1710821045}
-  characterColors:
-  - characterName: ???
-    textColor: {r: 0.58431375, g: 0.10980393, b: 0.10980393, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
-  uiToHide:
-  - {fileID: 422406735}
-  buttonsToDisable:
-  - {fileID: 530225635}
-  - {fileID: 1239778389}
   typingSpeed: 0.03
   audioSource: {fileID: 248098439}
+  characterColors:
+  - characterName: ???
+    textColor: {r: 0.5372549, g: 0.098039225, b: 0.098039225, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  - characterName: Daisy
+    textColor: {r: 0.9529412, g: 0.90588236, b: 0.2901961, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &248098438
 Transform:
   m_ObjectHideFlags: 0
@@ -3510,7 +3507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: -2.8424683, y: 0}
+  m_AnchoredPosition: {x: -2.8424835, y: 0}
   m_SizeDelta: {x: 375.35, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986366361
@@ -3606,15 +3603,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Trevor_1
   npcName: Trevor
-  voiceClips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 88dc46651cf67c843a4e425e7bdc7d2d, type: 3}
-  - {fileID: 8300000, guid: af0108c38c6726749a92f1caa268bc0e, type: 3}
-  - {fileID: 0}
-  animator: {fileID: 440408319}
   dialogueLines:
   - "Hi\u2026. What is your name?"
   - "\u2026\u2026"
@@ -3632,22 +3620,26 @@ MonoBehaviour:
   - ???
   - ???
   - Player
+  isNPCSpeaking: 00010000010100
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 88dc46651cf67c843a4e425e7bdc7d2d, type: 3}
+  - {fileID: 8300000, guid: af0108c38c6726749a92f1caa268bc0e, type: 3}
+  - {fileID: 0}
+  animator: {fileID: 440408319}
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &2116297886
 MonoBehaviour:
   m_ObjectHideFlags: 0

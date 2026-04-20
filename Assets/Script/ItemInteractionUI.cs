@@ -5,52 +5,37 @@ public class ItemInteractionUI : MonoBehaviour
 {
     public string itemName;
 
-    [TextArea(2, 5)]
+    [TextArea]
     public string[] dialogueLines;
 
-    public string[] speakerNames;
+    public string[] speakerNames;   //  NEW
+    public bool[] isNPCSpeaking;
 
-    [Header("Voice Lines")] //  NEW
     public AudioClip[] voiceClips;
 
-    public bool hasChoices;
-    public int choiceLineIndex;
-    public int yesStart, yesEnd;
-    public int noStart, noEnd;
+    private bool collected;
 
-    private bool collected = false;
-
-    void OnItemClicked()
+    public void OnItemClicked()
     {
-        if (DialogueManager.Instance.IsDialogueActive) return;
-        if (collected) return;
+        if (DialogueManager.Instance.IsDialogueActive || collected)
+            return;
 
         DialogueManager.Instance.StartDialogue(
             itemName,
             dialogueLines,
             speakerNames,
-            hasChoices,
-            choiceLineIndex,
-            yesStart,
-            yesEnd,
-            noStart,
-            noEnd,
-            this,      // item reference
-            null,      // no NPC
-            voiceClips //  PASS VOICE CLIPS
+            isNPCSpeaking,
+            false,
+            0, 0, 0, 0, 0,
+            this,
+            null,
+            voiceClips
         );
     }
 
     public void OnDialogueComplete()
     {
         collected = true;
-
-        Button button = GetComponent<Button>();
-        if (button != null)
-        {
-            button.interactable = false;
-        }
-
-        gameObject.SetActive(false); // remove item visually
+        gameObject.SetActive(false);
     }
 }

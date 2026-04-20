@@ -388,25 +388,17 @@ MonoBehaviour:
   choicePanel: {fileID: 1505773176}
   yesButton: {fileID: 905284760}
   noButton: {fileID: 913517898}
-  characterColors:
-  - characterName: Daisy
-    textColor: {r: 0.93725497, g: 0.9058824, b: 0.2901961, a: 1}
-  - characterName: Gurt
-    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
-  uiToHide:
-  - {fileID: 1239778387}
-  - {fileID: 1426705849}
-  - {fileID: 332511408}
-  buttonsToDisable:
-  - {fileID: 1239778389}
-  - {fileID: 1426705851}
-  - {fileID: 332511410}
   typingSpeed: 0.03
   audioSource: {fileID: 204049079}
+  characterColors:
+  - characterName: Gurt
+    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  - characterName: Daisy
+    textColor: {r: 0.9529412, g: 0.90588236, b: 0.2901961, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &204049081
 Transform:
   m_ObjectHideFlags: 0
@@ -2509,13 +2501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_Entrance
   npcName: Gurt
-  voiceClips:
-  - {fileID: 8300000, guid: 0a78be4d38c2e854a9df91b4852a1248, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: bb15c0ae525fe1c4b8891215745d2bce, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 1500997986}
   dialogueLines:
   - 'Oh, Gurt to you! I hope I didn''t intrude at the wrong time? '
   - "Oh no, it's okay\u2026\u2026 You actually arrived at the right time. I just
@@ -2530,22 +2515,24 @@ MonoBehaviour:
   - Gurt
   - Player
   - Player
+  isNPCSpeaking: 0100010000
+  voiceClips:
+  - {fileID: 8300000, guid: 0a78be4d38c2e854a9df91b4852a1248, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: bb15c0ae525fe1c4b8891215745d2bce, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  animator: {fileID: 1500997986}
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &1161980030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2984,13 +2971,8 @@ MonoBehaviour:
   - "I wonder who's here. Probably that Gurt guy\u2026 *sigh*  "
   speakerNames:
   - Player
+  isNPCSpeaking: 
   voiceClips: []
-  hasChoices: 0
-  choiceLineIndex: 0
-  yesJumpToLine: 0
-  yesEndLine: 0
-  noJumpToLine: 0
-  noEndLine: 0
   npcToReveal: {fileID: 1161980027}
 --- !u!114 &1352267897
 MonoBehaviour:

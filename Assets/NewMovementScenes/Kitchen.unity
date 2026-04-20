@@ -289,30 +289,34 @@ MonoBehaviour:
   - Oh, it seems like someone is knocking on the door?
   - "Huh\u2026 I should probably check."
   - "Alright, I\u2019ll be here if you need me."
+  daisyIsNPCSpeaking: 
+  daisyVoiceClips:
+  - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
   daisySpeakerNames:
   - Daisy
   - Player
   - Daisy
-  daisyVoiceClips:
-  - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
   beforeDoor:
     stateName: Answer the door
     conversations:
     - lines:
       - The door won't answer itself.
-      speakers:
-      - Daisy
+      isNPCSpeaking: 
       voiceClips: []
+      speakerNames:
+      - Daisy
     - lines:
       - Are you just going to stand here or are you gonna answer the door?
-      speakers:
-      - Daisy
+      isNPCSpeaking: 
       voiceClips: []
+      speakerNames:
+      - Daisy
     - lines:
       - Go answer it.
-      speakers:
-      - Daisy
+      isNPCSpeaking: 
       voiceClips: []
+      speakerNames:
+      - Daisy
   afterDoor:
     stateName: Party
     conversations: []
@@ -1589,8 +1593,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Daisy_1
   npcName: Daisy
-  voiceClips: []
-  animator: {fileID: 144195595}
   dialogueLines:
   - "I missed you, Daisy. Moving here has been a hassle, especially since I couldn't
     talk to you!\r"
@@ -1611,22 +1613,19 @@ MonoBehaviour:
   - Daisy
   - Daisy
   - Daisy
+  isNPCSpeaking: 00010001010101
+  voiceClips: []
+  animator: {fileID: 144195595}
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &523787410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3150,13 +3149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_Kitchen_2
   npcName: Gurt
-  voiceClips:
-  - {fileID: 8300000, guid: 5ab95707e4ec34644a8237d16352ec9c, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 2e6d385bbc1464247a62f8e6484936df, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 557ef7e9105097d4a93521b02d0cfc1a, type: 3}
-  animator: {fileID: 1182890722}
   dialogueLines:
   - "Gurble gurt, I've come with some terrible news\u2026\u2026 :( "
   - 'Huh? What is it? '
@@ -3170,22 +3162,24 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
+  isNPCSpeaking: 0100010001
+  voiceClips:
+  - {fileID: 8300000, guid: 5ab95707e4ec34644a8237d16352ec9c, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 2e6d385bbc1464247a62f8e6484936df, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 557ef7e9105097d4a93521b02d0cfc1a, type: 3}
+  animator: {fileID: 1182890722}
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 1
   countsForDoorProgress: 0
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &1355581348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3571,21 +3565,17 @@ MonoBehaviour:
   choicePanel: {fileID: 797346880}
   yesButton: {fileID: 1380320809}
   noButton: {fileID: 1512748555}
-  characterColors:
-  - characterName: Daisy
-    textColor: {r: 0.93725497, g: 0.9058824, b: 0.2901961, a: 1}
-  - characterName: Gurt
-    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
   playerName: Player
-  uiToHide:
-  - {fileID: 1156230938}
-  buttonsToDisable:
-  - {fileID: 1156230940}
   typingSpeed: 0.03
   audioSource: {fileID: 1388585506}
+  characterColors:
+  - characterName: Daisy
+    textColor: {r: 0.95294124, g: 0.9058824, b: 0.2901961, a: 1}
+  - characterName: Gurt
+    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
+  - characterName: Player
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1388585505
 Transform:
   m_ObjectHideFlags: 0
@@ -3752,18 +3742,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_Kitchen
   npcName: Gurt
-  voiceClips:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 4a03d1a92cba7c240a4c85b08539dbef, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 3d19ec53349476f4c821b8d9b21f54b1, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: b1718812d455f504e926d81436cda094, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 19540cbde77b8f64bb447b612174493c, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: c0d490813d88ae94789253655de1b35a, type: 3}
-  animator: {fileID: 174167476}
   dialogueLines:
   - DAISY?!?!?!!?!?!?
   - "Gurt gurt gurble, I\u2019ll give you a moment alone. "
@@ -3787,22 +3765,29 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
+  isNPCSpeaking: 00010001000100010001
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 4a03d1a92cba7c240a4c85b08539dbef, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 3d19ec53349476f4c821b8d9b21f54b1, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: b1718812d455f504e926d81436cda094, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 19540cbde77b8f64bb447b612174493c, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: c0d490813d88ae94789253655de1b35a, type: 3}
+  animator: {fileID: 174167476}
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &1411739889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5178,12 +5163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcID: Gurt_Party
   npcName: Gurt
-  voiceClips:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: 476bc12e5596d704e95e6d0eacaefd5f, type: 3}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: ef025b31d21603345922749f1b263fda, type: 3}
-  animator: {fileID: 196382426}
   dialogueLines:
   - "Ugh\u2026 Oh\u2026 I mean, hi, Gurt."
   - 'Gurt gurt gurble, what a numerous amount of people. How may I assist you, Gurble? '
@@ -5194,22 +5173,23 @@ MonoBehaviour:
   - Gurt
   - Player
   - Gurt
+  isNPCSpeaking: 00010001
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 476bc12e5596d704e95e6d0eacaefd5f, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: ef025b31d21603345922749f1b263fda, type: 3}
+  animator: {fileID: 196382426}
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
   unlockDaisyProgress: 0
-  hasChoices: 0
-  choiceLineIndex: 2
-  yesJumpToLine: 3
-  yesEndLine: 4
-  noJumpToLine: 5
-  noEndLine: 6
   unlockIntro: 0
   unlockKitchen: 0
-  disappearAfterDialogue: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
 --- !u!114 &2122338767
 MonoBehaviour:
   m_ObjectHideFlags: 0

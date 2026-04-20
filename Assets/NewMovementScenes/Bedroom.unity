@@ -1135,21 +1135,13 @@ MonoBehaviour:
   choicePanel: {fileID: 1837001230}
   yesButton: {fileID: 284937778}
   noButton: {fileID: 1007100668}
+  playerName: Player
+  typingSpeed: 0.03
+  audioSource: {fileID: 552118555}
   characterColors:
   - characterName: Daisy
     textColor: {r: 0.93725497, g: 0.9058824, b: 0.2901961, a: 1}
-  - characterName: Gurt
-    textColor: {r: 0.16078432, g: 0.61960787, b: 0.09411766, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  npcTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerTextColor: {r: 1, g: 1, b: 1, a: 1}
-  playerName: Player
-  uiToHide:
-  - {fileID: 0}
-  buttonsToDisable:
-  - {fileID: 0}
-  typingSpeed: 0.03
-  audioSource: {fileID: 552118555}
 --- !u!4 &552118557
 Transform:
   m_ObjectHideFlags: 0
