@@ -22,8 +22,8 @@ public class InventoryManager : MonoBehaviour
     public string[] daisyDialogueLines;
     public bool[] daisyIsNPCSpeaking;
     public AudioClip[] daisyVoiceClips;
-
     public string[] daisySpeakerNames;
+
     // ========================
     //  NEW CONVERSATION SYSTEM
     // ========================
@@ -164,27 +164,30 @@ public class InventoryManager : MonoBehaviour
         if (DialogueManager.Instance == null) return;
         if (DialogueManager.Instance.IsDialogueActive) return;
 
-        // FIRST TIME (main story dialogue)
+        // ========================
+        // FIRST TIME
+        // ========================
         if (!hasTalkedToDaisy)
         {
             hasTalkedToDaisy = true;
 
             DialogueManager.Instance.StartDialogue(
-            "Daisy",
-             daisyDialogueLines,
-             daisySpeakerNames,
-             daisyIsNPCSpeaking,
-             false,
-             0, 0, 0, 0, 0,
-             null,
-             null,
-             daisyVoiceClips
-             );
+                "Daisy",
+                daisyDialogueLines,
+                daisySpeakerNames,
+                daisyIsNPCSpeaking,
+                false,
+                0, 0, 0, 0, 0,
+                null,
+                null,
+                daisyVoiceClips,
+                null
+            );
             return;
         }
 
         // ========================
-        //  PICK STATE
+        // PICK STATE
         // ========================
 
         DaisyDialogueSet currentSet;
@@ -200,7 +203,7 @@ public class InventoryManager : MonoBehaviour
             return;
 
         // ========================
-        //  RANDOM CONVERSATION
+        // RANDOM CONVERSATION
         // ========================
 
         int rand = Random.Range(0, currentSet.conversations.Length);
@@ -210,19 +213,20 @@ public class InventoryManager : MonoBehaviour
             return;
 
         // ========================
-        //  START CONVERSATION
+        // START CONVERSATION
         // ========================
 
         DialogueManager.Instance.StartDialogue(
-        "Daisy",
-        convo.lines,
-        convo.speakerNames,
-        convo.isNPCSpeaking,
-        false,
-        0, 0, 0, 0, 0,
-        null,
-        null,
-        convo.voiceClips
+            "Daisy",
+            convo.lines,
+            convo.speakerNames,
+            convo.isNPCSpeaking,
+            false,
+            0, 0, 0, 0, 0,
+            null,
+            null,
+            convo.voiceClips,
+            null 
         );
     }
 }

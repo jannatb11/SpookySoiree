@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemInteractionUI : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class ItemInteractionUI : MonoBehaviour
     [TextArea]
     public string[] dialogueLines;
 
-    public string[] speakerNames;   //  NEW
+    public string[] speakerNames;
     public bool[] isNPCSpeaking;
 
     public AudioClip[] voiceClips;
@@ -29,7 +28,8 @@ public class ItemInteractionUI : MonoBehaviour
             0, 0, 0, 0, 0,
             this,
             null,
-            voiceClips
+            voiceClips,
+            null 
         );
     }
 

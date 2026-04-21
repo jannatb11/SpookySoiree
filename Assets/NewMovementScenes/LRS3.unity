@@ -2523,6 +2523,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   animator: {fileID: 1500997986}
+  animationStates:
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Idle
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0

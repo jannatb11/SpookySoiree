@@ -17,6 +17,10 @@ public class NPCInteraction : MonoBehaviour
     [Header("Animation")]
     public Animator animator;
 
+   
+    [Header("Animation Per Line")]
+    public string[] animationStates;
+
     [Header("Spawn Conditions")]
     public bool requireDaisyToAppear;
     public bool requireDoorToAppear;
@@ -77,7 +81,8 @@ public class NPCInteraction : MonoBehaviour
             0, 0, 0, 0, 0,
             null,
             this,
-            voiceClips
+            voiceClips,
+            animationStates 
         );
     }
 
@@ -86,9 +91,6 @@ public class NPCInteraction : MonoBehaviour
         if (animator != null)
             animator.SetBool("isTalking", false);
 
-        // =========================
-        // PROGRESS TRACKING
-        // =========================
         if (countsForDoorProgress)
         {
             GameState.talkedToNPCs.Add(npcID);
@@ -103,9 +105,6 @@ public class NPCInteraction : MonoBehaviour
             }
         }
 
-        // =========================
-        // UNLOCKS
-        // =========================
         if (unlockDaisyProgress)
             GameState.talkedToDaisy = true;
 
@@ -115,15 +114,9 @@ public class NPCInteraction : MonoBehaviour
         if (unlockKitchen)
             GameProgress.kitchenUnlocked = true;
 
-        // =========================
-        // TELEPORT
-        // =========================
         if (teleportAfterDialogue && sceneSwitcher != null)
             sceneSwitcher.TriggerSceneSwitch();
 
-        // =========================
-        // REMOVE NPC
-        // =========================
         if (disappearAfterDialogue)
         {
             GameState.removedNPCs.Add(npcID);

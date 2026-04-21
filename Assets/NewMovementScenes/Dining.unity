@@ -3630,6 +3630,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: af0108c38c6726749a92f1caa268bc0e, type: 3}
   - {fileID: 0}
   animator: {fileID: 440408319}
+  animationStates:
+  - Trevor_idle
+  - Trevor_Talk
+  - Trevor_idle
+  - Trevor_idle
+  - Trevor_Talk
+  - Trevor_Talk
+  - Trevor_idle
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0

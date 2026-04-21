@@ -1830,8 +1830,15 @@ MonoBehaviour:
   isNPCSpeaking: 010001000100
   voiceClips: []
   animator: {fileID: 356025944}
+  animationStates:
+  - Sarah_Talking
+  - Sarah_Idle
+  - Sarah_Talking
+  - Sarah_Idle
+  - Sarah_Talking
+  - Sarah_Idle
   requireDaisyToAppear: 0
-  requireDoorToAppear: 0
+  requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   unlockDaisyProgress: 0

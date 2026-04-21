@@ -1305,6 +1305,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: 2bacbaa7a7bfde54c8147abc2596f34d, type: 3}
   animator: {fileID: 203251436}
+  animationStates:
+  - Albe_Talking
+  - Albe_Idle
+  - Albe_Talking
+  - Albe_Idle
+  - Albe_Talking
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0

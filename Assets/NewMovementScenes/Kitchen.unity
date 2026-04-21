@@ -1616,6 +1616,14 @@ MonoBehaviour:
   isNPCSpeaking: 00010001010101
   voiceClips: []
   animator: {fileID: 144195595}
+  animationStates:
+  - Daisy_Idle
+  - Daisy_Talk
+  - Daisy_Idle
+  - Daisy_Talk
+  - Daisy_Talk
+  - Daisy_Talk
+  - Daisy_Talk
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
@@ -3045,7 +3053,7 @@ Animator:
   m_GameObject: {fileID: 1182890720}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6adf71cd719e1db43b0a705d286b3866, type: 2}
+  m_Controller: {fileID: 9100000, guid: bed163073f222c5488e67a5c33d09234, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3076,7 +3084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7cc9ed7eafe03914b8b07ad9d2fd2c93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e105a715f3f824499238158771b4f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3170,6 +3178,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: 557ef7e9105097d4a93521b02d0cfc1a, type: 3}
   animator: {fileID: 1182890722}
+  animationStates:
+  - Sad_Talking
+  - Sad_Idle
+  - Sad_Talking
+  - Crying
+  - Sad_Talking
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 1
@@ -3778,6 +3792,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: c0d490813d88ae94789253655de1b35a, type: 3}
   animator: {fileID: 174167476}
+  animationStates:
+  - Idle
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Talking
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
@@ -5180,6 +5205,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: ef025b31d21603345922749f1b263fda, type: 3}
   animator: {fileID: 196382426}
+  animationStates:
+  - Idle
+  - Talking
+  - Idle
+  - Talking
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0

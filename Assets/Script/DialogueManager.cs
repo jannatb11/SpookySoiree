@@ -24,13 +24,13 @@ public class DialogueManager : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
-    // =========================
-    // DIALOGUE DATA
-    // =========================
     private string[] lines;
     private string[] speakerNames;
     private bool[] isNPCSpeaking;
     private AudioClip[] voiceClips;
+
+    
+    private string[] animationStates;
 
     private int index;
     private bool isTyping;
@@ -42,7 +42,6 @@ public class DialogueManager : MonoBehaviour
     private int yesJumpToLine;
     private int noJumpToLine;
 
-    // TRIGGERS
     private NPCInteraction currentNPC;
     private ItemInteractionUI currentItem;
 
@@ -50,9 +49,6 @@ public class DialogueManager : MonoBehaviour
 
     public bool IsDialogueActive => isDialogueActive;
 
-    // =========================
-    // COLOR SYSTEM (RESTORED)
-    // =========================
     [System.Serializable]
     public class CharacterColor
     {
@@ -95,9 +91,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // =========================
-    // START DIALOGUE
-    // =========================
     public void StartDialogue(
         string npcName,
         string[] dialogueLines,
@@ -111,7 +104,8 @@ public class DialogueManager : MonoBehaviour
         int noEndLine,
         ItemInteractionUI itemReference,
         NPCInteraction npcReference,
-        AudioClip[] voiceClips
+        AudioClip[] voiceClips,
+        string[] animationStates 
     )
     {
         if (isDialogueActive)
@@ -121,6 +115,7 @@ public class DialogueManager : MonoBehaviour
         this.speakerNames = speakerNames;
         this.isNPCSpeaking = isNPCSpeaking;
         this.voiceClips = voiceClips;
+        this.animationStates = animationStates;
 
         this.hasChoices = hasChoices;
         this.choiceLineIndex = choiceLineIndex;
@@ -150,9 +145,6 @@ public class DialogueManager : MonoBehaviour
         canContinue = false;
         dialogueText.text = "";
 
-        // =========================
-        // SPEAKER NAME + COLOR FIX
-        // =========================
         string speaker = "Unknown";
 
         if (speakerNames != null && index < speakerNames.Length)
@@ -161,22 +153,16 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = speaker;
         dialogueText.color = GetColorForSpeaker(speaker);
 
-        // =========================
-        // ANIMATION CONTROL
-        // =========================
-        bool npcSpeaking =
-            isNPCSpeaking != null &&
-            index < isNPCSpeaking.Length &&
-            isNPCSpeaking[index];
-
+        
         if (currentNPC != null && currentNPC.animator != null)
         {
-            currentNPC.animator.SetBool("isTalking", npcSpeaking);
+            if (animationStates != null && index < animationStates.Length)
+            {
+                currentNPC.animator.Play(animationStates[index]);
+            }
         }
 
-        // =========================
         // VOICE
-        // =========================
         if (audioSource != null &&
             voiceClips != null &&
             index < voiceClips.Length &&
@@ -187,9 +173,6 @@ public class DialogueManager : MonoBehaviour
             audioSource.Play();
         }
 
-        // =========================
-        // TYPE TEXT
-        // =========================
         foreach (char c in lines[index])
         {
             dialogueText.text += c;
@@ -250,14 +233,12 @@ public class DialogueManager : MonoBehaviour
         if (audioSource != null)
             audioSource.Stop();
 
-        // NPC trigger
         if (currentNPC != null)
         {
             currentNPC.OnDialogueComplete();
             currentNPC = null;
         }
 
-        // Item trigger
         if (currentItem != null)
         {
             currentItem.OnDialogueComplete();
@@ -265,9 +246,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // =========================
-    // COLOR LOOKUP (FIX)
-    // =========================
     Color GetColorForSpeaker(string speaker)
     {
         if (characterColors != null)

@@ -6,7 +6,7 @@ public class DoorHotspotUI : MonoBehaviour
 {
     public string npcName;
     public string[] dialogueLines;
-    public string[] speakerNames;     //  NEW
+    public string[] speakerNames;
     public bool[] isNPCSpeaking;
     public AudioClip[] voiceClips;
 
@@ -37,7 +37,8 @@ public class DoorHotspotUI : MonoBehaviour
             0, 0, 0, 0, 0,
             null,
             null,
-            voiceClips
+            voiceClips,
+            null 
         );
 
         StartCoroutine(Wait());

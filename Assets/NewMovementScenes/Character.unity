@@ -2730,6 +2730,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 8300000, guid: 13c4adcb991bab44e8b71a6871fc30df, type: 3}
   animator: {fileID: 657842779}
+  animationStates:
+  - Talking
+  - Idle
+  - Idle
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Talking
+  - Idle
+  - Talking
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0

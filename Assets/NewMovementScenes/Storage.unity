@@ -1612,6 +1612,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4165dcf23df2a5148bff61828bb5a4de, type: 3}
   - {fileID: 0}
   animator: {fileID: 235277902}
+  animationStates:
+  - Kosmo_Idle
+  - Kosmo_Talking
+  - Kosmo_Idle
+  - Kosmo_Talking
+  - Kosmo_Idle
+  - Kosmo_Talking
+  - Kosmo_Idle
   requireDaisyToAppear: 0
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
