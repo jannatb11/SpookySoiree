@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NewMovementScenes/Door.unity
     guid: b4678f0ff41af9e43a9dd2d9c523bb8c
+  - enabled: 1
+    path: Assets/NewMovementScenes/Elevator.unity
+    guid: 76e1955828e6ae74baea1a9bdda46d05
   m_configObjects: {}

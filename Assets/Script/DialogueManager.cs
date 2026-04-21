@@ -15,6 +15,9 @@ public class DialogueManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
+    [Header("Room Navigation UI (ARROWS)")]
+    public GameObject roomNavigationUI;
+
     [Header("Names")]
     public string playerName = "Player";
 
@@ -28,8 +31,6 @@ public class DialogueManager : MonoBehaviour
     private string[] speakerNames;
     private bool[] isNPCSpeaking;
     private AudioClip[] voiceClips;
-
-    
     private string[] animationStates;
 
     private int index;
@@ -105,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         ItemInteractionUI itemReference,
         NPCInteraction npcReference,
         AudioClip[] voiceClips,
-        string[] animationStates 
+        string[] animationStates
     )
     {
         if (isDialogueActive)
@@ -131,6 +132,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         choicePanel.SetActive(false);
 
+        DisableRoomUI();  
+
         StartTyping();
     }
 
@@ -153,7 +156,6 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = speaker;
         dialogueText.color = GetColorForSpeaker(speaker);
 
-        
         if (currentNPC != null && currentNPC.animator != null)
         {
             if (animationStates != null && index < animationStates.Length)
@@ -162,7 +164,6 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // VOICE
         if (audioSource != null &&
             voiceClips != null &&
             index < voiceClips.Length &&
@@ -244,6 +245,8 @@ public class DialogueManager : MonoBehaviour
             currentItem.OnDialogueComplete();
             currentItem = null;
         }
+
+        EnableRoomUI();   
     }
 
     Color GetColorForSpeaker(string speaker)
@@ -258,5 +261,21 @@ public class DialogueManager : MonoBehaviour
         }
 
         return defaultColor;
+    }
+
+    // =========================
+    // ROOM UI CONTROL
+    // =========================
+
+    void DisableRoomUI()
+    {
+        if (roomNavigationUI != null)
+            roomNavigationUI.SetActive(false);
+    }
+
+    void EnableRoomUI()
+    {
+        if (roomNavigationUI != null)
+            roomNavigationUI.SetActive(true);
     }
 }

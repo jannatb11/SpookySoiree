@@ -7,19 +7,7 @@ public class TravelScript : MonoBehaviour
     {
         // Locks (keep your existing ones)
 
-        if (!GameProgress.introFinished
-            && sceneName == "LRS3"
-            && SceneManager.GetActiveScene().name == "Hallway")
-        {
-            Debug.Log("Finish talking to Toot first.");
-            return;
-        }
-
-        if (sceneName == "Kitchen" && !GameProgress.kitchenUnlocked)
-        {
-            Debug.Log("Kitchen locked.");
-            return;
-        }
+        
 
         if (sceneName == "ConnectFourPuzzle" &&
             !(GlobalUnlocksScript.completedPianoPuzzle &&

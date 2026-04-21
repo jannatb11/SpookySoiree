@@ -1628,6 +1628,7 @@ MonoBehaviour:
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
+  triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
@@ -3140,7 +3141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132.98, y: -25.2}
+  m_AnchoredPosition: {x: -132.97, y: -25.2}
   m_SizeDelta: {x: 172.17, y: 159.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355581347
@@ -3188,6 +3189,7 @@ MonoBehaviour:
   requireDoorToAppear: 0
   requireAllDoorNPCs: 1
   countsForDoorProgress: 0
+  triggerSelfDialogueID: Gurt_Kitchen_2
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
@@ -3579,6 +3581,7 @@ MonoBehaviour:
   choicePanel: {fileID: 797346880}
   yesButton: {fileID: 1380320809}
   noButton: {fileID: 1512748555}
+  roomNavigationUI: {fileID: 981263483}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 1388585506}
@@ -3807,6 +3810,7 @@ MonoBehaviour:
   requireDoorToAppear: 0
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
+  triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
@@ -5214,6 +5218,7 @@ MonoBehaviour:
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 0
+  triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0

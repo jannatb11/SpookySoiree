@@ -1135,6 +1135,7 @@ MonoBehaviour:
   choicePanel: {fileID: 1837001230}
   yesButton: {fileID: 284937778}
   noButton: {fileID: 1007100668}
+  roomNavigationUI: {fileID: 530225633}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 552118555}

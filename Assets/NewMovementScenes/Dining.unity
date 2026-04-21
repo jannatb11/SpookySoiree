@@ -439,6 +439,7 @@ MonoBehaviour:
   choicePanel: {fileID: 371998041}
   yesButton: {fileID: 605188143}
   noButton: {fileID: 1710821045}
+  roomNavigationUI: {fileID: 422406735}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 248098439}
@@ -3642,6 +3643,7 @@ MonoBehaviour:
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
+  triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0

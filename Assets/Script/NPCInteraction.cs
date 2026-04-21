@@ -29,6 +29,9 @@ public class NPCInteraction : MonoBehaviour
     [Header("Progress Tracking")]
     public bool countsForDoorProgress;
 
+    [Header("Self Dialogue Trigger")]
+    public string triggerSelfDialogueID;
+
     [Header("Unlock Flags")]
     public bool unlockDaisyProgress;
     public bool unlockIntro;
@@ -90,6 +93,12 @@ public class NPCInteraction : MonoBehaviour
     {
         if (animator != null)
             animator.SetBool("isTalking", false);
+
+        
+        if (!string.IsNullOrEmpty(triggerSelfDialogueID))
+        {
+            GameState.pendingSelfDialogueID = triggerSelfDialogueID;
+        }
 
         if (countsForDoorProgress)
         {
