@@ -1622,7 +1622,7 @@ MonoBehaviour:
   - Kosmo_Talking
   - Kosmo_Idle
   requireDaisyToAppear: 0
-  requireDoorToAppear: 0
+  requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   triggerSelfDialogueID: 
