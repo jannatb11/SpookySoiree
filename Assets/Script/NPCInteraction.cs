@@ -37,6 +37,9 @@ public class NPCInteraction : MonoBehaviour
     public bool unlockIntro;
     public bool unlockKitchen;
 
+    [Header("Kitchen Progress")]
+    public bool countsForKitchenExitProgress;
+
     [Header("Scene / State")]
     public bool teleportAfterDialogue;
     public SceneSwitcher sceneSwitcher;
@@ -94,7 +97,11 @@ public class NPCInteraction : MonoBehaviour
         if (animator != null)
             animator.SetBool("isTalking", false);
 
-        
+        if (countsForKitchenExitProgress)
+        {
+            GameState.kitchenNPCsTalkedTo.Add(npcID);
+        }
+
         if (!string.IsNullOrEmpty(triggerSelfDialogueID))
         {
             GameState.pendingSelfDialogueID = triggerSelfDialogueID;

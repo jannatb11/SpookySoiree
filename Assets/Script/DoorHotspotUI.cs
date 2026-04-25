@@ -21,6 +21,23 @@ public class DoorHotspotUI : MonoBehaviour
         button.onClick.AddListener(OnClick);
     }
 
+    void Start()
+    {
+        // Persist door state across scenes
+        if (GameState.openedDoor)
+        {
+            hasTriggered = true;
+
+            if (npcToReveal != null)
+                npcToReveal.SetActive(true);
+
+            button.interactable = false;
+
+            if (button.image != null)
+                button.image.enabled = false;
+        }
+    }
+
     void OnClick()
     {
         if (DialogueManager.Instance.IsDialogueActive || hasTriggered)
@@ -38,7 +55,7 @@ public class DoorHotspotUI : MonoBehaviour
             null,
             null,
             voiceClips,
-            null 
+            null
         );
 
         StartCoroutine(Wait());
@@ -55,6 +72,7 @@ public class DoorHotspotUI : MonoBehaviour
             npcToReveal.SetActive(true);
 
         button.interactable = false;
+
         if (button.image != null)
             button.image.enabled = false;
     }

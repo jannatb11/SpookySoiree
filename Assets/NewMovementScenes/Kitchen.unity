@@ -970,7 +970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23.696, y: -21.731}
+  m_AnchoredPosition: {x: -120, y: -118}
   m_SizeDelta: {x: 170.217, y: 159.92}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!114 &174167474
@@ -1644,7 +1644,8 @@ MonoBehaviour:
   triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
-  unlockKitchen: 0
+  unlockKitchen: 1
+  countsForKitchenExitProgress: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
@@ -2883,6 +2884,7 @@ GameObject:
   - component: {fileID: 1156230941}
   - component: {fileID: 1156230940}
   - component: {fileID: 1156230943}
+  - component: {fileID: 1156230944}
   m_Layer: 5
   m_Name: SceneButton
   m_TagString: Untagged
@@ -2954,16 +2956,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1583896593}
-        m_TargetAssemblyTypeName: TravelScript, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 5
+      - m_Target: {fileID: 1156230944}
+        m_TargetAssemblyTypeName: KitchenDoor, Assembly-CSharp
+        m_MethodName: TryLeaveKitchen
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LRS1
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1156230941
@@ -3019,6 +3021,20 @@ MonoBehaviour:
   SceneButton: {fileID: 0}
   ContinueArrow: {fileID: 0}
   popupUI: {fileID: 0}
+--- !u!114 &1156230944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156230938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2091943364a972459a76b7a44524403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: LRS1
+  requiredNPCs: 2
 --- !u!1 &1182890720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3222,7 @@ MonoBehaviour:
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
+  countsForKitchenExitProgress: 0
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
@@ -3755,8 +3772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132.97351, y: -25.2}
-  m_SizeDelta: {x: 172.1665, y: 159.92}
+  m_AnchoredPosition: {x: 12, y: 70.437}
+  m_SizeDelta: {x: 472.3, y: 339.3251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411739888
 MonoBehaviour:
@@ -3826,7 +3843,8 @@ MonoBehaviour:
   triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
-  unlockKitchen: 0
+  unlockKitchen: 1
+  countsForKitchenExitProgress: 1
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
@@ -5235,6 +5253,7 @@ MonoBehaviour:
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
+  countsForKitchenExitProgress: 0
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1

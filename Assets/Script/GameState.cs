@@ -11,6 +11,7 @@ public static class GameState
     public static int requiredDoorNPCCount = 3;
     public static bool allDoorNPCsTalkedTo = false;
 
-   
+    public static HashSet<string> kitchenNPCsTalkedTo = new HashSet<string>();
+
     public static string pendingSelfDialogueID = "";
 }

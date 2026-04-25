@@ -3,17 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class KitchenDoor : MonoBehaviour
 {
-    [SerializeField] private string kitchenSceneName = "Kitchen";
+    [Header("Scene To Load")]
+    [SerializeField] private string nextSceneName = "Hallway";
 
-    public void TryEnterKitchen()
+    [Header("Requirement")]
+    [SerializeField] private int requiredNPCs = 2;
+
+    // THIS is called by your UI Button
+    public void TryLeaveKitchen()
     {
-        if (!GameProgress.kitchenUnlocked)
+        if (GameState.kitchenNPCsTalkedTo.Count < requiredNPCs)
         {
-            Debug.Log("Kitchen is locked. Talk to Gurt first.");
+            Debug.Log(
+                "Locked: You need to talk to " +
+                (requiredNPCs - GameState.kitchenNPCsTalkedTo.Count) +
+                " more NPC(s)."
+            );
             return;
         }
 
-        Debug.Log("Entering Kitchen...");
-        SceneManager.LoadScene(kitchenSceneName);
+        Debug.Log("Kitchen unlocked. Leaving...");
+        SceneManager.LoadScene(nextSceneName);
     }
 }
