@@ -2124,9 +2124,16 @@ MonoBehaviour:
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
+  countsForKitchenExitProgress: 0
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &1161980030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class NPCInteraction : MonoBehaviour
     [Header("Animation")]
     public Animator animator;
 
-   
     [Header("Animation Per Line")]
     public string[] animationStates;
 
@@ -46,6 +46,27 @@ public class NPCInteraction : MonoBehaviour
 
     public bool disappearAfterDialogue;
 
+    // =========================
+    // SPAWN SYSTEM (ELEVATOR ETC.)
+    // =========================
+    [Header("Spawn Trigger System")]
+    public bool disableUntilTriggered;
+    public string requiredTriggerID;
+
+    // =========================
+    //  VIDEO CUTSCENE (AFTER DIALOGUE)
+    // =========================
+    [Header("Video Cutscene")]
+    public bool playVideoAfterDialogue;
+    public VideoPlayer videoPlayer;
+
+    [Header("Cutscene End Behavior")]
+    public bool disappearAfterCutscene;
+
+    private bool videoPlaying;
+
+    public GameObject cutscenePanel;
+
     void Awake()
     {
         if (GameState.removedNPCs.Contains(npcID))
@@ -71,11 +92,23 @@ public class NPCInteraction : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+
+        // =========================
+        // SPAWN LOCK (ELEVATOR SYSTEM)
+        // =========================
+        if (disableUntilTriggered && !string.IsNullOrEmpty(requiredTriggerID))
+        {
+            if (!GameState.triggeredIDs.Contains(requiredTriggerID))
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
     }
 
     public void Interact()
     {
-        if (DialogueManager.Instance.IsDialogueActive)
+        if (DialogueManager.Instance.IsDialogueActive || videoPlaying)
             return;
 
         DialogueManager.Instance.StartDialogue(
@@ -88,7 +121,7 @@ public class NPCInteraction : MonoBehaviour
             null,
             this,
             voiceClips,
-            animationStates 
+            animationStates
         );
     }
 
@@ -96,6 +129,14 @@ public class NPCInteraction : MonoBehaviour
     {
         if (animator != null)
             animator.SetBool("isTalking", false);
+
+        // =========================
+        // GLOBAL TRIGGER SYSTEM (ELEVATOR ETC.)
+        // =========================
+        if (!string.IsNullOrEmpty(npcID))
+        {
+            GameState.triggeredIDs.Add(npcID);
+        }
 
         if (countsForKitchenExitProgress)
         {
@@ -133,10 +174,55 @@ public class NPCInteraction : MonoBehaviour
         if (teleportAfterDialogue && sceneSwitcher != null)
             sceneSwitcher.TriggerSceneSwitch();
 
+        // =========================
+        //  PLAY VIDEO AFTER DIALOGUE (YOUR REQUEST)
+        // =========================
+        if (playVideoAfterDialogue && videoPlayer != null)
+        {
+            videoPlaying = true;
+
+            if (cutscenePanel != null)
+                cutscenePanel.SetActive(true);
+
+            videoPlayer.Play();
+
+            if (DialogueManager.Instance != null)
+                DialogueManager.Instance.enabled = false;
+
+            return;
+        }
+
         if (disappearAfterDialogue)
         {
             GameState.removedNPCs.Add(npcID);
             Destroy(gameObject);
+        }
+    }
+
+    // =========================
+    // CALLED WHEN VIDEO ENDS
+    // =========================
+    public void OnVideoFinished()
+    {
+        videoPlaying = false;
+
+        if (videoPlayer != null)
+            videoPlayer.Stop();
+
+        if (cutscenePanel != null)
+            cutscenePanel.SetActive(false);
+
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.enabled = true;
+
+        // =========================
+        //  REMOVE GURT AFTER CUTSCENE
+        // =========================
+        if (disappearAfterCutscene)
+        {
+            GameState.removedNPCs.Add(npcID);
+            Destroy(gameObject);
+            return;
         }
     }
 }

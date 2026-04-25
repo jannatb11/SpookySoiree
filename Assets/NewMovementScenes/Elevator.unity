@@ -1988,7 +1988,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1382602420}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1382602422}
+        m_TargetAssemblyTypeName: NPCInteraction, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382602420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,7 +2051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcID: Elevator_1
+  npcID: Elevator
   npcName: Elevator
   dialogueLines:
   - ' Huh, there''s a sign on the elevator shaft? '
@@ -2067,9 +2079,16 @@ MonoBehaviour:
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
+  countsForKitchenExitProgress: 0
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!1 &1447716282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,7 +3019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: -2.8424835, y: 0}
+  m_AnchoredPosition: {x: -2.8424683, y: 0}
   m_SizeDelta: {x: 375.35, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112173754
