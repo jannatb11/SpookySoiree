@@ -18,7 +18,7 @@ public static class GameState
     // NPC PROGRESSION TRACKING
     // =========================
     public static HashSet<string> talkedToNPCs = new HashSet<string>();
-    public static int requiredDoorNPCCount = 3;
+    
 
     public static HashSet<string> kitchenNPCsTalkedTo = new HashSet<string>();
 
@@ -32,4 +32,8 @@ public static class GameState
     // SELF DIALOGUE SYSTEM
     // =========================
     public static string pendingSelfDialogueID = "";
+
+
+
+    public static bool hasFrontDoorKey = false;
 }

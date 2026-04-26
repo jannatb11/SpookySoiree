@@ -11,6 +11,13 @@ public class DoorProgressManager : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    void Start()
+    {
+        // Make sure the NPC starts OFF
+        if (npcToReveal != null)
+            npcToReveal.SetActive(false);
+    }
+
     void Update()
     {
         if (hasTriggered) return;
@@ -18,10 +25,13 @@ public class DoorProgressManager : MonoBehaviour
         foreach (string id in requiredNPCIDs)
         {
             if (!GameState.talkedToNPCs.Contains(id))
+            {
+                Debug.Log(" Missing NPC: " + id);
                 return;
+            }
         }
 
-        //  All NPCs talked to
+        Debug.Log(" ALL NPCs FOUND");
         RevealFinalNPC();
     }
 

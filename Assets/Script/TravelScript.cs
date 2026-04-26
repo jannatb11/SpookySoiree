@@ -5,10 +5,14 @@ public class TravelScript : MonoBehaviour
 {
     public void Load(string sceneName)
     {
-        // Locks (keep your existing ones)
+        //  FRONT DOOR LOCK
+        if (sceneName == "Hallway"  && !GameState.hasFrontDoorKey)
+        {
+            Debug.Log("The door is locked. Find the key.");
+            return;
+        }
 
-        
-
+        // EXISTING PUZZLE LOCK
         if (sceneName == "ConnectFourPuzzle" &&
             !(GlobalUnlocksScript.completedPianoPuzzle &&
               GlobalUnlocksScript.completedLockPuzzle))
@@ -17,7 +21,7 @@ public class TravelScript : MonoBehaviour
             return;
         }
 
-        //  SET DISTANCE BASED ON SCENE
+        // MUSIC SYSTEM
         if (MusicManager.Instance != null)
         {
             int distance = GetDistanceForScene(sceneName);
@@ -31,13 +35,13 @@ public class TravelScript : MonoBehaviour
     {
         switch (sceneName)
         {
-            case "Dining": return 3;     // full volume
-            case "LRS1": return 2;    // medium
+            case "Dining": return 3;
+            case "LRS1": return 2;
             case "Storage": return 2;
             case "LRS3": return 1;
             case "Kitchen": return 1;
-            case "LRS2": return 1;       // quiet
-            default: return 0;              // far -> ambience
+            case "LRS2": return 1;
+            default: return 0;
         }
     }
 }

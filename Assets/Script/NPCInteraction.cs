@@ -152,13 +152,10 @@ public class NPCInteraction : MonoBehaviour
         {
             GameState.talkedToNPCs.Add(npcID);
 
-            if (GameState.talkedToNPCs.Count >= GameState.requiredDoorNPCCount)
+            if (countsForDoorProgress)
             {
-                GameState.allDoorNPCsTalkedTo = true;
-
-                GameObject finalNPC = GameObject.Find("FinalNPC");
-                if (finalNPC != null)
-                    finalNPC.SetActive(true);
+                if (!GameState.talkedToNPCs.Contains(npcID))
+                    GameState.talkedToNPCs.Add(npcID);
             }
         }
 

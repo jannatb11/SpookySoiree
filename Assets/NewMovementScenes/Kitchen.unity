@@ -1649,6 +1649,12 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &523787410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +2637,7 @@ MonoBehaviour:
   - Albe_1
   - Lil_Buffy_1
   - Kosmo_1
+  - Gurt_Party
   npcToReveal: {fileID: 1355581345}
 --- !u!4 &988676677
 Transform:
@@ -3226,6 +3233,12 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &1355581348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3848,6 +3861,12 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &1411739889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5248,7 +5267,7 @@ MonoBehaviour:
   requireDaisyToAppear: 0
   requireDoorToAppear: 1
   requireAllDoorNPCs: 0
-  countsForDoorProgress: 0
+  countsForDoorProgress: 1
   triggerSelfDialogueID: 
   unlockDaisyProgress: 0
   unlockIntro: 0
@@ -5257,6 +5276,12 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &2122338767
 MonoBehaviour:
   m_ObjectHideFlags: 0
