@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenuScript : MonoBehaviour
-{
+{ //This script pauses and unpauses the game
     public GameObject pauseMenu;
+    public GameObject pauseScreen;
     public bool isPaused;
-    // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P)){
             if(isPaused){ //Unpause the game if it is paused.
                 isPaused = false;
                 Debug.Log("unpause");
+                Destroy(pauseScreen);
             } else{ // Pause the game if it is unpaused.
                 isPaused = true;
                 Debug.Log("pause");
+                pauseScreen = Instantiate(pauseMenu);
             }
         }
     }
