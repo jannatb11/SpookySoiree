@@ -24,9 +24,7 @@ public class InventoryManager : MonoBehaviour
     public AudioClip[] daisyVoiceClips;
     public string[] daisySpeakerNames;
 
-    // ========================
-    //  NEW CONVERSATION SYSTEM
-    // ========================
+    
 
     [System.Serializable]
     public class DaisyConversation
@@ -52,9 +50,6 @@ public class InventoryManager : MonoBehaviour
     private bool hasTalkedToDaisy = false;
     private bool buttonsSetup = false;
 
-    // ========================
-    // UNITY SETUP
-    // ========================
 
     void Awake()
     {
@@ -131,9 +126,7 @@ public class InventoryManager : MonoBehaviour
             mouseinv.SetActive(hasMouse);
     }
 
-    // ========================
-    // COLLECT ITEMS
-    // ========================
+   
 
     public void CollectDaisy()
     {
@@ -153,9 +146,6 @@ public class InventoryManager : MonoBehaviour
         RefreshUI();
     }
 
-    // ========================
-    //  DAISY INTERACTION
-    // ========================
 
     public void TalkToDaisy()
     {
@@ -164,9 +154,7 @@ public class InventoryManager : MonoBehaviour
         if (DialogueManager.Instance == null) return;
         if (DialogueManager.Instance.IsDialogueActive) return;
 
-        // ========================
-        // FIRST TIME
-        // ========================
+        
         if (!hasTalkedToDaisy)
         {
             hasTalkedToDaisy = true;
@@ -186,9 +174,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        // ========================
-        // PICK STATE
-        // ========================
+      
 
         DaisyDialogueSet currentSet;
 
@@ -202,9 +188,7 @@ public class InventoryManager : MonoBehaviour
         if (currentSet == null || currentSet.conversations.Length == 0)
             return;
 
-        // ========================
-        // RANDOM CONVERSATION
-        // ========================
+       
 
         int rand = Random.Range(0, currentSet.conversations.Length);
         DaisyConversation convo = currentSet.conversations[rand];
@@ -212,9 +196,6 @@ public class InventoryManager : MonoBehaviour
         if (convo.lines == null || convo.lines.Length == 0)
             return;
 
-        // ========================
-        // START CONVERSATION
-        // ========================
 
         DialogueManager.Instance.StartDialogue(
             "Daisy",
