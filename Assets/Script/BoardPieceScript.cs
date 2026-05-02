@@ -21,8 +21,8 @@ public class BoardPieceScript : MonoBehaviour
         
     }
     public void Rotate(){
-        if(GameObject.Find("Canvas").GetComponent<Connect4GameScript>().instructions < 1){
-            GameObject.Find("Canvas").GetComponent<Connect4GameScript>().Instructions();
+        if(GameObject.Find("GameCanvas").GetComponent<Connect4GameScript>().instructions < 1){
+            GameObject.Find("GameCanvas").GetComponent<Connect4GameScript>().Instructions();
         }
         if(!rotating){
             if(rotation == 360){

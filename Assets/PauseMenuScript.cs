@@ -16,10 +16,10 @@ public class PauseMenuScript : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P)){
-            if(isPaused){
+            if(isPaused){ //Unpause the game if it is paused.
                 isPaused = false;
                 Debug.Log("unpause");
-            } else{
+            } else{ // Pause the game if it is unpaused.
                 isPaused = true;
                 Debug.Log("pause");
             }

@@ -13,7 +13,7 @@ public class SlotScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gms = GameObject.Find("Canvas").GetComponent<Connect4GameScript>();
+        gms = GameObject.Find("GameCanvas").GetComponent<Connect4GameScript>();
         currentColor = "";
         img = GetComponent<Image>();
     }
