@@ -352,6 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd8b1bef8e13c341be49bcd92b777aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  isPaused: 0
 --- !u!1 &40251326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,9 +1611,6 @@ MonoBehaviour:
   dialogueLines:
   - "I missed you, Daisy. Moving here has been a hassle, especially since I couldn't
     talk to you!\r"
-  - "Oh dear me, it's not your fault. In fact, I should apologize for not contacting
-    you. You see, I was kinda stuck. Some might even say\u2026 \u201CPlanted\u201D
-    in place! \r"
   - "Heh\u2026\u2026\u2026\r\r"
   - Well, now that we're reunited, HOW ABOUT YOU SHOW ME AROUND YOUR NEW PLACE?
   - CLICK ON THE ARROW AT THE BOTTOM OF THE SCREEN MOVE TO ANOTHER ROOM!
@@ -1620,14 +1619,18 @@ MonoBehaviour:
   - YOU MAY NOW ADD ME TO YOUR INVENTORY BY PRESSING ON ME <3
   speakerNames:
   - Player
-  - Daisy
   - Player
   - Daisy
   - Daisy
   - Daisy
   - Daisy
   isNPCSpeaking: 00010001010101
-  voiceClips: []
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   animator: {fileID: 144195595}
   animationStates:
   - Daisy_Idle
