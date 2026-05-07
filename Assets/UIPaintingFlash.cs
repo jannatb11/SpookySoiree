@@ -8,16 +8,29 @@ public class UIPaintingFlash : MonoBehaviour
     public class FlashStep
     {
         public Image painting;
-        public Color color;
+        public Sprite flashSprite;
         public float duration;
     }
 
     public FlashStep[] sequence;
     public float resetDelay = 0.1f;
-    public float loopDelay = 1.5f; //  delay after full sequence
+    public float loopDelay = 1.5f;
+
+    private Sprite[] originalSprites;
 
     void Start()
     {
+        // store original sprites at start
+        originalSprites = new Sprite[sequence.Length];
+
+        for (int i = 0; i < sequence.Length; i++)
+        {
+            if (sequence[i].painting != null)
+            {
+                originalSprites[i] = sequence[i].painting.sprite;
+            }
+        }
+
         StartCoroutine(PlaySequence());
     }
 
@@ -25,20 +38,23 @@ public class UIPaintingFlash : MonoBehaviour
     {
         while (true)
         {
-            foreach (FlashStep step in sequence)
+            for (int i = 0; i < sequence.Length; i++)
             {
-                // flash color
-                step.painting.color = step.color;
+                FlashStep step = sequence[i];
+
+                if (step.painting == null) continue;
+
+                // flash custom image
+                step.painting.sprite = step.flashSprite;
 
                 yield return new WaitForSeconds(step.duration);
 
-                // reset to white
-                step.painting.color = Color.white;
+                // restore original image
+                step.painting.sprite = originalSprites[i];
 
                 yield return new WaitForSeconds(resetDelay);
             }
 
-            //  wait before restarting sequence
             yield return new WaitForSeconds(loopDelay);
         }
     }
