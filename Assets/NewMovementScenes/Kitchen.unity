@@ -1613,10 +1613,12 @@ MonoBehaviour:
     talk to you!\r"
   - "Heh\u2026\u2026\u2026\r\r"
   - Well, now that we're reunited, HOW ABOUT YOU SHOW ME AROUND YOUR NEW PLACE?
-  - CLICK ON THE ARROW AT THE BOTTOM OF THE SCREEN MOVE TO ANOTHER ROOM!
-  - "GOOD JOB! NOW IF YOU WANT TO ADD SOMETHING TO YOUR INVENTORY, PRESS ON IT OR
-    COMPLETE A PUZZLE. \r\n"
-  - YOU MAY NOW ADD ME TO YOUR INVENTORY BY PRESSING ON ME <3
+  - CLICK ON THE ARROW AT THE BOTTOM OF THE SCREEN TO GO BACK TO THE LIVING ROOM
+  - GOOD JOB! NOW IF YOU WANT TO INTERACT WITH AN OBJECT CLICK ON IT JUST LIKE BEFORE
+  - REMEMBER WHEN IN DOUBT CLICK AWAY!
+  - THATS THE WAY! YOU'RE REALLY GETTING THE HANG OF THIS
+  - 'YOU WILL SEE A SET OF BOXES. THAT IS YOUR INVENTORY '
+  - 'PRESS ON ME TO ADD ME TO YOUR INVENTORY <3 '
   speakerNames:
   - Player
   - Player
@@ -1624,13 +1626,20 @@ MonoBehaviour:
   - Daisy
   - Daisy
   - Daisy
-  isNPCSpeaking: 00010001010101
+  - Daisy
+  - Daisy
+  - Daisy
+  isNPCSpeaking: 000000010101010101
   voiceClips:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a9da206978948476088e2ad79de6a180, type: 3}
+  - {fileID: 8300000, guid: f13b90dc61c4e4ca0b063f1de48c2594, type: 3}
+  - {fileID: 8300000, guid: bb669956b654d4558ab62e853fc5ae30, type: 3}
+  - {fileID: 8300000, guid: e127f7b6305794d85aa5448fd0202ab0, type: 3}
+  - {fileID: 8300000, guid: 190141543159d4244bdac9e4851b102a, type: 3}
+  - {fileID: 8300000, guid: 0db321e6813be4ba498ee41d36317a3c, type: 3}
+  - {fileID: 8300000, guid: 3fa5e6dc2ebfd4e119b5e8aeb33acae1, type: 3}
   animator: {fileID: 144195595}
   animationStates:
   - Daisy_Idle
@@ -1649,7 +1658,7 @@ MonoBehaviour:
   unlockIntro: 0
   unlockKitchen: 1
   countsForKitchenExitProgress: 1
-  teleportAfterDialogue: 0
+  teleportAfterDialogue: 1
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
   disableUntilTriggered: 0
