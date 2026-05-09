@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     [Header("Inventory UI")]
+    private GameObject inventoryBar;
+
     private GameObject daisyinv;
     private GameObject daisyinv2;
     private GameObject pianoinv;
@@ -18,38 +20,7 @@ public class InventoryManager : MonoBehaviour
     private bool hasPiano;
     private bool hasMouse;
 
-    [Header("Daisy FIRST Dialogue")]
-    public string[] daisyDialogueLines;
-    public bool[] daisyIsNPCSpeaking;
-    public AudioClip[] daisyVoiceClips;
-    public string[] daisySpeakerNames;
-
-    
-
-    [System.Serializable]
-    public class DaisyConversation
-    {
-        public string[] lines;
-        public bool[] isNPCSpeaking;
-        public AudioClip[] voiceClips;
-        public string[] speakerNames;
-    }
-
-    [System.Serializable]
-    public class DaisyDialogueSet
-    {
-        public string stateName;
-        public DaisyConversation[] conversations;
-    }
-
-    [Header("Daisy Dialogue Sets")]
-    public DaisyDialogueSet beforeDoor;
-    public DaisyDialogueSet afterDoor;
-    public DaisyDialogueSet afterAllNPCs;
-
-    private bool hasTalkedToDaisy = false;
-    private bool buttonsSetup = false;
-
+    private bool inventoryOpened = false;
 
     void Awake()
     {
@@ -63,6 +34,15 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Start()
+    {
+        // DISABLE INVENTORY ON GAME START
+        inventoryBar = GameObject.Find("inventorymanager");
+
+        if (inventoryBar)
+            inventoryBar.SetActive(false);
     }
 
     void OnDestroy()
@@ -80,17 +60,19 @@ public class InventoryManager : MonoBehaviour
         yield return null;
 
         FindUI();
-        RefreshUI();
+        SetupButtons();
 
-        if (!buttonsSetup)
-        {
-            SetupButtons();
-            buttonsSetup = true;
-        }
+        // KEEP INVENTORY DISABLED IN EVERY SCENE
+        if (!inventoryOpened && inventoryBar)
+            inventoryBar.SetActive(false);
+
+        RefreshUI();
     }
 
     void FindUI()
     {
+        inventoryBar = GameObject.Find("inventorymanager");
+
         daisyinv = GameObject.Find("daisyinv");
         daisyinv2 = GameObject.Find("daisyinv2");
         pianoinv = GameObject.Find("pianoinv");
@@ -99,25 +81,41 @@ public class InventoryManager : MonoBehaviour
 
     void SetupButtons()
     {
+        // OPEN INVENTORY BUTTON
+        if (daisyinv2)
+        {
+            Button openBtn = daisyinv2.GetComponent<Button>();
+
+            if (openBtn != null)
+            {
+                openBtn.onClick.RemoveAllListeners();
+                openBtn.onClick.AddListener(OpenInventory);
+            }
+        }
+
+        // DAISY BUTTON
         if (daisyinv)
         {
-            Button btn = daisyinv.GetComponent<Button>();
+            Button daisyBtn = daisyinv.GetComponent<Button>();
 
-            if (btn != null)
+            if (daisyBtn != null)
             {
-                btn.onClick.RemoveListener(TalkToDaisy);
-                btn.onClick.AddListener(TalkToDaisy);
+                daisyBtn.onClick.RemoveAllListeners();
+                daisyBtn.onClick.AddListener(TalkToDaisy);
             }
         }
     }
 
     void RefreshUI()
     {
+        if (inventoryBar)
+            inventoryBar.SetActive(inventoryOpened);
+
+        if (!inventoryOpened)
+            return;
+
         if (daisyinv)
             daisyinv.SetActive(hasDaisy);
-
-        if (daisyinv2)
-            daisyinv2.SetActive(!hasDaisy);
 
         if (pianoinv)
             pianoinv.SetActive(hasPiano);
@@ -126,7 +124,11 @@ public class InventoryManager : MonoBehaviour
             mouseinv.SetActive(hasMouse);
     }
 
-   
+    void OpenInventory()
+    {
+        inventoryOpened = true;
+        RefreshUI();
+    }
 
     public void CollectDaisy()
     {
@@ -146,68 +148,8 @@ public class InventoryManager : MonoBehaviour
         RefreshUI();
     }
 
-
     public void TalkToDaisy()
     {
-        if (!hasDaisy) return;
-
-        if (DialogueManager.Instance == null) return;
-        if (DialogueManager.Instance.IsDialogueActive) return;
-
-        
-        if (!hasTalkedToDaisy)
-        {
-            hasTalkedToDaisy = true;
-
-            DialogueManager.Instance.StartDialogue(
-                "Daisy",
-                daisyDialogueLines,
-                daisySpeakerNames,
-                daisyIsNPCSpeaking,
-                false,
-                0, 0, 0, 0, 0,
-                null,
-                null,
-                daisyVoiceClips,
-                null
-            );
-            return;
-        }
-
-      
-
-        DaisyDialogueSet currentSet;
-
-        if (GameState.allDoorNPCsTalkedTo)
-            currentSet = afterAllNPCs;
-        else if (GameState.openedDoor)
-            currentSet = afterDoor;
-        else
-            currentSet = beforeDoor;
-
-        if (currentSet == null || currentSet.conversations.Length == 0)
-            return;
-
-       
-
-        int rand = Random.Range(0, currentSet.conversations.Length);
-        DaisyConversation convo = currentSet.conversations[rand];
-
-        if (convo.lines == null || convo.lines.Length == 0)
-            return;
-
-
-        DialogueManager.Instance.StartDialogue(
-            "Daisy",
-            convo.lines,
-            convo.speakerNames,
-            convo.isNPCSpeaking,
-            false,
-            0, 0, 0, 0, 0,
-            null,
-            null,
-            convo.voiceClips,
-            null 
-        );
+        Debug.Log("Talk to Daisy");
     }
 }

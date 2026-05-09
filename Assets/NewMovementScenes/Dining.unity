@@ -2131,14 +2131,14 @@ RectTransform:
   m_GameObject: {fileID: 1051160811}
   m_LocalRotation: {x: -0, y: -0, z: -0.70517355, w: 0.70903474}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.83901614, y: 0.83901614, z: 0.83901626}
+  m_LocalScale: {x: 0.8390161, y: 0.8390161, z: 0.8390162}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488028277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.687}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149.40698, y: -96.04627}
+  m_AnchoredPosition: {x: 149.40701, y: -96.04627}
   m_SizeDelta: {x: 38.9997, y: 42.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051160813
@@ -2668,8 +2668,8 @@ RectTransform:
   - {fileID: 1449061922}
   - {fileID: 1409019038}
   - {fileID: 1544821779}
-  - {fileID: 638761983}
   - {fileID: 1051160812}
+  - {fileID: 638761983}
   - {fileID: 2137053590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3508,7 +3508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: -2.8424835, y: 0}
+  m_AnchoredPosition: {x: -2.8424683, y: 0}
   m_SizeDelta: {x: 375.35, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986366361
@@ -3647,9 +3647,16 @@ MonoBehaviour:
   unlockDaisyProgress: 0
   unlockIntro: 0
   unlockKitchen: 0
+  countsForKitchenExitProgress: 0
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
 --- !u!114 &2116297886
 MonoBehaviour:
   m_ObjectHideFlags: 0
