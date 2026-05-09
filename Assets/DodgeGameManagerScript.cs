@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DodgeGameManagerScript : MonoBehaviour
 {
@@ -12,14 +13,16 @@ public class DodgeGameManagerScript : MonoBehaviour
     public float difficulty;
     public float timer;
     public GameObject victoryPanel;
+    public GameObject defeatPanel;
     // Start is called before the first frame update
     void Start()
     {
-        timer = 60f;
+        timer = 40f;
         obstacleSpawnTime = 2f;
         obstacleSpawnTimer = 0f;
         difficulty = 1f;
         victoryPanel.SetActive(false);
+        defeatPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,8 +33,8 @@ public class DodgeGameManagerScript : MonoBehaviour
             obstacleSpawnTimer -= obstacleSpawnTime;
             SpawnObstacle();
         }
-        obstacleSpawnTime = 2f - ((difficulty - 1) * 0.5f);
-        obstacleSpawnTime = Mathf.Clamp(obstacleSpawnTime, 0.5f, 2f);
+        obstacleSpawnTime = 2f - ((difficulty - 1) * 0.75f);
+        obstacleSpawnTime = Mathf.Clamp(obstacleSpawnTime, 0.75f, 2f);
         timer -= Time.deltaTime;
         GameObject.Find("Timer").GetComponent<TextMeshProUGUI>().text = "" + Mathf.Round(timer);
         if(timer <= 0){
@@ -39,12 +42,29 @@ public class DodgeGameManagerScript : MonoBehaviour
         }
     }
     public void SpawnObstacle(){
+        int lane = Random.Range(-1, 2);
         GameObject obstacle = Instantiate(obstaclePrefab);
-        obstacle.GetComponent<DodgeObstacleScript>().type = (Random.Range(0, 2) == 1) ? "cup":"plate";
-        obstacle.GetComponent<DodgeObstacleScript>().speed = 5f * difficulty;
-        difficulty += 0.075f;
+        string type = (Random.Range(0, 2) == 1) ? "cup":"plate";
+        obstacle.GetComponent<DodgeObstacleScript>().type = type;
+        obstacle.GetComponent<DodgeObstacleScript>().speed = 10f * (1 +(difficulty-1)/2);
+        obstacle.GetComponent<DodgeObstacleScript>().Initialize(lane);
+        if(lane != 0 && timer < 20f && type == "cup" && Random.Range(0, 4) == 0){
+            GameObject obstacle2 = Instantiate(obstaclePrefab);
+            obstacle2.GetComponent<DodgeObstacleScript>().type = type;
+            obstacle2.GetComponent<DodgeObstacleScript>().speed = 10f * (1 +(difficulty-1)/2);
+            obstacle2.GetComponent<DodgeObstacleScript>().Initialize(-lane);
+        }
+        difficulty += 0.06f;
     }
     void Win(){
         victoryPanel.SetActive(true);
+        obstacleSpawnTime = 42e30f;
+        obstacleSpawnTimer = -42e30f;
+    }
+    public void Lose(){
+        defeatPanel.SetActive(true);
+    }
+    public void Retry(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
