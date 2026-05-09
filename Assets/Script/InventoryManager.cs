@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -71,9 +71,6 @@ public class InventoryManager : MonoBehaviour
     {
         StartCoroutine(SetupUI());
 
-        // =========================
-        // RESET INVENTORY AFTER CUTSCENE SCENE SWITCH
-        // =========================
         if (GameState.resetInventoryOnNextScene)
         {
             ClearInventory();
@@ -155,8 +152,9 @@ public class InventoryManager : MonoBehaviour
     }
 
     // =========================
-    // CLEAR INVENTORY (NEW)
+    // CLEAR INVENTORY
     // =========================
+
     public void ClearInventory()
     {
         hasDaisy = false;
@@ -173,7 +171,6 @@ public class InventoryManager : MonoBehaviour
     public void TalkToDaisy()
     {
         if (!hasDaisy) return;
-
         if (DialogueManager.Instance == null) return;
         if (DialogueManager.Instance.IsDialogueActive) return;
 

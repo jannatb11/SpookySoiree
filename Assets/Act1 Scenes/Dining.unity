@@ -2178,14 +2178,14 @@ RectTransform:
   m_GameObject: {fileID: 1051160811}
   m_LocalRotation: {x: -0, y: -0, z: -0.70517355, w: 0.70903474}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.83901614, y: 0.83901614, z: 0.83901626}
+  m_LocalScale: {x: 0.8390161, y: 0.8390161, z: 0.8390162}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488028277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.687}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149.40698, y: -96.04627}
+  m_AnchoredPosition: {x: 149.40701, y: -96.04627}
   m_SizeDelta: {x: 38.9997, y: 42.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1051160813
@@ -2891,8 +2891,8 @@ RectTransform:
   - {fileID: 1449061922}
   - {fileID: 1409019038}
   - {fileID: 1544821779}
-  - {fileID: 638761983}
   - {fileID: 1051160812}
+  - {fileID: 638761983}
   - {fileID: 2137053590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3652,7 +3652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: -2.8424835, y: 0}
+  m_AnchoredPosition: {x: -2.8424683, y: 0}
   m_SizeDelta: {x: 375.35, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986366361
@@ -3722,10 +3722,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e82b7f9f9dcbf148ba885c0447d4dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcsToEnable:
-  - {fileID: 967100182}
---- !u!4 &2085827316
-Transform:
+  npcID: Trevor_1
+  npcName: Trevor
+  dialogueLines:
+  - "Hi\u2026. What is your name?"
+  - "\u2026\u2026"
+  - "\u2026\u2026?"
+  - "Uh\u2026 why are you holding a large metal can for?"
+  - Umm, actually!, This is actually my waifu, Meow Mon Chan.
+  - "She is the love of my life, th-the to exist. She even convinced me to come...
+    Huh, what is it, darling? Huh, uh, huh\u2026 "
+  - "Ok\u2026\u2026"
+  speakerNames:
+  - Player
+  - ???
+  - Player
+  - Player
+  - ???
+  - ???
+  - Player
+  isNPCSpeaking: 00010000010100
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 88dc46651cf67c843a4e425e7bdc7d2d, type: 3}
+  - {fileID: 8300000, guid: af0108c38c6726749a92f1caa268bc0e, type: 3}
+  - {fileID: 0}
+  animator: {fileID: 440408319}
+  animationStates:
+  - Trevor_idle
+  - Trevor_Talk
+  - Trevor_idle
+  - Trevor_idle
+  - Trevor_Talk
+  - Trevor_Talk
+  - Trevor_idle
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 1
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 1
+  triggerSelfDialogueID: 
+  unlockDaisyProgress: 0
+  unlockIntro: 0
+  unlockKitchen: 0
+  countsForKitchenExitProgress: 0
+  teleportAfterDialogue: 0
+  sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
+  disableUntilTriggered: 0
+  requiredTriggerID: 
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  disappearAfterCutscene: 0
+  cutscenePanel: {fileID: 0}
+--- !u!114 &2116297886
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
