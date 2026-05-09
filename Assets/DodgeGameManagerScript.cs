@@ -62,7 +62,12 @@ public class DodgeGameManagerScript : MonoBehaviour
         obstacleSpawnTimer = -42e30f;
     }
     public void Lose(){
-        defeatPanel.SetActive(true);
+        if(victoryPanel.activeSelf){
+
+        } else{
+            defeatPanel.SetActive(true);
+            timer = 370;
+        }
     }
     public void Retry(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
