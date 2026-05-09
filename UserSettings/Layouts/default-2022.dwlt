@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 115
+  controlID: 98
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 41
+  controlID: 53
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 256.66666
     height: 505.33334
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -274,8 +274,8 @@ MonoBehaviour:
     y: 0
     width: 458
     height: 926
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -417,23 +417,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b2a20000
-      m_LastClickedID: 41650
-      m_ExpandedIDs: ccd7ffff16d8ffff5ad8ffff9ed8ffffe8d8ffff2cd9ffff6ed9ffffb4d9fffff6d9ffff3cdaffff86daffff24e2ffffaae2fffff0e2ffff3ae3ffff94e3ffff9ce8ffffd4e8ffffbaeaffffbef0fffff0f0ffffecf2fffffcf2ffff08f3ffff16f3ffff36f3ffff48f3ffff54f3ffffb4f7ffffc6f7ffffd4f7ffffe8f7fffff8f7ffff0af8ffff1cf8ffff34f8ffff42f8ffff58f8ffff6cf8ffff82f8ffff96f8ffffb0f8ffffd2f8ffff3af9ffff54faffff04840000c484000074870000bc8900006c8d0000d88d000072a20000
+      m_SelectedIDs: e6650000
+      m_LastClickedID: 0
+      m_ExpandedIDs: aeb1ffff50b2ffffbeb6ffff52b9ffffbcb9ffff6cbbffff0abcffff7cbcffff02bfffff4cbfffff18c0ffff92c0ffff18c1ffff24c3ffffacc4ffffb8c6ffffeec7ffff32c8ffff78c8ffff4cc9ffffb0c9ffff00caffff62caffff70ccfffff2ccffff30cfffff7ecfffff98d3ffff72d6ffffe8d6ffff68d7ffffe6d7ffff68d9ffffb8d9ffff2edaffff6cdcffff96e0ffff7ae3ffffb4e6fffffce6ffff42e7ffff50e8ffff36e9ffffe4e9ffff9ef4ffffa6f4ffffcaf4ffff1af5ffff4af7ffff18fbffffce630000686c00009a6d000038700000cc740000d67400000e750000d0770000e68b0000fe8b0000c2ab0000eeac0000aeb20000dcb3000030b60000321f0100da2301002a390100ea3901006058010082590100b65a01004e7b0100827c01000a80010036800100fc830100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Dastardly Evil Reset Button Of Doom
-        m_OriginalName: Dastardly Evil Reset Button Of Doom
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 34606
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -812,9 +812,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 401.12842, y: 333.984, z: -3.0797174}
+    m_Target: {x: 339.4271, y: 317.06802, z: -1.600691}
     speed: 2
-    m_Value: {x: 403.14438, y: 329.59277, z: -2.942793}
+    m_Value: {x: 339.4271, y: 317.06802, z: -1.600691}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -864,9 +864,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 317.9733
+    m_Target: 273.4555
     speed: 2
-    m_Value: 304.28067
+    m_Value: 273.4555
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1023,7 +1023,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/NewMovementScenes
+    - Assets/Art
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1031,30 +1031,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 68
   m_LastFolders:
-  - Assets/NewMovementScenes
+  - Assets/Art
   m_LastFoldersGridSize: 68
   m_LastProjectPath: C:\Users\louie\OneDrive\Desktop\Unity\unity projects\Gitkraken\SpookySoiree
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 132.33334}
-    m_SelectedIDs: 5a660000
-    m_LastClickedID: 26202
-    m_ExpandedIDs: 000000001e66000020660000226600002466000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: e6650000
+    m_LastClickedID: 26086
+    m_ExpandedIDs: 00000000e4650000e6650000e8650000ea65000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Art
+      m_OriginalName: Art
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 26086
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -1068,7 +1068,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001e660000206600002266000024660000
+    m_ExpandedIDs: 00000000e4650000e6650000e8650000ea650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1145,9 +1145,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 547.5
-    width: 928
-    height: 163.5
+    y: 578
+    width: 1247.6666
+    height: 399.66666
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1194,7 +1194,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 87034
+  m_LastSelectedObjectID: 44672
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1232,11 +1232,11 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 2010
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

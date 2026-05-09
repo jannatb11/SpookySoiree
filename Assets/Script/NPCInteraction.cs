@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -47,25 +48,29 @@ public class NPCInteraction : MonoBehaviour
     public bool disappearAfterDialogue;
 
     // =========================
-    // SPAWN SYSTEM (ELEVATOR ETC.)
+    // SPAWN SYSTEM
     // =========================
     [Header("Spawn Trigger System")]
     public bool disableUntilTriggered;
     public string requiredTriggerID;
 
     // =========================
-    //  VIDEO CUTSCENE (AFTER DIALOGUE)
+    // CUTSCENE SYSTEM
     // =========================
     [Header("Video Cutscene")]
     public bool playVideoAfterDialogue;
     public VideoPlayer videoPlayer;
 
+    public GameObject cutscenePanel;
+
     [Header("Cutscene End Behavior")]
     public bool disappearAfterCutscene;
 
-    private bool videoPlaying;
+    [Header("Scene After Cutscene")]
+    public bool loadSceneAfterCutscene;
+    public string cutsceneSceneName;
 
-    public GameObject cutscenePanel;
+    private bool videoPlaying;
 
     void Awake()
     {
@@ -93,9 +98,6 @@ public class NPCInteraction : MonoBehaviour
             return;
         }
 
-        // =========================
-        // SPAWN LOCK (ELEVATOR SYSTEM)
-        // =========================
         if (disableUntilTriggered && !string.IsNullOrEmpty(requiredTriggerID))
         {
             if (!GameState.triggeredIDs.Contains(requiredTriggerID))
@@ -130,34 +132,17 @@ public class NPCInteraction : MonoBehaviour
         if (animator != null)
             animator.SetBool("isTalking", false);
 
-        // =========================
-        // GLOBAL TRIGGER SYSTEM (ELEVATOR ETC.)
-        // =========================
         if (!string.IsNullOrEmpty(npcID))
-        {
             GameState.triggeredIDs.Add(npcID);
-        }
 
         if (countsForKitchenExitProgress)
-        {
             GameState.kitchenNPCsTalkedTo.Add(npcID);
-        }
 
         if (!string.IsNullOrEmpty(triggerSelfDialogueID))
-        {
             GameState.pendingSelfDialogueID = triggerSelfDialogueID;
-        }
 
-        if (countsForDoorProgress)
-        {
+        if (countsForDoorProgress && !GameState.talkedToNPCs.Contains(npcID))
             GameState.talkedToNPCs.Add(npcID);
-
-            if (countsForDoorProgress)
-            {
-                if (!GameState.talkedToNPCs.Contains(npcID))
-                    GameState.talkedToNPCs.Add(npcID);
-            }
-        }
 
         if (unlockDaisyProgress)
             GameState.talkedToDaisy = true;
@@ -172,7 +157,7 @@ public class NPCInteraction : MonoBehaviour
             sceneSwitcher.TriggerSceneSwitch();
 
         // =========================
-        //  PLAY VIDEO AFTER DIALOGUE (YOUR REQUEST)
+        // START CUTSCENE
         // =========================
         if (playVideoAfterDialogue && videoPlayer != null)
         {
@@ -181,11 +166,10 @@ public class NPCInteraction : MonoBehaviour
             if (cutscenePanel != null)
                 cutscenePanel.SetActive(true);
 
-            videoPlayer.Play();
-
             if (DialogueManager.Instance != null)
                 DialogueManager.Instance.enabled = false;
 
+            videoPlayer.Play();
             return;
         }
 
@@ -197,7 +181,7 @@ public class NPCInteraction : MonoBehaviour
     }
 
     // =========================
-    // CALLED WHEN VIDEO ENDS
+    // VIDEO FINISHED
     // =========================
     public void OnVideoFinished()
     {
@@ -212,14 +196,19 @@ public class NPCInteraction : MonoBehaviour
         if (DialogueManager.Instance != null)
             DialogueManager.Instance.enabled = true;
 
-        // =========================
-        //  REMOVE GURT AFTER CUTSCENE
-        // =========================
+
+        if (loadSceneAfterCutscene && !string.IsNullOrEmpty(cutsceneSceneName))
+        {
+            GameState.pendingSelfDialogueID = "Gurt_Cutscene";
+            GameState.resetInventoryOnNextScene = true;
+            SceneManager.LoadScene(cutsceneSceneName);
+            return;
+        }
+
         if (disappearAfterCutscene)
         {
             GameState.removedNPCs.Add(npcID);
             Destroy(gameObject);
-            return;
         }
     }
 }
