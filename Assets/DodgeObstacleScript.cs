@@ -10,9 +10,27 @@ public class DodgeObstacleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position -= new Vector3(0, Time.deltaTime * speed, 0);
+        if(transform.position.y <= -7.5f){
+            Destroy(gameObject);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other){
+        Destroy(other.gameObject);
+    }
+    void OnCollisionEnter2D(Collision2D other){
+        Destroy(other.gameObject);
+        GameObject.Find("GameManager").GetComponent<DodgeGameManagerScript>().Lose();
+    }
+    public void Initialize(int lane){
         switch (type){
             case "cup":
-                int lane = Random.Range(-1, 2);
                 GameObject warn = Instantiate(warning, transform.position, transform.rotation);
                 warn.GetComponent<DodgeWarningScript>().lane = lane;
                 transform.position = new Vector3(lane * 2.5f, 10, 0);
@@ -28,21 +46,5 @@ public class DodgeObstacleScript : MonoBehaviour
                 warn2.GetComponent<DodgeWarningScript>().lane = xPos;
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position -= new Vector3(0, Time.deltaTime * speed, 0);
-        if(transform.position.y <= -7.5f){
-            Destroy(gameObject);
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other){
-        Destroy(other.gameObject);
-    }
-    void OnCollisionEnter2D(Collision2D other){
-        Debug.Log("BAD BAD BAD");
-        Destroy(other.gameObject);
     }
 }
