@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SelfDialogueTrigger : MonoBehaviour
 {
@@ -6,21 +7,25 @@ public class SelfDialogueTrigger : MonoBehaviour
     public string triggerID;
 
     [Header("Dialogue")]
-    [TextArea(2, 5)] public string[] lines;
+    [TextArea(2, 5)]
+    public string[] lines;
 
     void Start()
     {
         if (GameState.pendingSelfDialogueID == triggerID)
         {
-            GameState.pendingSelfDialogueID = ""; // reset so it doesn't repeat
+            GameState.pendingSelfDialogueID = null; // safer reset
 
             StartCoroutine(PlayDialogue());
         }
     }
 
-    System.Collections.IEnumerator PlayDialogue()
+    IEnumerator PlayDialogue()
     {
         yield return new WaitForSeconds(0.5f);
+
+        if (DialogueManager.Instance == null)
+            yield break;
 
         int len = lines.Length;
 
@@ -29,8 +34,8 @@ public class SelfDialogueTrigger : MonoBehaviour
 
         for (int i = 0; i < len; i++)
         {
-            speakers[i] = "Player";      
-            isNPCSpeaking[i] = false; // player speaking
+            speakers[i] = "Player";
+            isNPCSpeaking[i] = false;
         }
 
         DialogueManager.Instance.StartDialogue(

@@ -22,6 +22,30 @@ public class InventoryManager : MonoBehaviour
 
     private bool inventoryOpened = false;
 
+    [System.Serializable]
+    public class DaisyConversation
+    {
+        public string[] lines;
+        public bool[] isNPCSpeaking;
+        public AudioClip[] voiceClips;
+        public string[] speakerNames;
+    }
+
+    [System.Serializable]
+    public class DaisyDialogueSet
+    {
+        public string stateName;
+        public DaisyConversation[] conversations;
+    }
+
+    [Header("Daisy Dialogue Sets")]
+    public DaisyDialogueSet beforeDoor;
+    public DaisyDialogueSet afterDoor;
+    public DaisyDialogueSet afterAllNPCs;
+
+    private bool hasTalkedToDaisy = false;
+    private bool buttonsSetup = false;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -53,6 +77,15 @@ public class InventoryManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(SetupUI());
+
+        // =========================
+        // RESET INVENTORY AFTER CUTSCENE SCENE SWITCH
+        // =========================
+        if (GameState.resetInventoryOnNextScene)
+        {
+            ClearInventory();
+            GameState.resetInventoryOnNextScene = false;
+        }
     }
 
     IEnumerator SetupUI()
@@ -124,11 +157,9 @@ public class InventoryManager : MonoBehaviour
             mouseinv.SetActive(hasMouse);
     }
 
-    void OpenInventory()
-    {
-        inventoryOpened = true;
-        RefreshUI();
-    }
+    // =========================
+    // INVENTORY COLLECTION
+    // =========================
 
     public void CollectDaisy()
     {
@@ -148,8 +179,77 @@ public class InventoryManager : MonoBehaviour
         RefreshUI();
     }
 
+    // =========================
+    // CLEAR INVENTORY (NEW)
+    // =========================
+    public void ClearInventory()
+    {
+        hasDaisy = false;
+        hasPiano = false;
+        hasMouse = false;
+
+        RefreshUI();
+    }
+
+    // =========================
+    // DAISY DIALOGUE
+    // =========================
+
     public void TalkToDaisy()
     {
-        Debug.Log("Talk to Daisy");
+        if (!hasDaisy) return;
+
+        if (DialogueManager.Instance == null) return;
+        if (DialogueManager.Instance.IsDialogueActive) return;
+
+        if (!hasTalkedToDaisy)
+        {
+            hasTalkedToDaisy = true;
+
+            DialogueManager.Instance.StartDialogue(
+                "Daisy",
+                daisyDialogueLines,
+                daisySpeakerNames,
+                daisyIsNPCSpeaking,
+                false,
+                0, 0, 0, 0, 0,
+                null,
+                null,
+                daisyVoiceClips,
+                null
+            );
+            return;
+        }
+
+        DaisyDialogueSet currentSet;
+
+        if (GameState.allDoorNPCsTalkedTo)
+            currentSet = afterAllNPCs;
+        else if (GameState.openedDoor)
+            currentSet = afterDoor;
+        else
+            currentSet = beforeDoor;
+
+        if (currentSet == null || currentSet.conversations.Length == 0)
+            return;
+
+        int rand = Random.Range(0, currentSet.conversations.Length);
+        DaisyConversation convo = currentSet.conversations[rand];
+
+        if (convo.lines == null || convo.lines.Length == 0)
+            return;
+
+        DialogueManager.Instance.StartDialogue(
+            "Daisy",
+            convo.lines,
+            convo.speakerNames,
+            convo.isNPCSpeaking,
+            false,
+            0, 0, 0, 0, 0,
+            null,
+            null,
+            convo.voiceClips,
+            null
+        );
     }
 }

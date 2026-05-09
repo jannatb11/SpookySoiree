@@ -18,7 +18,12 @@ public static class GameState
     // NPC PROGRESSION TRACKING
     // =========================
     public static HashSet<string> talkedToNPCs = new HashSet<string>();
-    
+
+    public static bool resetInventoryOnNextScene;
+
+    public static bool completedConnect4Puzzle = false;
+
+
 
     public static HashSet<string> kitchenNPCsTalkedTo = new HashSet<string>();
 
