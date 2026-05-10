@@ -94,8 +94,11 @@ public class Connect4GameScript : MonoBehaviour
             
         }
     }
-    public void Win(){
+    public void Win()
+    {
         transform.Find("Victory Text").gameObject.SetActive(true);
+
+        GameState.completedConnect4Puzzle = true;
     }
     public void Instructions(){
         TextMeshProUGUI readout = GameObject.Find("Instructions").GetComponent<TextMeshProUGUI>();

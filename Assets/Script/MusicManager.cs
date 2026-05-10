@@ -12,9 +12,11 @@ public class MusicManager : MonoBehaviour
     private int currentStep = 3;
 
     private bool musicStarted = false;
+    public float volumeMultiplier;
 
     void Awake()
     {
+        volumeMultiplier = 1f;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -59,10 +61,10 @@ public class MusicManager : MonoBehaviour
     // Going farther
     
 
-    void ApplyVolume()
+    public void ApplyVolume()
     {
         float volume = volumeSteps[currentStep];
-        musicSource.volume = volume;
+        musicSource.volume = volume * volumeMultiplier;
 
         if (volume == 0f)
         {
@@ -77,7 +79,14 @@ public class MusicManager : MonoBehaviour
                 ambienceSource.Stop();
         }
     }
-
+    public void ChangeVolume(){
+        if(ambienceSource.isPlaying){
+            ambienceSource.volume = volumeSteps[currentStep] * volumeMultiplier;
+        } else{
+            musicSource.volume = volumeSteps[currentStep] * volumeMultiplier;
+        }
+        
+    }
     public void SetDistanceLevel(int level)
     {
         if (!musicStarted) return;

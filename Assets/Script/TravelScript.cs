@@ -12,6 +12,12 @@ public class TravelScript : MonoBehaviour
             return;
         }
 
+        if (sceneName == "Hallway_Act2" && !GameState.completedConnect4Puzzle)
+        {
+            Debug.Log("The door is locked. Complete the puzzle first.");
+            return;
+        }
+
         // EXISTING PUZZLE LOCK
         if (sceneName == "ConnectFourPuzzle" &&
             !(GlobalUnlocksScript.completedPianoPuzzle &&
