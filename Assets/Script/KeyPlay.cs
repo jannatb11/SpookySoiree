@@ -61,14 +61,14 @@ public class KeyPlay : MonoBehaviour
                 if (winUI != null)
                     winUI.SetActive(true);
 
-                if (InventoryManager.Instance != null)
-                {
-                    InventoryManager.Instance.CollectPiano();
-                }
-
+                if (pianoinv != null)
+                    pianoinv.SetActive(true);
+                                                                                                                                          
                 GlobalUnlocksScript.completedPianoPuzzle = true;
 
                 Debug.Log("Puzzle Solved!");
+                winUI.SetActive(true);
+
             }
         }
         else
@@ -95,5 +95,4 @@ public class KeyPlay : MonoBehaviour
         if (xUI != null)
             xUI.SetActive(false);
     }
-
 }
