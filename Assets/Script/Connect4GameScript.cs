@@ -26,21 +26,28 @@ public class Connect4GameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // CHEAT KEY
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Win();
+        }
+
         CheckWin();
-        
-        if(piece != null){
+
+        if (piece != null)
+        {
             piece.transform.position = new Vector3(Input.mousePosition.x - 5, Input.mousePosition.y - 5, 0);
         }
-        switch(currentPiece){
+
+        switch (currentPiece)
+        {
             case "yellow":
-                
                 break;
+
             case "red":
-                
                 break;
+
             default:
-                
                 break;
         }
     }

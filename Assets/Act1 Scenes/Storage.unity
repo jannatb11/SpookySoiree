@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 694055407}
   - component: {fileID: 694055410}
   m_Layer: 5
-  m_Name: Image
+  m_Name: House Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: Keys
-  disableUntilTriggered: 0
+  disableUntilTriggered: 1
   requiredTriggerID: Gurt_Kitchen_2
 --- !u!114 &694055408
 MonoBehaviour:
@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4cc849fb3be1faa489aac4ef253c9adc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a627403dbf53cc49b0d9a359d7baa1b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3697,7 +3697,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 233.4863, y: -100.21004}
-  m_SizeDelta: {x: 28.0426, y: 27.647}
+  m_SizeDelta: {x: 27, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962703741
 MonoBehaviour:
