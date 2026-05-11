@@ -24,6 +24,11 @@ public static class GameState
     public static bool completedConnect4Puzzle = false;
 
 
+    public static bool CanLeaveKitchen(int requiredNPCs)
+    {
+        return kitchenNPCsTalkedTo.Count >= requiredNPCs;
+    }
+
 
     public static HashSet<string> kitchenNPCsTalkedTo = new HashSet<string>();
 
@@ -38,7 +43,12 @@ public static class GameState
     // =========================
     public static string pendingSelfDialogueID = "";
 
-
+    public static bool AllPuzzlesCompleted()
+    {
+        return completedConnect4Puzzle
+            && GlobalUnlocksScript.completedPianoPuzzle
+            && GlobalUnlocksScript.completedLockPuzzle;
+    }
 
     public static bool hasFrontDoorKey = false;
 }

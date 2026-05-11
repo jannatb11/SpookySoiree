@@ -2562,6 +2562,9 @@ GameObject:
   - component: {fileID: 1938112026}
   - component: {fileID: 1938112025}
   - component: {fileID: 1938112024}
+  - component: {fileID: 1938112029}
+  - component: {fileID: 1938112028}
+  - component: {fileID: 1938112027}
   m_Layer: 5
   m_Name: SceneButton
   m_TagString: Untagged
@@ -2683,6 +2686,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938112022}
   m_CullTransparentMesh: 1
+--- !u!114 &1938112027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
+  isKitchenDoor: 0
+  requiredNPCs: 2
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
+  hoverAlpha: 1
+--- !u!114 &1938112028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.050980393, g: 0.9607843, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1938112029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938112022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cae933263fe76428c09d64b9fb7988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.15
 --- !u!1 &2025249968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2744,7 @@ GameObject:
   - component: {fileID: 2025249972}
   - component: {fileID: 2025249971}
   - component: {fileID: 2025249970}
+  - component: {fileID: 2025249973}
   m_Layer: 5
   m_Name: SceneButton (1)
   m_TagString: Untagged
@@ -2816,6 +2866,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025249968}
   m_CullTransparentMesh: 1
+--- !u!114 &2025249973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025249968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f2c4bfe0f3e2c48b490014ee29f2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: 2
 --- !u!1 &2101799144
 GameObject:
   m_ObjectHideFlags: 0

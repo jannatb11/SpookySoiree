@@ -1599,8 +1599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.775711, y: 4.0587997}
-  m_SizeDelta: {x: 117.197, y: 150.1745}
+  m_AnchoredPosition: {x: -0.64175034, y: 0.0000038146973}
+  m_SizeDelta: {x: -1.2835, y: -0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265668718
 MonoBehaviour:
@@ -2141,7 +2141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.5467, y: -49.03814}
+  m_AnchoredPosition: {x: -57.7, y: -40.7}
   m_SizeDelta: {x: 64.1124, y: 70.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695035003
@@ -2514,6 +2514,9 @@ GameObject:
   - component: {fileID: 1826607043}
   - component: {fileID: 1826607042}
   - component: {fileID: 1826607041}
+  - component: {fileID: 1826607046}
+  - component: {fileID: 1826607045}
+  - component: {fileID: 1826607044}
   m_Layer: 5
   m_Name: SceneButton (1)
   m_TagString: Untagged
@@ -2635,6 +2638,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826607039}
   m_CullTransparentMesh: 1
+--- !u!114 &1826607044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826607039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cae933263fe76428c09d64b9fb7988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.15
+--- !u!114 &1826607045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826607039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverAlpha: 1
+  normalAlpha: 0
+  fadeSpeed: 10
+--- !u!114 &1826607046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826607039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.050980393, g: 0.9607843, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1908732411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,7 +3082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.70003, y: -53.02997}
+  m_AnchoredPosition: {x: -56.853317, y: -44.691826}
   m_SizeDelta: {x: 68.9764, y: 68.818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063046765

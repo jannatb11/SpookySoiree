@@ -1233,7 +1233,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: -118}
+  m_AnchoredPosition: {x: 26.446, y: -24.696}
   m_SizeDelta: {x: 170.217, y: 159.92}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!114 &174167474
@@ -3476,6 +3476,8 @@ GameObject:
   - component: {fileID: 1156230940}
   - component: {fileID: 1156230943}
   - component: {fileID: 1156230944}
+  - component: {fileID: 1156230946}
+  - component: {fileID: 1156230945}
   m_Layer: 5
   m_Name: SceneButton
   m_TagString: Untagged
@@ -3626,6 +3628,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneName: LRS1
   requiredNPCs: 2
+--- !u!114 &1156230945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156230938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1156230946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156230938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Kitchen
+  isKitchenDoor: 1
+  requiredNPCs: 2
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
+  hoverAlpha: 1
 --- !u!1 &1182890720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,7 +3871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132.97, y: -25.2}
+  m_AnchoredPosition: {x: -147.59648, y: -26.20002}
   m_SizeDelta: {x: 172.17, y: 159.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355581347
@@ -4446,8 +4481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: 70.437}
-  m_SizeDelta: {x: 472.3, y: 339.3251}
+  m_AnchoredPosition: {x: -150.14648, y: -23.233019}
+  m_SizeDelta: {x: 177.26, y: 153.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1411739888
 MonoBehaviour:
@@ -6348,7 +6383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132.97351, y: -25.199982}
+  m_AnchoredPosition: {x: -147.6, y: -26.2}
   m_SizeDelta: {x: 172.1665, y: 159.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122338766
