@@ -388,7 +388,7 @@ MonoBehaviour:
   choicePanel: {fileID: 1505773176}
   yesButton: {fileID: 905284760}
   noButton: {fileID: 913517898}
-  roomNavigationUI: {fileID: 0}
+  roomNavigationUI: {fileID: 1300872147}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 204049079}
@@ -2385,8 +2385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.4, y: 55.342}
-  m_SizeDelta: {x: 93.7933, y: 203.966}
+  m_AnchoredPosition: {x: 14, y: 48.001625}
+  m_SizeDelta: {x: 93.7933, y: 209.6381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352267896
 MonoBehaviour:

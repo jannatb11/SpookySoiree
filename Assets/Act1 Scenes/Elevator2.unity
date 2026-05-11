@@ -1599,9 +1599,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
+  isKitchenDoor: 0
+  requiredNPCs: 2
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
 --- !u!114 &1020191028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1915,7 @@ MonoBehaviour:
   choicePanel: {fileID: 126738760}
   yesButton: {fileID: 832296179}
   noButton: {fileID: 156108162}
-  roomNavigationUI: {fileID: 0}
+  roomNavigationUI: {fileID: 962358229}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 1220939345}
