@@ -2303,6 +2303,9 @@ GameObject:
   - component: {fileID: 1850860176}
   - component: {fileID: 1850860175}
   - component: {fileID: 1850860174}
+  - component: {fileID: 1850860180}
+  - component: {fileID: 1850860179}
+  - component: {fileID: 1850860178}
   m_Layer: 5
   m_Name: DoorButton
   m_TagString: Untagged
@@ -2469,6 +2472,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850860172}
   m_CullTransparentMesh: 1
+--- !u!114 &1850860178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850860172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
+  isKitchenDoor: 0
+  requiredNPCs: 2
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
+  hoverAlpha: 1
+--- !u!114 &1850860179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850860172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.050980393, g: 0.9607843, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1850860180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850860172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cae933263fe76428c09d64b9fb7988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.15
 --- !u!1 &1954948961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,9 +2529,6 @@ GameObject:
   - component: {fileID: 1954948962}
   - component: {fileID: 1954948964}
   - component: {fileID: 1954948963}
-  - component: {fileID: 1954948967}
-  - component: {fileID: 1954948966}
-  - component: {fileID: 1954948965}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2551,49 +2597,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954948961}
   m_CullTransparentMesh: 1
---- !u!114 &1954948965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954948961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
---- !u!114 &1954948966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954948961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.050980393, g: 0.9607843, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: 2}
-  m_UseGraphicAlpha: 1
---- !u!114 &1954948967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954948961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39cae933263fe76428c09d64b9fb7988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.15
 --- !u!1 &1978470289
 GameObject:
   m_ObjectHideFlags: 0
