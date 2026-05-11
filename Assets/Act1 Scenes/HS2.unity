@@ -1133,11 +1133,11 @@ MonoBehaviour:
   - "I think you're a little off\u2026 "
   - YOU'RE NOT GETTING ME THIS TIME, MARCUS ZUEKER!!!!!
   speakerNames:
-  - ???
+  - Albe
   - Player
-  - ???
+  - Albe
   - Player
-  - ???
+  - Albe
   isNPCSpeaking: 0100010001
   voiceClips:
   - {fileID: 8300000, guid: 9428e5d1e23bdbf458d8ca0c95d71ee6, type: 3}
@@ -3492,7 +3492,7 @@ MonoBehaviour:
   typingSpeed: 0.04
   audioSource: {fileID: 2061842010}
   characterColors:
-  - characterName: ???
+  - characterName: Albe
     textColor: {r: 0.64705884, g: 0.21176472, b: 0.9803922, a: 1}
   - characterName: Player
     textColor: {r: 1, g: 1, b: 1, a: 1}
