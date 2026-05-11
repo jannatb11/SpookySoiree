@@ -4989,7 +4989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracks:
-  - {fileID: 8300000, guid: 222920dd86c4bd644990a4ad6f5b3186, type: 3}
   - {fileID: 8300000, guid: bf1945bdb9576a54f876c2baea8b4b8c, type: 3}
   - {fileID: 8300000, guid: f2749ffeae63f474599c21cbc57a79dd, type: 3}
   - {fileID: 8300000, guid: 262a8f537a983e645817b9e15ab3c0b1, type: 3}

@@ -8,13 +8,31 @@ public class RadioScript : MonoBehaviour
 
     public void SwitchTrack()
     {
+        // If no tracks exist
+        if (tracks.Count == 0)
+            return;
+
         int index = tracks.IndexOf(currentTrack);
 
-        if (index < tracks.Count - 1)
-            currentTrack = tracks[index + 1];
-        else
+        // If nothing selected yet, start first track
+        if (index == -1)
+        {
             currentTrack = tracks[0];
+            MusicManager.Instance.PlayNewTrack(currentTrack);
+            return;
+        }
 
-        MusicManager.Instance.PlayNewTrack(currentTrack);
+        // Go to next track
+        if (index < tracks.Count - 1)
+        {
+            currentTrack = tracks[index + 1];
+            MusicManager.Instance.PlayNewTrack(currentTrack);
+        }
+        else
+        {
+            // End of playlist -> return to ambience
+            currentTrack = null;
+            MusicManager.Instance.ReturnToAmbience();
+        }
     }
 }

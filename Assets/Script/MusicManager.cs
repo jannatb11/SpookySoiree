@@ -12,11 +12,13 @@ public class MusicManager : MonoBehaviour
     private int currentStep = 3;
 
     private bool musicStarted = false;
+
     public float volumeMultiplier;
 
     void Awake()
     {
         volumeMultiplier = 1f;
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -29,13 +31,13 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        // Start with ambience only
+        // Start ambience immediately
         ambienceSource.loop = true;
         ambienceSource.Play();
 
+        // Music prepared but NOT playing yet
         musicSource.loop = true;
         musicSource.volume = 0f;
-        musicSource.Play(); //  ALWAYS PLAYING (just silent)
     }
 
     public void StartMusic()
@@ -43,55 +45,82 @@ public class MusicManager : MonoBehaviour
         musicStarted = true;
         currentStep = 3;
 
-        ambienceSource.Stop();
+        // Stop ambience
+        if (ambienceSource.isPlaying)
+            ambienceSource.Stop();
+
         ApplyVolume();
     }
 
     public void PlayNewTrack(AudioClip clip)
     {
+        if (clip == null)
+            return;
+
         if (!musicStarted)
             StartMusic();
 
-        if (musicSource.clip == clip) return;
+        // Prevent restarting same track
+        if (musicSource.clip == clip && musicSource.isPlaying)
+            return;
 
         musicSource.clip = clip;
         musicSource.Play();
+
+        ApplyVolume();
     }
 
-    // Going farther
-    
+    public void ReturnToAmbience()
+    {
+        musicStarted = false;
+
+        musicSource.Stop();
+        musicSource.clip = null;
+
+        if (!ambienceSource.isPlaying)
+            ambienceSource.Play();
+    }
 
     public void ApplyVolume()
     {
         float volume = volumeSteps[currentStep];
+
         musicSource.volume = volume * volumeMultiplier;
 
+        // If very far away
         if (volume == 0f)
         {
-            // Only ambience when VERY far
             if (!ambienceSource.isPlaying)
                 ambienceSource.Play();
         }
         else
         {
-            // Coming back -> stop ambience
             if (ambienceSource.isPlaying)
                 ambienceSource.Stop();
         }
     }
-    public void ChangeVolume(){
-        if(ambienceSource.isPlaying){
-            ambienceSource.volume = volumeSteps[currentStep] * volumeMultiplier;
-        } else{
-            musicSource.volume = volumeSteps[currentStep] * volumeMultiplier;
+
+    public void ChangeVolume()
+    {
+        if (ambienceSource.isPlaying)
+        {
+            ambienceSource.volume =
+                volumeSteps[currentStep] * volumeMultiplier;
         }
-        
+        else
+        {
+            musicSource.volume =
+                volumeSteps[currentStep] * volumeMultiplier;
+        }
     }
+
     public void SetDistanceLevel(int level)
     {
-        if (!musicStarted) return;
+        if (!musicStarted)
+            return;
 
         currentStep = Mathf.Clamp(level, 0, volumeSteps.Length - 1);
+
         ApplyVolume();
     }
 }
