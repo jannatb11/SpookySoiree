@@ -125,4 +125,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Act2 Scenes/Hallwaydoors2_Act2.unity
     guid: 43e04536ecc3ee84fb39abcf9009b05a
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apartment_17_Entrance.unity
+    guid: e2e6795cb9fd02a4db8e12088f53f8ce
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_Kitchen.unity
+    guid: 1086571881e8d8347b2a3b8893aa977f
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_Hallway.unity
+    guid: c8687e7d6f25acb43ad9cdaeb54ce4bc
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_SarahsBedroom.unity
+    guid: 61a87f55ec8f3254d98d5543b4c4f435
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_LivingRoom.unity
+    guid: 63603f07c34383c41ad0bbe5b5ce4850
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_Lil_Buffys_room.unity
+    guid: 6a6b461507714634387ec4457646da4b
+  - enabled: 1
+    path: Assets/Act2 Scenes/Apt 17/Apt_17_Workout.unity
+    guid: 2095b9c4179373e4ba25f4cdd20fa0e6
   m_configObjects: {}

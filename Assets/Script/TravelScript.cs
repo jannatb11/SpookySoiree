@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TravelScript : MonoBehaviour
 {
@@ -12,85 +13,116 @@ public class TravelScript : MonoBehaviour
         [Header("Required NPC")]
         public string requiredNPCID;
 
-        // =========================
-        // BLOCKED DIALOGUE
-        // =========================
         [Header("Blocked Dialogue")]
-
-        [TextArea]
-        public string[] blockedDialogueLines;
-
-        // WHO SPEAKS EACH LINE
+        [TextArea] public string[] blockedDialogueLines;
         public string[] blockedSpeakerNames;
-
-        // TRUE = NPC
-        // FALSE = PLAYER
         public bool[] blockedIsNPCSpeaking;
-
         public AudioClip[] blockedVoiceClips;
+
+        [Header("Enter Dialogue")]
+        public bool playDialogueBeforeEntering;
+
+        [TextArea] public string[] enterDialogueLines;
+        public string[] enterSpeakerNames;
+        public bool[] enterIsNPCSpeaking;
+        public AudioClip[] enterVoiceClips;
     }
 
     [Header("Scene Requirements")]
     public SceneRequirement[] sceneRequirements;
 
+    private void Awake()
+    {
+        // CRITICAL SAFETY
+        if (sceneRequirements == null)
+        {
+            sceneRequirements = new SceneRequirement[0];
+        }
+    }
+
     public void Load(string sceneName)
     {
         // =========================
-        // SCENE REQUIREMENT CHECK
+        // SAFETY CHECK (extra protection)
         // =========================
-        foreach (SceneRequirement requirement in sceneRequirements)
+        if (sceneRequirements == null)
         {
+            sceneRequirements = new SceneRequirement[0];
+        }
+
+        // =========================
+        // FIND MATCHING REQUIREMENT
+        // =========================
+        SceneRequirement matchingRequirement = null;
+
+        for (int i = 0; i < sceneRequirements.Length; i++)
+        {
+            SceneRequirement requirement = sceneRequirements[i];
+
+            if (requirement == null)
+                continue;
+
             if (requirement.sceneName == sceneName)
             {
-                bool talkedToRequiredNPC =
-                    GameState.triggeredIDs.Contains(requirement.requiredNPCID);
-
-                // PLAYER HAS NOT TALKED TO REQUIRED NPC
-                if (!talkedToRequiredNPC)
-                {
-                    if (DialogueManager.Instance != null)
-                    {
-                        DialogueManager.Instance.StartDialogue(
-                            "Blocked",
-                            requirement.blockedDialogueLines,
-                            requirement.blockedSpeakerNames,
-                            requirement.blockedIsNPCSpeaking,
-                            false,
-                            0, 0, 0, 0, 0,
-                            null,
-                            null,
-                            requirement.blockedVoiceClips,
-                            null
-                        );
-                    }
-
-                    return;
-                }
+                matchingRequirement = requirement;
+                break;
             }
         }
 
         // =========================
-        // FRONT DOOR LOCK
+        // REQUIREMENT CHECK (ONLY IF EXISTS)
         // =========================
+        if (matchingRequirement != null)
+        {
+            bool talkedToRequiredNPC =
+                GameState.triggeredIDs.Contains(matchingRequirement.requiredNPCID);
+
+            // BLOCKED
+            if (!talkedToRequiredNPC)
+            {
+                if (DialogueManager.Instance != null)
+                {
+                    DialogueManager.Instance.StartDialogue(
+                        "Blocked",
+                        matchingRequirement.blockedDialogueLines,
+                        matchingRequirement.blockedSpeakerNames,
+                        matchingRequirement.blockedIsNPCSpeaking,
+                        false,
+                        0, 0, 0, 0, 0,
+                        null,
+                        null,
+                        matchingRequirement.blockedVoiceClips,
+                        null
+                    );
+                }
+
+                return;
+            }
+
+            // ENTER DIALOGUE THEN LOAD
+            if (matchingRequirement.playDialogueBeforeEntering)
+            {
+                StartCoroutine(PlayDialogueThenLoad(matchingRequirement, sceneName));
+                return;
+            }
+        }
+
+        // =========================
+        // NORMAL SCENE LOAD CHECKS
+        // =========================
+
         if (sceneName == "Hallway" && !GameState.hasFrontDoorKey)
         {
             Debug.Log("The door is locked. Find the key.");
             return;
         }
 
-        // =========================
-        // CONNECT 4 LOCK
-        // =========================
-        if (sceneName == "Hallway_Act2" &&
-            !GameState.completedConnect4Puzzle)
+        if (sceneName == "Hallway_Act2" && !GameState.completedConnect4Puzzle)
         {
             Debug.Log("The door is locked. Complete the puzzle first.");
             return;
         }
 
-        // =========================
-        // PUZZLE LOCK
-        // =========================
         if (sceneName == "ConnectFourPuzzle" &&
             !(GlobalUnlocksScript.completedPianoPuzzle &&
               GlobalUnlocksScript.completedLockPuzzle))
@@ -99,18 +131,37 @@ public class TravelScript : MonoBehaviour
             return;
         }
 
-        // =========================
-        // MUSIC SYSTEM
-        // =========================
         if (MusicManager.Instance != null)
         {
-            int distance = GetDistanceForScene(sceneName);
-            MusicManager.Instance.SetDistanceLevel(distance);
+            MusicManager.Instance.SetDistanceLevel(GetDistanceForScene(sceneName));
         }
 
-        // =========================
-        // LOAD SCENE
-        // =========================
+        SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator PlayDialogueThenLoad(SceneRequirement req, string sceneName)
+    {
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.StartDialogue(
+                "Enter",
+                req.enterDialogueLines,
+                req.enterSpeakerNames,
+                req.enterIsNPCSpeaking,
+                false,
+                0, 0, 0, 0, 0,
+                null,
+                null,
+                req.enterVoiceClips,
+                null
+            );
+
+            while (DialogueManager.Instance.IsDialogueActive)
+            {
+                yield return null;
+            }
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 

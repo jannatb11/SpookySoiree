@@ -2166,7 +2166,7 @@ MonoBehaviour:
   choicePanel: {fileID: 2128148910}
   yesButton: {fileID: 793377211}
   noButton: {fileID: 395165878}
-  roomNavigationUI: {fileID: 0}
+  roomNavigationUI: {fileID: 1767281998}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 1146141187}
@@ -2955,16 +2955,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneRequirements:
   - sceneName: Apartment_18_Entrance
-    requiredNPCID: Trevor
+    requiredNPCID: Zuek
     blockedDialogueLines:
     - Hello????
     - GO AWAY!!!!!
+    - You hear some weird noise coming from Albe's room....
     blockedSpeakerNames:
     - Player
     - Albe
+    - ' '
     blockedIsNPCSpeaking: 
     blockedVoiceClips:
     - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f4146d61df7becd4286d8d46bf5d049e, type: 3}
+    playDialogueBeforeEntering: 0
+    enterDialogueLines: []
+    enterSpeakerNames: []
+    enterIsNPCSpeaking: 
+    enterVoiceClips: []
   - sceneName: Apartment_16_Entrance
     requiredNPCID: Zuek
     blockedDialogueLines:
@@ -2977,6 +2986,11 @@ MonoBehaviour:
     blockedVoiceClips:
     - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
     - {fileID: 8300000, guid: 00dc7d2f6ebd95f4aaabf592fe56bd49, type: 3}
+    playDialogueBeforeEntering: 0
+    enterDialogueLines: []
+    enterSpeakerNames: []
+    enterIsNPCSpeaking: 
+    enterVoiceClips: []
 --- !u!4 &1815560355
 Transform:
   m_ObjectHideFlags: 0
