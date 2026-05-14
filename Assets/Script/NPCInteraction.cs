@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -72,6 +73,11 @@ public class NPCInteraction : MonoBehaviour
 
     private bool videoPlaying;
 
+
+    void Start()
+    {
+        StartCoroutine(CheckSceneAutoDialogue());
+    }
     void Awake()
     {
         if (GameState.removedNPCs.Contains(npcID))
@@ -210,5 +216,65 @@ public class NPCInteraction : MonoBehaviour
             GameState.removedNPCs.Add(npcID);
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator AutoStartDialogue()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        if (!DialogueManager.Instance.IsDialogueActive)
+        {
+            Interact();
+        }
+
+        GameState.pendingSelfDialogueID = null;
+    }
+
+    IEnumerator CheckAutoDialogue()
+    {
+        // Wait until scene is fully initialized
+        yield return new WaitForSeconds(0.25f);
+
+        if (DialogueManager.Instance == null)
+            yield break;
+
+        if (DialogueManager.Instance.IsDialogueActive)
+            yield break;
+
+        if (!string.IsNullOrEmpty(GameState.pendingSelfDialogueID) &&
+            GameState.pendingSelfDialogueID == npcID)
+        {
+            GameState.pendingSelfDialogueID = null;
+
+            Interact();
+        }
+    }
+
+    IEnumerator CheckSceneAutoDialogue()
+    {
+        // Wait until everything is loaded
+        yield return new WaitForSeconds(0.2f);
+
+        // MUST be a fresh scene load
+        if (!GameState.justLoadedScene)
+            yield break;
+
+        // Must match correct NPC
+        if (GameState.pendingSelfDialogueID != npcID)
+            yield break;
+
+        // Consume flags immediately (prevents repeats)
+        GameState.pendingSelfDialogueID = "";
+        GameState.justLoadedScene = false;
+
+        // Safety checks
+        if (DialogueManager.Instance == null)
+            yield break;
+
+        if (DialogueManager.Instance.IsDialogueActive)
+            yield break;
+
+        // Start dialogue
+        Interact();
     }
 }

@@ -146,4 +146,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Act2 Scenes/Apt 17/Apt_17_Workout.unity
     guid: 2095b9c4179373e4ba25f4cdd20fa0e6
+  - enabled: 1
+    path: Assets/Puzzles/DodgeMinigame.unity
+    guid: 2a704d1a422b38e4c81d1d47c24006ec
+  - enabled: 1
+    path: Assets/Puzzles/PenniesPuzzle.unity
+    guid: 7af3a78d7f4b5184b8d822e03eb34585
   m_configObjects: {}

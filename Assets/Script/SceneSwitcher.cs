@@ -5,9 +5,18 @@ using System.Collections;
 
 public class SceneSwitcher : MonoBehaviour
 {
+    [Header("Fade Settings")]
     public Image fadeImage;
     public float fadeDuration = 1f;
+
+    [Header("Scene")]
     public string targetSceneName = "Kitchen";
+
+    // =========================
+    // NEW: AUTO DIALOGUE SYSTEM
+    // =========================
+    [Header("Auto Dialogue On Scene Enter")]
+    public string autoStartNPCID;
 
     private bool triggered;
 
@@ -16,11 +25,14 @@ public class SceneSwitcher : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // Start fully transparent
-        Color c = fadeImage.color;
-        c.a = 0f;
-        fadeImage.color = c;
+        if (fadeImage != null)
+        {
+            Color c = fadeImage.color;
+            c.a = 0f;
+            fadeImage.color = c;
+        }
 
-        // When a new scene loads, fade back in
+        // Listen for scene load
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -34,20 +46,38 @@ public class SceneSwitcher : MonoBehaviour
 
     IEnumerator FadeAndSwitch()
     {
-        fadeImage.raycastTarget = false;
+        if (fadeImage != null)
+            fadeImage.raycastTarget = false;
 
-        // Fade OUT (0 -> 1)
+        // =========================
+        // FADE OUT (0 -> 1)
+        // =========================
         yield return StartCoroutine(Fade(0f, 1f));
 
-        // Unlock kitchen using NEW system
+        // =========================
+        // GAME STATE UPDATE
+        // =========================
         GameProgress.kitchenUnlocked = true;
 
+        // =========================
+        // NEW: SET AUTO DIALOGUE NPC
+        // =========================
+        if (!string.IsNullOrEmpty(autoStartNPCID))
+        {
+            GameState.pendingSelfDialogueID = autoStartNPCID;
+        }
+
+        // =========================
+        // LOAD SCENE
+        // =========================
         SceneManager.LoadScene(targetSceneName);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Fade back IN (1 -> 0)
+        // =========================
+        // FADE BACK IN (1 -> 0)
+        // =========================
         StartCoroutine(Fade(1f, 0f));
 
         triggered = false;
@@ -57,23 +87,26 @@ public class SceneSwitcher : MonoBehaviour
     {
         float t = 0f;
         Color c;
-        if(fadeImage != null){
+
+        if (fadeImage != null)
             c = fadeImage.color;
-        } else{
-            c = new Color(255, 255, 255);
-        }
+        else
+            c = new Color(1f, 1f, 1f);
 
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
             c.a = Mathf.Lerp(startAlpha, endAlpha, t / fadeDuration);
-            fadeImage.color = c;
+
+            if (fadeImage != null)
+                fadeImage.color = c;
+
             yield return null;
         }
 
         c.a = endAlpha;
-        if(fadeImage != null){
+
+        if (fadeImage != null)
             fadeImage.color = c;
-        }
     }
 }

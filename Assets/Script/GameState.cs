@@ -29,6 +29,8 @@ public static class GameState
         return kitchenNPCsTalkedTo.Count >= requiredNPCs;
     }
 
+    public static bool justLoadedScene = false;
+
 
     public static HashSet<string> kitchenNPCsTalkedTo = new HashSet<string>();
 

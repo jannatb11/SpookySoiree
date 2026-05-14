@@ -1633,7 +1633,7 @@ MonoBehaviour:
   - Lil_Buffy_Talking
   - Lil_Buffy_Idle
   requireDaisyToAppear: 0
-  requireDoorToAppear: 0
+  requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   triggerSelfDialogueID: 
@@ -3070,6 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bdb4fae926d404bb168f376a66b192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneRequirements: []
 --- !u!4 &1522804087
 Transform:
   m_ObjectHideFlags: 0

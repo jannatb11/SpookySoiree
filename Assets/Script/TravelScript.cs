@@ -26,35 +26,39 @@ public class TravelScript : MonoBehaviour
         public string[] enterSpeakerNames;
         public bool[] enterIsNPCSpeaking;
         public AudioClip[] enterVoiceClips;
+
+        // =========================
+        // AUTO NPC DIALOGUE
+        // =========================
+        [Header("Auto Dialogue On Scene Enter")]
+        public string autoStartNPCID;
     }
 
     [Header("Scene Requirements")]
     public SceneRequirement[] sceneRequirements;
 
+    private bool isLoading;
+
     private void Awake()
     {
-        // CRITICAL SAFETY
         if (sceneRequirements == null)
-        {
             sceneRequirements = new SceneRequirement[0];
-        }
     }
 
     public void Load(string sceneName)
     {
-        // =========================
-        // SAFETY CHECK (extra protection)
-        // =========================
-        if (sceneRequirements == null)
-        {
-            sceneRequirements = new SceneRequirement[0];
-        }
+        // Prevent spam clicking
+        if (isLoading) return;
+        isLoading = true;
 
-        // =========================
-        // FIND MATCHING REQUIREMENT
-        // =========================
+        if (sceneRequirements == null)
+            sceneRequirements = new SceneRequirement[0];
+
         SceneRequirement matchingRequirement = null;
 
+        // =========================
+        // FIND MATCH
+        // =========================
         for (int i = 0; i < sceneRequirements.Length; i++)
         {
             SceneRequirement requirement = sceneRequirements[i];
@@ -70,7 +74,7 @@ public class TravelScript : MonoBehaviour
         }
 
         // =========================
-        // REQUIREMENT CHECK (ONLY IF EXISTS)
+        // REQUIREMENT CHECK
         // =========================
         if (matchingRequirement != null)
         {
@@ -96,10 +100,11 @@ public class TravelScript : MonoBehaviour
                     );
                 }
 
+                isLoading = false;
                 return;
             }
 
-            // ENTER DIALOGUE THEN LOAD
+            // ENTER DIALOGUE FIRST
             if (matchingRequirement.playDialogueBeforeEntering)
             {
                 StartCoroutine(PlayDialogueThenLoad(matchingRequirement, sceneName));
@@ -108,18 +113,19 @@ public class TravelScript : MonoBehaviour
         }
 
         // =========================
-        // NORMAL SCENE LOAD CHECKS
+        // NORMAL CHECKS
         // =========================
-
         if (sceneName == "Hallway" && !GameState.hasFrontDoorKey)
         {
             Debug.Log("The door is locked. Find the key.");
+            isLoading = false;
             return;
         }
 
         if (sceneName == "Hallway_Act2" && !GameState.completedConnect4Puzzle)
         {
             Debug.Log("The door is locked. Complete the puzzle first.");
+            isLoading = false;
             return;
         }
 
@@ -128,12 +134,22 @@ public class TravelScript : MonoBehaviour
               GlobalUnlocksScript.completedLockPuzzle))
         {
             Debug.Log("Complete the puzzles first.");
+            isLoading = false;
             return;
         }
 
         if (MusicManager.Instance != null)
         {
             MusicManager.Instance.SetDistanceLevel(GetDistanceForScene(sceneName));
+        }
+
+        // =========================
+        //  AUTO NPC DIALOGUE (FOR ARROWS)
+        // =========================
+        if (matchingRequirement != null &&
+            !string.IsNullOrEmpty(matchingRequirement.autoStartNPCID))
+        {
+            GameState.pendingSelfDialogueID = matchingRequirement.autoStartNPCID;
         }
 
         SceneManager.LoadScene(sceneName);
@@ -160,6 +176,14 @@ public class TravelScript : MonoBehaviour
             {
                 yield return null;
             }
+        }
+
+        // =========================
+        // AUTO NPC AFTER ENTER DIALOGUE
+        // =========================
+        if (!string.IsNullOrEmpty(req.autoStartNPCID))
+        {
+            GameState.pendingSelfDialogueID = req.autoStartNPCID;
         }
 
         SceneManager.LoadScene(sceneName);
