@@ -890,19 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bdb4fae926d404bb168f376a66b192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneRequirements:
-  - sceneName: Elevator2_Act2
-    requiredNPCID: 
-    blockedDialogueLines: []
-    blockedSpeakerNames: []
-    blockedIsNPCSpeaking: 
-    blockedVoiceClips: []
-    playDialogueBeforeEntering: 0
-    enterDialogueLines: []
-    enterSpeakerNames: []
-    enterIsNPCSpeaking: 
-    enterVoiceClips: []
-    autoStartNPCID: 
+  sceneRequirements: []
 --- !u!4 &356477000
 Transform:
   m_ObjectHideFlags: 0
