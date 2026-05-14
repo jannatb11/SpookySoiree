@@ -13,6 +13,9 @@ public class TravelScript : MonoBehaviour
         [Header("Required NPC")]
         public string requiredNPCID;
 
+        [Header("Arrow Visibility Requirement")]
+        public string requiredNPCToShowArrow;
+
         [Header("Blocked Dialogue")]
         [TextArea] public string[] blockedDialogueLines;
         public string[] blockedSpeakerNames;
@@ -187,6 +190,30 @@ public class TravelScript : MonoBehaviour
         }
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    public bool CanShowArrow(string sceneName)
+    {
+        if (sceneRequirements == null)
+            return true;
+
+        for (int i = 0; i < sceneRequirements.Length; i++)
+        {
+            var req = sceneRequirements[i];
+            if (req == null) continue;
+
+            if (req.sceneName == sceneName)
+            {
+                // If no requirement, always show
+                if (string.IsNullOrEmpty(req.requiredNPCToShowArrow))
+                    return true;
+
+                // Only show if NPC was talked to
+                return GameState.triggeredIDs.Contains(req.requiredNPCToShowArrow);
+            }
+        }
+
+        return true;
     }
 
     int GetDistanceForScene(string sceneName)
