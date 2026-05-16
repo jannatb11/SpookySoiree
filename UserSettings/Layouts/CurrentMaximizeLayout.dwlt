@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 42512
+  controlID: 42814
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42466
+  controlID: 42768
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 42457
+  controlID: 42745
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -969,7 +969,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Act1 Scenes
+    - Assets/Script
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -977,30 +977,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Act1 Scenes
+  - Assets/Script
   m_LastFoldersGridSize: 75
   m_LastProjectPath: C:\Users\louie\OneDrive\Desktop\Unity\unity projects\Gitkraken\SpookySoiree
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 88650000
-    m_LastClickedID: 25992
+    scrollPos: {x: 0, y: 214.33331}
+    m_SelectedIDs: ce650000
+    m_LastClickedID: 26062
     m_ExpandedIDs: 000000007265000074650000786500008a650000e065000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Act1 Scenes
+      m_OriginalName: Act1 Scenes
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 25992
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
