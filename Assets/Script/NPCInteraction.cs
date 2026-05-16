@@ -74,7 +74,16 @@ public class NPCInteraction : MonoBehaviour
     private bool videoPlaying;
 
 
-    
+    void Start()
+    {
+        // Auto-trigger self dialogue after scene load
+        if (!string.IsNullOrEmpty(npcID) &&
+            GameState.pendingSelfDialogueID == npcID)
+        {
+            GameState.pendingSelfDialogueID = null;
+            Interact();
+        }
+    }
     void Awake()
     {
         if (GameState.removedNPCs.Contains(npcID))
