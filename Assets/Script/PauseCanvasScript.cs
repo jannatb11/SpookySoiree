@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PauseCanvasScript : MonoBehaviour
 {
@@ -20,5 +21,8 @@ public class PauseCanvasScript : MonoBehaviour
     }
     public void Resume(){
         PMS.Resume();
+    }
+    public void Restart(){
+        SceneManager.LoadScene(0);
     }
 }
