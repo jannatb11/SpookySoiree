@@ -1653,7 +1653,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://raw.githubusercontent.com/jannatb11/SpookySoiree/new-main/Gurt%20Death%20Anim%20Edited%20V1.mp4
+  m_Url: https://raw.githubusercontent.com/jannatb11/SpookySoiree/new-main/Gurt%20Death%20Anim%20Edited%20V3.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -3003,6 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bdb4fae926d404bb168f376a66b192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneRequirements: []
 --- !u!4 &1522804087
 Transform:
   m_ObjectHideFlags: 0
@@ -3410,7 +3411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.099396, y: 0.74850464}
+  m_AnchoredPosition: {x: 8.099365, y: 0.74850464}
   m_SizeDelta: {x: 16.199, y: 43.4109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858697499
@@ -3612,9 +3613,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
+  isKitchenDoor: 0
+  requiredNPCs: 2
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
 --- !u!114 &2096056002
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1685,9 +1685,9 @@ RectTransform:
   - {fileID: 643751365}
   - {fileID: 1191852769}
   - {fileID: 162027728}
+  - {fileID: 1820496187}
   - {fileID: 981263484}
   - {fileID: 1411739887}
-  - {fileID: 1820496187}
   - {fileID: 2122338765}
   - {fileID: 1355581346}
   - {fileID: 42927348}
@@ -4710,6 +4710,7 @@ MonoBehaviour:
   sceneRequirements:
   - sceneName: 
     requiredNPCID: 
+    requiredNPCToShowArrow: 
     blockedDialogueLines: []
     blockedSpeakerNames: []
     blockedIsNPCSpeaking: 
