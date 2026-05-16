@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774062db655c4624590c338ab21c52a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 1
+  spawnChance: 0.028571429
   uniqueID: 
   characterUI: {fileID: 186483242}
   audioSource: {fileID: 550014259}
