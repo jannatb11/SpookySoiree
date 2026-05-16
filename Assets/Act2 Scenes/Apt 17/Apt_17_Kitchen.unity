@@ -3131,7 +3131,20 @@ MonoBehaviour:
   - Player
   - Sarah
   isNPCSpeaking: 01000101000100010000010001
-  voiceClips: []
+  voiceClips:
+  - {fileID: 8300000, guid: 6f29ae3a9a297724d88988c1f250b644, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 2feaa12182ccc1c4a880c5683943f0e4, type: 3}
+  - {fileID: 8300000, guid: 55802df111b818545a30c3f99854f095, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: f7ed410731890664795dd014c17b093f, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 1d711d7b4c40bfb478618fa6149a23cc, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 692dffe04a10366429b015df09f37ad6, type: 3}
+  - {fileID: 8300000, guid: eabd515e8052f9d47b08525480871ce3, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 10d6e6e6ecae9b94ca3fa3bdf93e723b, type: 3}
   animator: {fileID: 68732219}
   animationStates:
   - Sarah_Talking

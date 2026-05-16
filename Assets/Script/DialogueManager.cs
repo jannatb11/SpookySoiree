@@ -278,4 +278,6 @@ public class DialogueManager : MonoBehaviour
         if (roomNavigationUI != null)
             roomNavigationUI.SetActive(true);
     }
+
+
 }

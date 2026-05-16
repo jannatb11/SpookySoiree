@@ -23,7 +23,7 @@ public static class GameState
 
     public static bool completedConnect4Puzzle = false;
 
-
+    public static HashSet<string> playedVideoCutscenes = new HashSet<string>();
     public static bool CanLeaveKitchen(int requiredNPCs)
     {
         return kitchenNPCsTalkedTo.Count >= requiredNPCs;

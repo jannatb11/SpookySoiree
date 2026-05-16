@@ -154,7 +154,7 @@ MonoBehaviour:
   sceneRequirements:
   - sceneName: Hallwaydoors2_Act2
     requiredNPCID: Zuek
-    requiredNPCToShowArrow: 
+    requiredNPCToShowArrow: Sarah_Act2_1
     blockedDialogueLines:
     - 'Not again.....
 
@@ -168,7 +168,11 @@ MonoBehaviour:
     - Sarah
     - Player
     blockedIsNPCSpeaking: 
-    blockedVoiceClips: []
+    blockedVoiceClips:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0e7c1ff34f885e949854591fcc35e39c, type: 3}
+    - {fileID: 0}
     playDialogueBeforeEntering: 0
     enterDialogueLines: []
     enterSpeakerNames: []
@@ -2740,8 +2744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c12c65790d6a443ab3543de5bd2864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
-  travelScript: {fileID: 0}
+  sceneName: Hallwaydoors2_Act2
+  travelScript: {fileID: 165757560}
 --- !u!1 &1452028313
 GameObject:
   m_ObjectHideFlags: 0
