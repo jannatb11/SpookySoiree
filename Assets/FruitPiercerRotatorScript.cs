@@ -16,6 +16,9 @@ public class FruitPiercerRotatorScript : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, rotation * 90);
         if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)){
             rotation += Input.GetAxisRaw("Horizontal");
+            if(GameObject.Find("Instructions") != null){
+                GameObject.Find("Instructions").SetActive(false);
+            }
         }
     }
 }
