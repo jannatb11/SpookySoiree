@@ -57,6 +57,7 @@ public class DodgeGameManagerScript : MonoBehaviour
         difficulty += 0.06f;
     }
     void Win(){
+        GlobalUnlocksScript.completedDodgeMinigame = true;
         victoryPanel.SetActive(true);
         obstacleSpawnTime = 42e30f;
         obstacleSpawnTimer = -42e30f;

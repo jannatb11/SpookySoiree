@@ -7,4 +7,7 @@ public static class GlobalUnlocksScript
     public static bool completedLockPuzzle = false;
     public static bool completedPianoPuzzle = false;
     public static bool completedConnect4Puzzle = false;
+    public static bool completedFruitPiercer = false;
+    public static bool completedDodgeMinigame = false;
+
 }

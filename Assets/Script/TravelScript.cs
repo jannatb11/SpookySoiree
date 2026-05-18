@@ -141,6 +141,15 @@ public class TravelScript : MonoBehaviour
             return;
         }
 
+        if(sceneName == "FruitPiercer" &&
+            !(GlobalUnlocksScript.completedDodgeMinigame))
+        {
+            Debug.Log("Complete the puzzles first.");
+            isLoading = false;
+            return;
+        }
+
+
         if (MusicManager.Instance != null)
         {
             MusicManager.Instance.SetDistanceLevel(GetDistanceForScene(sceneName));
