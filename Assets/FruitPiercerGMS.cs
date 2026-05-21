@@ -26,7 +26,7 @@ public class FruitPiercerGMS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!fruitActive){
+        if(!fruitActive && score < 15){
             fruitActive = true;
             GameObject newFruit = Instantiate(fruit);
             newFruit.GetComponent<FruitPiercerFruitScript>().delay = 1f / gameSpeed;
@@ -44,7 +44,8 @@ public class FruitPiercerGMS : MonoBehaviour
     }
     public void Win(){
         Victory.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        fruitActive = true;
     }
     public void FruitLost(){
         fruitActive = false;
