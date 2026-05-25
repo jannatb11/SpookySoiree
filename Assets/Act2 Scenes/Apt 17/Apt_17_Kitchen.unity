@@ -1081,6 +1081,7 @@ GameObject:
   - component: {fileID: 655801263}
   - component: {fileID: 655801262}
   - component: {fileID: 655801261}
+  - component: {fileID: 655801267}
   m_Layer: 5
   m_Name: SceneButton (1)
   m_TagString: Untagged
@@ -1133,9 +1134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  sceneName: FruitPiercer
+  useSpecificNPCs: 1
+  requiredNPCIDs:
+  - Sarah_Act2_1
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -1248,6 +1250,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655801259}
   m_CullTransparentMesh: 1
+--- !u!114 &655801267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655801259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aee5b82f7ba87d4383fae3071218d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelScript: {fileID: 1616814450}
+  sceneName: FruitPiercer
+  blockedLines:
+  - I should talk to Sarah first.
+  blockedSpeakers: []
+  blockedIsNPC: 
+  blockedVoiceClips: []
 --- !u!1 &699304484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,8 +2332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3674,8 +3695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

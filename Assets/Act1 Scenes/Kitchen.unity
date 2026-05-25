@@ -1685,8 +1685,8 @@ RectTransform:
   - {fileID: 643751365}
   - {fileID: 1191852769}
   - {fileID: 162027728}
-  - {fileID: 1820496187}
   - {fileID: 981263484}
+  - {fileID: 523787408}
   - {fileID: 1411739887}
   - {fileID: 2122338765}
   - {fileID: 1355581346}
@@ -1731,17 +1731,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523787407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.226431}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1979125175}
   - {fileID: 144195592}
-  m_Father: {fileID: 981263484}
+  m_Father: {fileID: 478201340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.66388, y: 246.75238}
+  m_AnchoredPosition: {x: 171, y: 124.47003}
   m_SizeDelta: {x: 68.9764, y: 68.818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523787409
@@ -1793,8 +1793,8 @@ MonoBehaviour:
   animator: {fileID: 144195595}
   animationStates:
   - Daisy_Idle
-  - Daisy_Talk
   - Daisy_Idle
+  - Daisy_Talk
   - Daisy_Talk
   - Daisy_Talk
   - Daisy_Talk
@@ -2611,9 +2611,9 @@ Transform:
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1820496187}
   - {fileID: 1156230939}
   - {fileID: 536701842}
-  - {fileID: 523787408}
   m_Father: {fileID: 478201340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988676675
@@ -3087,8 +3087,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Kitchen
-  isKitchenDoor: 1
-  requiredNPCs: 2
+  useSpecificNPCs: 1
+  requiredNPCIDs:
+  - Gurt_Kitchen
+  - Daisy_1
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -4921,15 +4923,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820496186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.226431}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 478201340}
+  m_Father: {fileID: 981263484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 171, y: 129.10004}
+  m_AnchoredPosition: {x: 67.66387, y: 256.0124}
   m_SizeDelta: {x: 70, y: 70.9464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820496188

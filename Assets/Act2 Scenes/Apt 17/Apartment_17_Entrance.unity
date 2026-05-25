@@ -151,34 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bdb4fae926d404bb168f376a66b192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneRequirements:
-  - sceneName: Hallwaydoors2_Act2
-    requiredNPCID: Zuek
-    requiredNPCToShowArrow: Sarah_Act2_1
-    blockedDialogueLines:
-    - 'Not again.....
-
-'
-    - "Sarah, we are trapped\u2026\u2026\r"
-    - "There\u2019s no way\u2026 did you make sure you-\r\r"
-    - "IT\u2019S LOCKED.\r\r\r"
-    blockedSpeakerNames:
-    - Player
-    - Player
-    - Sarah
-    - Player
-    blockedIsNPCSpeaking: 
-    blockedVoiceClips:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 8300000, guid: 0e7c1ff34f885e949854591fcc35e39c, type: 3}
-    - {fileID: 0}
-    playDialogueBeforeEntering: 0
-    enterDialogueLines: []
-    enterSpeakerNames: []
-    enterIsNPCSpeaking: 
-    enterVoiceClips: []
-    autoStartNPCID: 
+  sceneRequirements: []
 --- !u!4 &165757561
 Transform:
   m_ObjectHideFlags: 0
@@ -781,8 +754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2034,8 +2007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2201,8 +2174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2564,7 +2537,7 @@ GameObject:
   - component: {fileID: 1441742573}
   - component: {fileID: 1441742572}
   - component: {fileID: 1441742571}
-  - component: {fileID: 1441742577}
+  - component: {fileID: 1441742578}
   m_Layer: 5
   m_Name: SceneButton (2)
   m_TagString: Untagged
@@ -2633,8 +2606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2682,10 +2655,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165757560}
-        m_TargetAssemblyTypeName: TravelScript, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 5
+      - m_Target: {fileID: 1441742578}
+        m_TargetAssemblyTypeName: NPCInteraction, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2732,7 +2705,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441742569}
   m_CullTransparentMesh: 1
---- !u!114 &1441742577
+--- !u!114 &1441742578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2741,11 +2714,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441742569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c12c65790d6a443ab3543de5bd2864, type: 3}
+  m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Hallwaydoors2_Act2
-  travelScript: {fileID: 165757560}
+  npcID: arrow_Act2
+  npcName: arrow
+  dialogueLines:
+  - 'Not again..... '
+  - "Sarah, we are trapped\u2026\u2026"
+  - "There\u2019s no way\u2026 did you make sure you-"
+  - "IT\u2019S LOCKED."
+  speakerNames:
+  - Player
+  - Player
+  - Sarah
+  - Player
+  isNPCSpeaking: 
+  voiceClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 0e7c1ff34f885e949854591fcc35e39c, type: 3}
+  - {fileID: 0}
+  animator: {fileID: 0}
+  animationStates: []
+  requireDaisyToAppear: 0
+  requireDoorToAppear: 0
+  requireAllDoorNPCs: 0
+  countsForDoorProgress: 0
+  triggerSelfDialogueID: 
+  unlockDaisyProgress: 0
+  unlockIntro: 0
+  unlockKitchen: 0
+  countsForKitchenExitProgress: 0
+  teleportAfterDialogue: 0
+  sceneSwitcher: {fileID: 0}
+  disappearAfterDialogue: 1
+  disableUntilTriggered: 1
+  requiredTriggerID: Sarah_Act2_1
+  playVideoAfterDialogue: 0
+  videoPlayer: {fileID: 0}
+  cutscenePanel: {fileID: 0}
+  disappearAfterCutscene: 0
+  loadSceneAfterCutscene: 0
+  cutsceneSceneName: 
 --- !u!1 &1452028313
 GameObject:
   m_ObjectHideFlags: 0

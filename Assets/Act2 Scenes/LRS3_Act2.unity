@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 332511414}
   - component: {fileID: 332511413}
   - component: {fileID: 332511416}
+  - component: {fileID: 332511417}
   m_Layer: 5
   m_Name: SceneButton (4)
   m_TagString: Untagged
@@ -936,10 +937,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1522804086}
-        m_TargetAssemblyTypeName: TravelScript, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 5
+      - m_Target: {fileID: 332511417}
+        m_TargetAssemblyTypeName: UIButtonTravelWithRequirement, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -998,9 +999,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  sceneName: ConnectFourPuzzle
+  useSpecificNPCs: 1
+  requiredNPCIDs:
+  - Trevor_Can
+  - Kosmo_Head
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -1045,6 +1048,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: 0
+--- !u!114 &332511417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332511408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aee5b82f7ba87d4383fae3071218d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelScript: {fileID: 1522804086}
+  sceneName: ConnectFourPuzzle
+  blockedLines:
+  - I should keep looking around the apartment.
+  blockedSpeakers: []
+  blockedIsNPC: 
+  blockedVoiceClips: []
 --- !u!1 &461888219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1291,8 @@ MonoBehaviour:
   characterUI: {fileID: 2100041014}
   audioSource: {fileID: 786936609}
   spawnSounds: []
+  cutsceneVideo: {fileID: 0}
+  cutsceneID: 
 --- !u!82 &786936609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2347,8 +2371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Hallway_Act2
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2777,8 +2801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

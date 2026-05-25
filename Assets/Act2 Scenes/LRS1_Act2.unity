@@ -836,8 +836,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -993,6 +993,7 @@ GameObject:
   - component: {fileID: 479523431}
   - component: {fileID: 479523430}
   - component: {fileID: 479523433}
+  - component: {fileID: 479523434}
   m_Layer: 5
   m_Name: SceneButton (3)
   m_TagString: Untagged
@@ -1064,10 +1065,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747851950}
-        m_TargetAssemblyTypeName: TravelScript, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 5
+      - m_Target: {fileID: 479523434}
+        m_TargetAssemblyTypeName: UIButtonTravelWithRequirement, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1139,9 +1140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  sceneName: PianoPuzzle
+  useSpecificNPCs: 1
+  requiredNPCIDs:
+  - Trevor_Can
+  - Kosmo_Head
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -1173,6 +1176,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: 1
+--- !u!114 &479523434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479523425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aee5b82f7ba87d4383fae3071218d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelScript: {fileID: 1747851950}
+  sceneName: PianoPuzzle
+  blockedLines:
+  - I should keep looking around the apartment
+  blockedSpeakers: []
+  blockedIsNPC: 
+  blockedVoiceClips: []
 --- !u!1 &598971197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1364,8 @@ MonoBehaviour:
   characterUI: {fileID: 2136652120}
   audioSource: {fileID: 618172770}
   spawnSounds: []
+  cutsceneVideo: {fileID: 0}
+  cutsceneID: 
 --- !u!82 &618172770
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1617,8 +1641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2808,8 +2832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
-  isKitchenDoor: 0
-  requiredNPCs: 2
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

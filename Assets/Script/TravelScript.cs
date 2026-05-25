@@ -10,6 +10,8 @@ public class TravelScript : MonoBehaviour
         [Header("Scene")]
         public string sceneName;
 
+        
+
         [Header("Required NPC")]
         public string requiredNPCID;
 

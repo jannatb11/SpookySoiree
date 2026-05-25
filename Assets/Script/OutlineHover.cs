@@ -9,9 +9,9 @@ public class OutlineHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [Header("Scene Settings")]
     public string sceneName;
 
-    [Header("Kitchen Settings")]
-    public bool isKitchenDoor = false;
-    public int requiredNPCs = 2;
+    [Header("Kitchen / NPC Requirements")]
+    public bool useSpecificNPCs = false;
+    public string[] requiredNPCIDs;
 
     [Header("Colors")]
     public Color validColor = Color.green;
@@ -27,33 +27,36 @@ public class OutlineHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         outline = GetComponent<Outline>();
         outline.enabled = true;
 
-        //  START COMPLETELY INVISIBLE
         SetAlpha(0f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         bool canUse = CanUse();
-
         baseColor = canUse ? validColor : lockedColor;
-
         SetAlpha(hoverAlpha);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        SetAlpha(0f); // hide again
+        SetAlpha(0f);
     }
 
-    bool CanUse()
+
+    public bool CanUse()
     {
-        // Kitchen logic
-        if (isKitchenDoor)
+      
+        if (useSpecificNPCs && requiredNPCIDs != null && requiredNPCIDs.Length > 0)
         {
-            return GameState.kitchenNPCsTalkedTo.Count >= requiredNPCs;
+            for (int i = 0; i < requiredNPCIDs.Length; i++)
+            {
+                if (!GameState.triggeredIDs.Contains(requiredNPCIDs[i]))
+                    return false;
+            }
+            return true;
         }
 
-        // Front door lock
+        // Puzzle door
         if (sceneName == "Hallway_Act2")
         {
             return GameState.AllPuzzlesCompleted();
