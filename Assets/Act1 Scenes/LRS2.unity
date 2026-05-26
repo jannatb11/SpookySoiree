@@ -579,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.687}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 184.04257, y: -95.868805}
+  m_AnchoredPosition: {x: 168.6, y: -90.293}
   m_SizeDelta: {x: 38.9997, y: 42.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222944778
@@ -1170,9 +1170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
 --- !u!114 &365101635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,9 +2688,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
 --- !u!1 &1224439869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,7 +3546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.687}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160.00006, y: -96}
+  m_AnchoredPosition: {x: 132.9, y: -90.293}
   m_SizeDelta: {x: 38.9997, y: 42.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517403273
@@ -3610,6 +3616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bdb4fae926d404bb168f376a66b192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneRequirements: []
 --- !u!4 &1522804087
 Transform:
   m_ObjectHideFlags: 0
@@ -3868,7 +3875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.687}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210.38455, y: -95.72496}
+  m_AnchoredPosition: {x: 210.37993, y: -90.29304}
   m_SizeDelta: {x: 38.9997, y: 42.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1658754912
@@ -4535,9 +4542,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e03df6a68a301c408af7409af6753f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
+  useSpecificNPCs: 0
+  requiredNPCIDs: []
+  validColor: {r: 0, g: 1, b: 0, a: 1}
+  lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
-  normalAlpha: 0
-  fadeSpeed: 10
 --- !u!114 &2111685243
 MonoBehaviour:
   m_ObjectHideFlags: 0
