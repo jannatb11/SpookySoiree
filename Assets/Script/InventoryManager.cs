@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -46,7 +46,6 @@ public class InventoryManager : MonoBehaviour
     public DaisyDialogueSet afterAllNPCs;
 
     private bool hasTalkedToDaisy = false;
-    private bool buttonsSetup = false;
 
     void Awake()
     {
@@ -71,9 +70,6 @@ public class InventoryManager : MonoBehaviour
     {
         StartCoroutine(SetupUI());
 
-        // =========================
-        // RESET INVENTORY AFTER CUTSCENE SCENE SWITCH
-        // =========================
         if (GameState.resetInventoryOnNextScene)
         {
             ClearInventory();
@@ -81,18 +77,22 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+   
     IEnumerator SetupUI()
     {
         yield return null;
+        yield return null;
 
         FindUI();
+        SetupButtons();
         RefreshUI();
+    }
+    IEnumerator DelayedRefresh()
+    {
+        yield return null;
+        yield return null;
 
-        if (!buttonsSetup)
-        {
-            SetupButtons();
-            buttonsSetup = true;
-        }
+        RefreshUI();
     }
 
     void FindUI()
@@ -101,6 +101,8 @@ public class InventoryManager : MonoBehaviour
         daisyinv2 = GameObject.Find("daisyinv2");
         pianoinv = GameObject.Find("pianoinv");
         mouseinv = GameObject.Find("mouseinv");
+
+        Debug.Log($"UI FOUND -> daisyinv:{daisyinv}, daisyinv2:{daisyinv2}");
     }
 
     void SetupButtons()
@@ -111,37 +113,50 @@ public class InventoryManager : MonoBehaviour
 
             if (btn != null)
             {
-                btn.onClick.RemoveListener(TalkToDaisy);
+                btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(TalkToDaisy);
+            }
+        }
+
+        if (daisyinv2)
+        {
+            Button btn = daisyinv2.GetComponent<Button>();
+
+            if (btn != null)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(CollectDaisy);
             }
         }
     }
 
     void RefreshUI()
     {
-        if (daisyinv)
+        if (daisyinv == null || daisyinv2 == null || pianoinv == null || mouseinv == null)
+        {
+            FindUI();
+        }
+
+        Debug.Log("hasDaisy = " + hasDaisy);
+
+        if (daisyinv != null)
             daisyinv.SetActive(hasDaisy);
 
-        if (daisyinv2)
+        if (daisyinv2 != null)
             daisyinv2.SetActive(!hasDaisy);
 
-        if (pianoinv)
+        if (pianoinv != null)
             pianoinv.SetActive(hasPiano);
 
-        if (mouseinv)
+        if (mouseinv != null)
             mouseinv.SetActive(hasMouse);
     }
-
-    // =========================
-    // INVENTORY COLLECTION
-    // =========================
-
     public void CollectDaisy()
     {
         hasDaisy = true;
-        RefreshUI();
-    }
 
+        StartCoroutine(DelayedRefresh());
+    }
     public void CollectPiano()
     {
         hasPiano = true;
@@ -154,9 +169,6 @@ public class InventoryManager : MonoBehaviour
         RefreshUI();
     }
 
-    // =========================
-    // CLEAR INVENTORY (NEW)
-    // =========================
     public void ClearInventory()
     {
         hasDaisy = false;
@@ -165,10 +177,6 @@ public class InventoryManager : MonoBehaviour
 
         RefreshUI();
     }
-
-    // =========================
-    // DAISY DIALOGUE
-    // =========================
 
     public void TalkToDaisy()
     {
