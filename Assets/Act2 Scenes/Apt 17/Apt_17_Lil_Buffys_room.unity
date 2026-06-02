@@ -542,7 +542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.017212, y: 56.643}
+  m_AnchoredPosition: {x: 3.017212, y: 56.643005}
   m_SizeDelta: {x: -373.65, y: -133.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539216520
@@ -1279,32 +1279,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcID: Lil_Buffy_1
+  dialogueSpawnEvents: []
+  npcID: Lil_Buffy_home
   npcName: Lil buffy
   dialogueLines:
   - Hi!
   - "Hello\u2026\u2026 "
-  - "I\u2019m Lil Buffy!"
-  - Quick question, has anyone found my toy Thomas the Creatine?
-  - "Uh\u2026 yeah\u2026 no."
+  - Im sorry we had to leave the party....
+  - Quick question do you remember anything that happenened after the lights went
+    out?
+  - Nope.
+  - Alright.
   speakerNames:
   - Lil Buffy
   - Player
   - Lil Buffy
+  - Player
   - Lil Buffy
   - Player
-  isNPCSpeaking: 0100010100
+  isNPCSpeaking: 010001000100
   voiceClips:
   - {fileID: 8300000, guid: 80d7cb1a4f9871846abb7d3742334707, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 34b251d8988e1b54dbb10e6e32e3e2a7, type: 3}
-  - {fileID: 8300000, guid: 0aebe14b3416f4f4890c21a4f913ab8d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   animator: {fileID: 217495107}
   animationStates:
   - Lil_Buffy_Talking
   - Lil_Buffy_Idle
   - Lil_Buffy_Talking
+  - Lil_Buffy_Idle
   - Lil_Buffy_Talking
   - Lil_Buffy_Idle
   requireDaisyToAppear: 0
@@ -2125,6 +2130,7 @@ RectTransform:
   - {fileID: 539216519}
   - {fileID: 1309229877}
   - {fileID: 2133999616}
+  - {fileID: 1551745857}
   - {fileID: 1287456340}
   - {fileID: 1847277906}
   - {fileID: 1168141213}
@@ -2141,6 +2147,103 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1551745856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551745857}
+  - component: {fileID: 1551745860}
+  - component: {fileID: 1551745859}
+  - component: {fileID: 1551745858}
+  m_Layer: 5
+  m_Name: Lil_Buffy (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1551745857
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551745856}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1550452733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 135.43477, y: 43.060005}
+  m_SizeDelta: {x: 148.7927, y: 149.2079}
+  m_Pivot: {x: 0.64493483, y: 0.36411428}
+--- !u!95 &1551745858
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551745856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d972430e4a824c94ca573fe15fa1bbc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1551745859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551745856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f7ab31b2eb2a3f54d923e2f6bfba7873, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1551745860
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551745856}
+  m_CullTransparentMesh: 1
 --- !u!1 &1629613223
 GameObject:
   m_ObjectHideFlags: 0
