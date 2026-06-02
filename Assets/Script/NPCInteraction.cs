@@ -2,9 +2,26 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NPCInteraction : MonoBehaviour
 {
+    [System.Serializable]
+    public class DialogueSpawnEvent
+    {
+        [Tooltip("The dialogue line index that triggers this event.")]
+        public int lineNumber;
+
+        [Tooltip("Objects to activate when this line is reached.")]
+        public GameObject[] objectsToSpawn;
+
+    }
+
+    [Header("Dialogue Spawn Events")]
+    public DialogueSpawnEvent[] dialogueSpawnEvents;
+
+    private HashSet<int> triggeredDialogueEvents = new HashSet<int>();
+
     [Header("NPC Info")]
     public string npcID;
     public string npcName;
@@ -224,5 +241,70 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    
+    public void CheckDialogueEvents(int currentLine)
+{
+    if (dialogueSpawnEvents == null)
+        return;
+
+    if (triggeredDialogueEvents.Contains(currentLine))
+        return;
+
+    foreach (DialogueSpawnEvent evt in dialogueSpawnEvents)
+    {
+        if (evt.lineNumber == currentLine)
+        {
+            triggeredDialogueEvents.Add(currentLine);
+
+            foreach (GameObject obj in evt.objectsToSpawn)
+            {
+                if (obj == null)
+                    continue;
+
+                CanvasGroup cg = obj.GetComponent<CanvasGroup>();
+
+                if (cg != null)
+                {
+                    StartCoroutine(FadeIn(cg, 1f));
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        obj.name +
+                        " does not have a CanvasGroup component."
+                    );
+                }
+            }
+        }
+    }
+}
+
+    IEnumerator FadeIn(CanvasGroup canvasGroup, float duration)
+    {
+        GameObject obj = canvasGroup.gameObject;
+
+        obj.SetActive(true);
+
+        float time = 0f;
+        canvasGroup.alpha = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, time / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+
+        
+        Animator anim = obj.GetComponent<Animator>();
+
+        if (anim != null)
+        {
+            anim.SetTrigger("Show");
+        }
+    }
+
+
+
 }

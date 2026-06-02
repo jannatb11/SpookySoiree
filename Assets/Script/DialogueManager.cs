@@ -139,6 +139,11 @@ public class DialogueManager : MonoBehaviour
 
     void StartTyping()
     {
+        if (currentNPC != null)
+        {
+            currentNPC.CheckDialogueEvents(index);
+        }
+
         typingCoroutine = StartCoroutine(TypeLine());
     }
 
@@ -172,6 +177,11 @@ public class DialogueManager : MonoBehaviour
             audioSource.Stop();
             audioSource.clip = voiceClips[index];
             audioSource.Play();
+        }
+       
+        if (currentNPC != null)
+        {
+            currentNPC.CheckDialogueEvents(index);
         }
 
         foreach (char c in lines[index])
