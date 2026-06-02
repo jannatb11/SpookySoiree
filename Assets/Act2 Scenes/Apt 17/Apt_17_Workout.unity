@@ -755,7 +755,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.48451552, y: 0.623}
   m_AnchorMax: {x: 0.5234845, y: 0.69900006}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -133.7, y: 17.2}
+=======
+  m_AnchoredPosition: {x: -131.8, y: 20.5}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 129.4362, y: 131.114}
   m_Pivot: {x: 0.5000001, y: 0.49999997}
 --- !u!114 &356467198
@@ -774,7 +778,7 @@ MonoBehaviour:
   useSpecificNPCs: 1
   requiredNPCIDs:
   - Sarah_Act2_1
-  validColor: {r: 0, g: 1, b: 0, a: 1}
+  validColor: {r: 0.34509805, g: 1, b: 0.08627451, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
 --- !u!114 &356467199
@@ -789,7 +793,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+=======
+  m_EffectColor: {r: 0, g: 1, b: 0.34843588, a: 1}
+>>>>>>> Stashed changes
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!114 &356467200
