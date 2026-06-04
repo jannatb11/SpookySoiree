@@ -2,43 +2,25 @@ using UnityEngine;
 
 public class Penny : MonoBehaviour
 {
-    private bool clicked = false;
-    private float spawnTime;
-    public float lifetime = 10f; 
-
     private SpriteRenderer sr;
 
-    public void Init()
+    private void Awake()
     {
-        clicked = false;
-        spawnTime = Time.time;
         sr = GetComponent<SpriteRenderer>();
-        sr.color = Color.green; 
-        gameObject.SetActive(true);
     }
 
-    void Update()
+    public void SetWhite()
     {
-        if (!clicked && Time.time - spawnTime > lifetime)
-        {
-            GM.Instance.GameOver();
-        }
+        sr.color = Color.white;
     }
 
-    void OnMouseDown()
+    public void SetGreen()
     {
-        if (!clicked)
-        {
-            clicked = true;
-            sr.color = Color.yellow; 
-            GM.Instance.PennyClicked(this);
-        }
+        sr.color = Color.green;
     }
 
-    public bool IsClicked() => clicked;
-
-    public void ResetPenny()
+    private void OnMouseDown()
     {
-        Init();
+        GM.Instance.PennyClicked(this);
     }
 }

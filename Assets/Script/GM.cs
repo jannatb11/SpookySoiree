@@ -5,80 +5,85 @@ public class GM : MonoBehaviour
 {
     public static GM Instance;
 
-    public Penny pennyPrefab;
-    public int totalPennies = 15;
-    public int respawnTimes = 5;
+    [SerializeField] private GameObject winUI;
 
-    private List<Penny> activePennies = new List<Penny>();
-    private int roundsCompleted = 0;
+    private List<Penny> pennies = new List<Penny>();
 
-    void Awake()
+    private Penny currentPenny;
+    private int clickedCount = 0;
+
+    private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
-        SpawnPennies(totalPennies);
-    }
-
-    void SpawnPennies(int count)
-    {
-        for (int i = 0; i < count; i++)
+        if (winUI != null)
         {
-            Penny p = Instantiate(pennyPrefab, RandomPosition(), Quaternion.identity);
-            activePennies.Add(p);
-            p.Init();
+            winUI.SetActive(false);
         }
+
+        pennies.AddRange(FindObjectsOfType<Penny>());
+
+        foreach (Penny p in pennies)
+        {
+            p.SetWhite();
+        }
+
+        ActivateRandomPenny();
     }
 
-    Vector2 RandomPosition()
+    private void ActivateRandomPenny()
     {
-        return new Vector2(Random.Range(-7f, 7f), Random.Range(-4f, 4f));
+        List<Penny> available = new List<Penny>();
+
+        foreach (Penny p in pennies)
+        {
+            if (p != currentPenny)
+            {
+                available.Add(p);
+            }
+        }
+
+        if (available.Count == 0)
+            return;
+
+        currentPenny = available[Random.Range(0, available.Count)];
+
+        currentPenny.SetGreen();
     }
 
     public void PennyClicked(Penny penny)
     {
-        // Check if all pennies are clicked
-        bool allClicked = true;
-        foreach (var p in activePennies)
+        if (penny != currentPenny)
+            return;
+
+        clickedCount++;
+
+        penny.SetWhite();
+
+        if (clickedCount >= 15)
         {
-            if (!p.IsClicked())
-            {
-                allClicked = false;
-                break;
-            }
+            WinGame();
+            return;
         }
 
-        if (allClicked)
-        {
-            roundsCompleted++;
-            if (roundsCompleted >= respawnTimes)
-            {
-                Debug.Log("Puzzle Complete!");
-            }
-            else
-            {
-                RespawnPennies(Random.Range(5, 11));
-            }
-        }
+        ActivateRandomPenny();
     }
 
-    void RespawnPennies(int count)
+    private void WinGame()
     {
-        // Randomly pick pennies to reset
-        List<Penny> unclicked = new List<Penny>(activePennies);
-        for (int i = 0; i < count && unclicked.Count > 0; i++)
-        {
-            int index = Random.Range(0, unclicked.Count);
-            unclicked[index].ResetPenny();
-            unclicked.RemoveAt(index);
-        }
-    }
+        Debug.Log("YOU WIN!");
 
-    public void GameOver()
-    {
-        Debug.Log("Game Over!");
-        Time.timeScale = 0; // stop the game
+        foreach (Penny p in pennies)
+        {
+            p.gameObject.SetActive(false);
+        }
+
+        if (winUI != null)
+        {
+            winUI.SetActive(true);
+        }
     }
 }
