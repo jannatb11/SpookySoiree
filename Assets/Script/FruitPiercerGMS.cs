@@ -13,6 +13,11 @@ public class FruitPiercerGMS : MonoBehaviour
     public int score;
     public GameObject Victory;
     public GameObject Defeat;
+
+    public Image fadeImage;
+    public string nextSceneName = "Choose";
+
+    private bool hasWon = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +26,23 @@ public class FruitPiercerGMS : MonoBehaviour
         score = 0;
         Victory.SetActive(false);
         Defeat.SetActive(false);
+
+
+        if (fadeImage != null)
+        {
+            fadeImage.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!fruitActive && score < 15){
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            score = 14;
+        }
+
+        if (!fruitActive && score < 15){
             fruitActive = true;
             GameObject newFruit = Instantiate(fruit);
             newFruit.GetComponent<FruitPiercerFruitScript>().delay = 1f / gameSpeed;
@@ -42,10 +58,12 @@ public class FruitPiercerGMS : MonoBehaviour
         gameSpeed *= 1.1f;
         score += 1;
     }
-    public void Win(){
-        Victory.SetActive(true);
-        Time.timeScale = 1;
-        fruitActive = true;
+    public void Win()
+    {
+        if (hasWon) return;
+        hasWon = true;
+        GlobalUnlocksScript.completedFruitPiercer = true; // if you have a completion flag
+        StartCoroutine(WinTransition());
     }
     public void FruitLost(){
         fruitActive = false;
@@ -55,5 +73,21 @@ public class FruitPiercerGMS : MonoBehaviour
     public void Retry(){
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator WinTransition()
+    {
+        if (fadeImage != null)
+        {
+            fadeImage.gameObject.SetActive(true);
+
+            Color c = fadeImage.color;
+            c.a = 1f;
+            fadeImage.color = c;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }

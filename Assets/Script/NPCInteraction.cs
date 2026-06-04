@@ -2,9 +2,29 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NPCInteraction : MonoBehaviour
 {
+    [System.Serializable]
+    public class DialogueSpawnEvent
+    {
+        [Tooltip("The dialogue line index that triggers this event.")]
+        public int lineNumber;
+
+        [Tooltip("Objects to activate when this line is reached.")]
+        public GameObject[] objectsToSpawn;
+
+    }
+
+    [Header("Interaction Requirement")]
+    public string requiredNPCToTalkTo;
+
+    [Header("Dialogue Spawn Events")]
+    public DialogueSpawnEvent[] dialogueSpawnEvents;
+
+    private HashSet<int> triggeredDialogueEvents = new HashSet<int>();
+
     [Header("NPC Info")]
     public string npcID;
     public string npcName;
@@ -73,6 +93,14 @@ public class NPCInteraction : MonoBehaviour
 
     private bool videoPlaying;
 
+    [Header("Act Transition")]
+    public bool playActTransition;
+    public SceneTransition sceneTransition;
+
+    [Header("Door Transition")]
+    public bool playDoorTransition;
+    public string doorSceneName;
+    public SceneTransition doorTransition;
 
     void Start()
     {
@@ -122,6 +150,14 @@ public class NPCInteraction : MonoBehaviour
 
     public void Interact()
     {
+       
+        if (!string.IsNullOrEmpty(requiredNPCToTalkTo) &&
+            !GameState.triggeredIDs.Contains(requiredNPCToTalkTo))
+        {
+            Debug.Log("I should talk to someone else first...");
+            return;
+        }
+
         if (DialogueManager.Instance.IsDialogueActive || videoPlaying)
             return;
 
@@ -141,6 +177,7 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+
         if (animator != null)
             animator.SetBool("isTalking", false);
 
@@ -165,8 +202,24 @@ public class NPCInteraction : MonoBehaviour
         if (unlockKitchen)
             GameProgress.kitchenUnlocked = true;
 
-        if (teleportAfterDialogue && sceneSwitcher != null)
+        if (teleportAfterDialogue && sceneSwitcher != null && !playDoorTransition)
+        {
             sceneSwitcher.TriggerSceneSwitch();
+        }
+
+        if (playDoorTransition && !string.IsNullOrEmpty(doorSceneName))
+        {
+            if (doorTransition != null)
+            {
+                doorTransition.StartTransition(doorSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(doorSceneName);
+            }
+
+            return;
+        }
 
         // =========================
         // START CUTSCENE
@@ -213,9 +266,20 @@ public class NPCInteraction : MonoBehaviour
         {
             GameState.pendingSelfDialogueID = "Gurt_Cutscene";
             GameState.resetInventoryOnNextScene = true;
-            SceneManager.LoadScene(cutsceneSceneName);
+
+            if (playActTransition && sceneTransition != null)
+            {
+                sceneTransition.StartTransition(cutsceneSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(cutsceneSceneName);
+            }
+
             return;
         }
+
+        
 
         if (disappearAfterCutscene)
         {
@@ -224,5 +288,78 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-    
+    public void CheckDialogueEvents(int currentLine)
+{
+    if (dialogueSpawnEvents == null)
+        return;
+
+    if (triggeredDialogueEvents.Contains(currentLine))
+        return;
+
+    foreach (DialogueSpawnEvent evt in dialogueSpawnEvents)
+    {
+        if (evt.lineNumber == currentLine)
+        {
+            triggeredDialogueEvents.Add(currentLine);
+
+            foreach (GameObject obj in evt.objectsToSpawn)
+            {
+                if (obj == null)
+                    continue;
+
+                CanvasGroup cg = obj.GetComponent<CanvasGroup>();
+
+                if (cg != null)
+                {
+                    StartCoroutine(FadeIn(cg, 1f));
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        obj.name +
+                        " does not have a CanvasGroup component."
+                    );
+                }
+            }
+        }
+    }
+
+
+
+}
+
+
+
+    IEnumerator FadeIn(CanvasGroup canvasGroup, float duration)
+    {
+        GameObject obj = canvasGroup.gameObject;
+
+        obj.SetActive(true);
+
+        float time = 0f;
+        canvasGroup.alpha = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, time / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+
+        
+        Animator anim = obj.GetComponent<Animator>();
+
+        if (anim != null)
+        {
+            anim.SetTrigger("Show");
+        }
+    }
+
+    public void TestDoor()
+    {
+        doorTransition.StartTransition("Character");
+    }
+
 }

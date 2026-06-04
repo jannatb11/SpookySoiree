@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class PuzzleTriggerHide : MonoBehaviour
 {
-    
     public enum PuzzleType
     {
         Connect4,
         Piano,
-        Lock
+        Lock,
+        DodgeMinigame,
+        FruitPiercer
     }
 
     public PuzzleType puzzle;
@@ -33,6 +34,14 @@ public class PuzzleTriggerHide : MonoBehaviour
 
             case PuzzleType.Lock:
                 completed = GlobalUnlocksScript.completedLockPuzzle;
+                break;
+
+            case PuzzleType.DodgeMinigame:
+                completed = GlobalUnlocksScript.completedDodgeMinigame;
+                break;
+
+            case PuzzleType.FruitPiercer:
+                completed = GlobalUnlocksScript.completedFruitPiercer;
                 break;
         }
 

@@ -63,12 +63,11 @@ public class KeyPlay : MonoBehaviour
 
                 if (pianoinv != null)
                     pianoinv.SetActive(true);
-                                                                                                                                          
+
                 GlobalUnlocksScript.completedPianoPuzzle = true;
 
                 Debug.Log("Puzzle Solved!");
                 winUI.SetActive(true);
-
             }
         }
         else

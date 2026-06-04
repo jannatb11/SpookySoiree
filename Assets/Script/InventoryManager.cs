@@ -24,6 +24,15 @@ public class InventoryManager : MonoBehaviour
     public AudioClip[] daisyVoiceClips;
     public string[] daisySpeakerNames;
 
+    [Header("Extra Daisy Dialogue Sets")]
+    public DaisyDialogueSet afterGurtCutscene;
+    public DaisyDialogueSet afterSarahAct2;
+
+    public bool HasAnyItem()
+    {
+        return hasDaisy || hasPiano || hasMouse;
+    }
+
     [System.Serializable]
     public class DaisyConversation
     {
@@ -206,12 +215,27 @@ public class InventoryManager : MonoBehaviour
 
         DaisyDialogueSet currentSet;
 
-        if (GameState.allDoorNPCsTalkedTo)
+       
+        if (GameState.triggeredIDs.Contains("Sarah_Act2_1"))
+        {
+            currentSet = afterSarahAct2;
+        }
+        else if (GameState.triggeredIDs.Contains("Gurt_Cutscene"))
+        {
+            currentSet = afterGurtCutscene;
+        }
+        else if (GameState.allDoorNPCsTalkedTo)
+        {
             currentSet = afterAllNPCs;
+        }
         else if (GameState.openedDoor)
+        {
             currentSet = afterDoor;
+        }
         else
+        {
             currentSet = beforeDoor;
+        }
 
         if (currentSet == null || currentSet.conversations.Length == 0)
             return;

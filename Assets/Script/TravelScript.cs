@@ -32,9 +32,6 @@ public class TravelScript : MonoBehaviour
         public bool[] enterIsNPCSpeaking;
         public AudioClip[] enterVoiceClips;
 
-        // =========================
-        // AUTO NPC DIALOGUE
-        // =========================
         [Header("Auto Dialogue On Scene Enter")]
         public string autoStartNPCID;
     }
@@ -61,9 +58,7 @@ public class TravelScript : MonoBehaviour
 
         SceneRequirement matchingRequirement = null;
 
-        // =========================
-        // FIND MATCH
-        // =========================
+       
         for (int i = 0; i < sceneRequirements.Length; i++)
         {
             SceneRequirement requirement = sceneRequirements[i];
@@ -78,9 +73,7 @@ public class TravelScript : MonoBehaviour
             }
         }
 
-        // =========================
-        // REQUIREMENT CHECK
-        // =========================
+       
         if (matchingRequirement != null)
         {
             bool talkedToRequiredNPC =
@@ -117,9 +110,7 @@ public class TravelScript : MonoBehaviour
             }
         }
 
-        // =========================
-        // NORMAL CHECKS
-        // =========================
+       
         if (sceneName == "Hallway" && !GameState.hasFrontDoorKey)
         {
             Debug.Log("The door is locked. Find the key.");
@@ -157,9 +148,7 @@ public class TravelScript : MonoBehaviour
             MusicManager.Instance.SetDistanceLevel(GetDistanceForScene(sceneName));
         }
 
-        // =========================
-        //  AUTO NPC DIALOGUE (FOR ARROWS)
-        // =========================
+      
         if (matchingRequirement != null &&
             !string.IsNullOrEmpty(matchingRequirement.autoStartNPCID))
         {
@@ -192,9 +181,7 @@ public class TravelScript : MonoBehaviour
             }
         }
 
-        // =========================
-        // AUTO NPC AFTER ENTER DIALOGUE
-        // =========================
+        
         if (!string.IsNullOrEmpty(req.autoStartNPCID))
         {
             GameState.pendingSelfDialogueID = req.autoStartNPCID;
