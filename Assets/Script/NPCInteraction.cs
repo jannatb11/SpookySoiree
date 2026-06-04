@@ -93,6 +93,10 @@ public class NPCInteraction : MonoBehaviour
 
     private bool videoPlaying;
 
+    [Header("Act Transition")]
+    public bool playActTransition;
+    public SceneTransition sceneTransition;
+
 
     void Start()
     {
@@ -241,7 +245,16 @@ public class NPCInteraction : MonoBehaviour
         {
             GameState.pendingSelfDialogueID = "Gurt_Cutscene";
             GameState.resetInventoryOnNextScene = true;
-            SceneManager.LoadScene(cutsceneSceneName);
+
+            if (playActTransition && sceneTransition != null)
+            {
+                sceneTransition.StartTransition(cutsceneSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(cutsceneSceneName);
+            }
+
             return;
         }
 
