@@ -1015,7 +1015,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.0000011921}
-  m_SizeDelta: {x: 170.217, y: 159}
+  m_SizeDelta: {x: 170.217, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657842777
 MonoBehaviour:
@@ -2716,6 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredNPCToTalkTo: 
   dialogueSpawnEvents: []
   npcID: Gurt_1
   npcName: Gurt
@@ -2791,6 +2792,8 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
 --- !u!114 &1850860175
 MonoBehaviour:
   m_ObjectHideFlags: 0

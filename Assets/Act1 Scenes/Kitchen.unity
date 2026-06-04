@@ -163,6 +163,12 @@ MonoBehaviour:
   - Daisy
   - Player
   - Daisy
+  afterGurtCutscene:
+    stateName: 
+    conversations: []
+  afterSarahAct2:
+    stateName: 
+    conversations: []
   beforeDoor:
     stateName: Answer the door
     conversations:
@@ -1170,7 +1176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 26.446, y: -24.696}
-  m_SizeDelta: {x: 170.217, y: 159.92}
+  m_SizeDelta: {x: 170.217, y: 180}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!114 &174167474
 MonoBehaviour:
@@ -1267,7 +1273,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 23.696, y: -21.731}
-  m_SizeDelta: {x: 170.217, y: 159.92}
+  m_SizeDelta: {x: 170.217, y: 180}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!95 &196382426
 Animator:
@@ -1917,6 +1923,8 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
 --- !u!114 &523787410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3736,7 +3744,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 23.696, y: -21.731}
-  m_SizeDelta: {x: 170.217, y: 159.92}
+  m_SizeDelta: {x: 170.217, y: 180}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!95 &1182890722
 Animator:
@@ -3976,6 +3984,8 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
 --- !u!114 &1355581348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4353,6 +4363,8 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
 --- !u!114 &1411739889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5454,6 +5466,8 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
 --- !u!114 &2122338767
 MonoBehaviour:
   m_ObjectHideFlags: 0
