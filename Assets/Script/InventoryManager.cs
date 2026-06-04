@@ -78,6 +78,7 @@ public class InventoryManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(SetupUI());
+        StartCoroutine(LateRefresh());
 
         if (GameState.resetInventoryOnNextScene)
         {
@@ -86,7 +87,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-   
+
     IEnumerator SetupUI()
     {
         yield return null;
@@ -94,7 +95,8 @@ public class InventoryManager : MonoBehaviour
 
         FindUI();
         SetupButtons();
-        RefreshUI();
+
+     
     }
     IEnumerator DelayedRefresh()
     {
@@ -163,6 +165,8 @@ public class InventoryManager : MonoBehaviour
     public void CollectDaisy()
     {
         hasDaisy = true;
+        Debug.Log("Collected Daisy");
+        Debug.Log("daisyinv is null? " + (daisyinv == null));
 
         StartCoroutine(DelayedRefresh());
     }
@@ -258,5 +262,12 @@ public class InventoryManager : MonoBehaviour
             convo.voiceClips,
             null
         );
+    }
+
+
+    IEnumerator LateRefresh()
+    {
+        yield return new WaitForSeconds(0.1f);
+        RefreshUI();
     }
 }
