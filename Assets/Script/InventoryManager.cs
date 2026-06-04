@@ -24,6 +24,11 @@ public class InventoryManager : MonoBehaviour
     public AudioClip[] daisyVoiceClips;
     public string[] daisySpeakerNames;
 
+    public bool HasAnyItem()
+    {
+        return hasDaisy || hasPiano || hasMouse;
+    }
+
     [System.Serializable]
     public class DaisyConversation
     {

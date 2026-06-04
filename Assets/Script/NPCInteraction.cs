@@ -17,6 +17,9 @@ public class NPCInteraction : MonoBehaviour
 
     }
 
+    [Header("Interaction Requirement")]
+    public string requiredNPCToTalkTo;
+
     [Header("Dialogue Spawn Events")]
     public DialogueSpawnEvent[] dialogueSpawnEvents;
 
@@ -139,6 +142,14 @@ public class NPCInteraction : MonoBehaviour
 
     public void Interact()
     {
+       
+        if (!string.IsNullOrEmpty(requiredNPCToTalkTo) &&
+            !GameState.triggeredIDs.Contains(requiredNPCToTalkTo))
+        {
+            Debug.Log("I should talk to someone else first...");
+            return;
+        }
+
         if (DialogueManager.Instance.IsDialogueActive || videoPlaying)
             return;
 
