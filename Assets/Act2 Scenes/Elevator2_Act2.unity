@@ -2839,8 +2839,8 @@ MonoBehaviour:
   - Player
   - Player
   - Daisy
-  beforeDoor:
-    stateName: Neighbors
+  afterGurtCutscene:
+    stateName: aftermath
     conversations:
     - lines:
       - Lets trying asking the neighbors for help.
@@ -2860,8 +2860,26 @@ MonoBehaviour:
       voiceClips: []
       speakerNames:
       - Daisy
+  afterSarahAct2:
+    stateName: Nice Lady
+    conversations:
+    - lines:
+      - She seems very nice.
+      isNPCSpeaking: 
+      voiceClips: []
+      speakerNames:
+      - Daisy
+    - lines:
+      - I hope Lil_Buffys ok.
+      isNPCSpeaking: 
+      voiceClips: []
+      speakerNames:
+      - Daisy
+  beforeDoor:
+    stateName: 
+    conversations: []
   afterDoor:
-    stateName: Party
+    stateName: 
     conversations: []
   afterAllNPCs:
     stateName: 
@@ -2996,6 +3014,7 @@ GameObject:
   - component: {fileID: 1695035005}
   - component: {fileID: 1695035004}
   - component: {fileID: 1695035003}
+  - component: {fileID: 1695035006}
   m_Layer: 5
   m_Name: daisyinv2
   m_TagString: Untagged
@@ -3065,19 +3084,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1695035004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1665548218}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: CollectDaisy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1695035004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3116,6 +3123,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695035001}
   m_CullTransparentMesh: 1
+--- !u!114 &1695035006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695035001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298ac22b29cfdf74594f7d50e3da96b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1739636860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,8 +3814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: 0, y: 55.42401}
-  m_SizeDelta: {x: 0, y: -120.13}
+  m_AnchoredPosition: {x: 0, y: 54.099}
+  m_SizeDelta: {x: 0, y: -122.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044723373
 MonoBehaviour:
@@ -3889,6 +3908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredNPCToTalkTo: 
   dialogueSpawnEvents: []
   npcID: Daisy_Elevator
   npcName: Daisy
