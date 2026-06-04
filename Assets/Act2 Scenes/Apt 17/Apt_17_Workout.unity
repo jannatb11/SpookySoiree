@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 356467199}
   - component: {fileID: 356467198}
   - component: {fileID: 356467203}
+  - component: {fileID: 356467204}
   m_Layer: 5
   m_Name: SceneButton (1)
   m_TagString: Untagged
@@ -650,6 +651,19 @@ MonoBehaviour:
   blockedSpeakers: []
   blockedIsNPC: 
   blockedVoiceClips: []
+--- !u!114 &356467204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356467195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f2c4bfe0f3e2c48b490014ee29f2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzle: 3
 --- !u!1 &386515962
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,6 +97,10 @@ public class NPCInteraction : MonoBehaviour
     public bool playActTransition;
     public SceneTransition sceneTransition;
 
+    [Header("Door Transition")]
+    public bool playDoorTransition;
+    public string doorSceneName;
+    public SceneTransition doorTransition;
 
     void Start()
     {
@@ -173,6 +177,7 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+
         if (animator != null)
             animator.SetBool("isTalking", false);
 
@@ -197,8 +202,24 @@ public class NPCInteraction : MonoBehaviour
         if (unlockKitchen)
             GameProgress.kitchenUnlocked = true;
 
-        if (teleportAfterDialogue && sceneSwitcher != null)
+        if (teleportAfterDialogue && sceneSwitcher != null && !playDoorTransition)
+        {
             sceneSwitcher.TriggerSceneSwitch();
+        }
+
+        if (playDoorTransition && !string.IsNullOrEmpty(doorSceneName))
+        {
+            if (doorTransition != null)
+            {
+                doorTransition.StartTransition(doorSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(doorSceneName);
+            }
+
+            return;
+        }
 
         // =========================
         // START CUTSCENE
@@ -258,6 +279,8 @@ public class NPCInteraction : MonoBehaviour
             return;
         }
 
+        
+
         if (disappearAfterCutscene)
         {
             GameState.removedNPCs.Add(npcID);
@@ -300,7 +323,12 @@ public class NPCInteraction : MonoBehaviour
             }
         }
     }
+
+
+
 }
+
+
 
     IEnumerator FadeIn(CanvasGroup canvasGroup, float duration)
     {
@@ -329,6 +357,9 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
-
+    public void TestDoor()
+    {
+        doorTransition.StartTransition("Character");
+    }
 
 }
