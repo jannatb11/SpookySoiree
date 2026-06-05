@@ -1481,12 +1481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ced67fe9f6571d4684bd2d84bac7ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  speakerText: {fileID: 0}
-  choicePanel: {fileID: 0}
-  yesButton: {fileID: 0}
-  noButton: {fileID: 0}
+  dialoguePanel: {fileID: 871980025}
+  dialogueText: {fileID: 1452187776}
+  speakerText: {fileID: 1711396007}
+  choicePanel: {fileID: 1635682675}
+  yesButton: {fileID: 1061903143}
+  noButton: {fileID: 842443218}
   roomNavigationUI: {fileID: 0}
   playerName: Player
   typingSpeed: 0.03

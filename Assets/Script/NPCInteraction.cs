@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class NPCInteraction : MonoBehaviour
 {
+    public EndDemoTransition endDemoTransition;
+    public bool triggerEndDemo;
+
+
     [System.Serializable]
     public class DialogueSpawnEvent
     {
@@ -102,6 +106,13 @@ public class NPCInteraction : MonoBehaviour
     public string doorSceneName;
     public SceneTransition doorTransition;
 
+    [Header("Demo Ending")]
+    public bool showEndDemoScreen;
+
+    public CanvasGroup fadeScreen;
+    public CanvasGroup endDemoText;
+    public float endDemoFadeTime = 2f;
+
     void Start()
     {
         // Auto-trigger self dialogue after scene load
@@ -177,6 +188,11 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+        if (triggerEndDemo && endDemoTransition != null)
+        {
+            endDemoTransition.StartEndDemo();
+            return;
+        }
 
         if (animator != null)
             animator.SetBool("isTalking", false);
@@ -361,5 +377,7 @@ public class NPCInteraction : MonoBehaviour
     {
         doorTransition.StartTransition("Character");
     }
+
+    
 
 }

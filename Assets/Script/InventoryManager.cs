@@ -264,6 +264,20 @@ public class InventoryManager : MonoBehaviour
         );
     }
 
+    public bool HasDaisy()
+    {
+        return hasDaisy;
+    }
+
+    public bool HasPiano()
+    {
+        return hasPiano;
+    }
+
+    public bool HasMouse()
+    {
+        return hasMouse;
+    }
 
     IEnumerator LateRefresh()
     {

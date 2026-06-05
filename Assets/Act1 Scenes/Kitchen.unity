@@ -153,15 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daisyDialogueLines:
-  - Oh, it seems like someone is knocking on the door?
-  - "Huh\u2026 I should probably check."
-  - "Alright, I\u2019ll be here if you need me."
+  - You should answer the door if you havent already.
   daisyIsNPCSpeaking: 
-  daisyVoiceClips:
-  - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
+  daisyVoiceClips: []
   daisySpeakerNames:
-  - Daisy
-  - Player
   - Daisy
   afterGurtCutscene:
     stateName: 
@@ -3708,6 +3703,8 @@ MonoBehaviour:
   requiredNPCIDs:
   - Gurt_Kitchen
   - Daisy_1
+  requireItem: 1
+  requiredItem: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

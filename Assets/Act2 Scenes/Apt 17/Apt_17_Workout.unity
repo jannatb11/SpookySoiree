@@ -319,6 +319,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -519,7 +524,12 @@ MonoBehaviour:
   sceneName: DodgeMinigame
   useSpecificNPCs: 1
   requiredNPCIDs:
-  - Sarah_Act2_1
+  - arrow_Act2
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0.34509805, g: 1, b: 0.08627451, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -1961,6 +1971,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

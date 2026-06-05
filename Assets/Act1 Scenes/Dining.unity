@@ -4010,7 +4010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22314282, y: 0}
   m_AnchorMax: {x: 0.78351444, y: 1}
-  m_AnchoredPosition: {x: -22.7361, y: -6.9725037}
+  m_AnchoredPosition: {x: -22.736084, y: -6.9725037}
   m_SizeDelta: {x: 464.6705, y: 58.8529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986366361
@@ -4318,9 +4318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracks:
-  - {fileID: 8300000, guid: bf1945bdb9576a54f876c2baea8b4b8c, type: 3}
-  - {fileID: 8300000, guid: f2749ffeae63f474599c21cbc57a79dd, type: 3}
   - {fileID: 8300000, guid: 262a8f537a983e645817b9e15ab3c0b1, type: 3}
+  - {fileID: 8300000, guid: f2749ffeae63f474599c21cbc57a79dd, type: 3}
+  - {fileID: 8300000, guid: 5d32b098dae0e6b4ba55aa1a951f2772, type: 3}
+  - {fileID: 8300000, guid: bf1945bdb9576a54f876c2baea8b4b8c, type: 3}
+  - {fileID: 8300000, guid: 1934ac96a37f9b448bd230065aeef823, type: 3}
   currentTrack: {fileID: 8300000, guid: 222920dd86c4bd644990a4ad6f5b3186, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

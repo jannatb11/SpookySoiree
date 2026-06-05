@@ -220,7 +220,6 @@ RectTransform:
   - {fileID: 1383207677}
   - {fileID: 908332070}
   - {fileID: 791790640}
-  - {fileID: 2126624879}
   - {fileID: 1513525006}
   - {fileID: 2025123669}
   - {fileID: 1962090406}
@@ -1313,6 +1312,11 @@ MonoBehaviour:
   useSpecificNPCs: 1
   requiredNPCIDs:
   - Sarah_Act2_1
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 1
+  puzzle1: 4
+  puzzle2: 6
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2327,6 +2331,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -2796,6 +2805,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2126624879}
   - {fileID: 2082669096}
   - {fileID: 1365545671}
   - {fileID: 655801260}
@@ -3302,19 +3312,19 @@ MonoBehaviour:
   - Sarah
   isNPCSpeaking: 01000101000100010000010001
   voiceClips:
-  - {fileID: 8300000, guid: 6f29ae3a9a297724d88988c1f250b644, type: 3}
+  - {fileID: 8300000, guid: 8c61572821741a44d9ee73f164c81568, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 2feaa12182ccc1c4a880c5683943f0e4, type: 3}
-  - {fileID: 8300000, guid: 55802df111b818545a30c3f99854f095, type: 3}
+  - {fileID: 8300000, guid: cc2dd258f1dedc449975e6cee588e0ee, type: 3}
+  - {fileID: 8300000, guid: 53aa0958a7be3c84abecf66e1c65188c, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: f7ed410731890664795dd014c17b093f, type: 3}
+  - {fileID: 8300000, guid: 1c209c8f24f56cf41b1719f8e500af93, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 1d711d7b4c40bfb478618fa6149a23cc, type: 3}
+  - {fileID: 8300000, guid: 293a24d9536ac7d4dbfe37887984ec34, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: 692dffe04a10366429b015df09f37ad6, type: 3}
-  - {fileID: 8300000, guid: eabd515e8052f9d47b08525480871ce3, type: 3}
+  - {fileID: 8300000, guid: 98a3c80c27526e247b1d1bbec104fc04, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 10d6e6e6ecae9b94ca3fa3bdf93e723b, type: 3}
+  - {fileID: 8300000, guid: e72527e3d7b9bee48b04915fe6db10aa, type: 3}
   animator: {fileID: 68732219}
   animationStates:
   - Sarah_Talking
@@ -3534,6 +3544,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3779,15 +3794,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126624878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.8107455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 59845936}
+  m_Father: {fileID: 1513525006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102.08998, y: 58.609}
+  m_AnchoredPosition: {x: 136.97194, y: 61.10378}
   m_SizeDelta: {x: 113.7764, y: 217.139}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!95 &2126624880

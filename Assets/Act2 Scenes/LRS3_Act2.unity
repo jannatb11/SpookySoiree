@@ -764,6 +764,11 @@ MonoBehaviour:
   requiredNPCIDs:
   - Trevor_Can
   - Kosmo_Head
+  requireItem: 0
+  requireSpecificPuzzles: 1
+  puzzle1: 2
+  puzzle2: 3
+  requiredItem: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -779,7 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.050980393, g: 0.9607843, b: 0, a: 0.5}
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &332511416
@@ -810,7 +815,7 @@ MonoBehaviour:
   travelScript: {fileID: 1522804086}
   sceneName: ConnectFourPuzzle
   blockedLines:
-  - I should keep looking around the apartment.
+  - Oh god why is the door locked!?!?
   blockedSpeakers: []
   blockedIsNPC: 
   blockedVoiceClips: []
@@ -2868,6 +2873,11 @@ MonoBehaviour:
   sceneName: Hallway_Act2
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
+  requiredItem: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3335,6 +3345,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
+  requiredItem: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

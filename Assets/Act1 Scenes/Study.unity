@@ -1940,11 +1940,11 @@ MonoBehaviour:
   - Player
   isNPCSpeaking: 010001000100
   voiceClips:
-  - {fileID: 8300000, guid: 596bb0a82fa88d14c805c7b04394eb33, type: 3}
+  - {fileID: 8300000, guid: 24f3fa8dc5f05b74a81607854f428a64, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: f862d660cbde1b24db6a85c324ddb448, type: 3}
+  - {fileID: 8300000, guid: 201a5bada3e1d6e4095c50e7a16304bb, type: 3}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 7ed4bdd14ae47af43a339dd933ee379e, type: 3}
+  - {fileID: 8300000, guid: c04fe70a0087e5c448bedb0f391b26d6, type: 3}
   - {fileID: 0}
   animator: {fileID: 356025944}
   animationStates:
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   - Sarah_Talking
   - Sarah_Idle
   requireDaisyToAppear: 0
-  requireDoorToAppear: 0
+  requireDoorToAppear: 1
   requireAllDoorNPCs: 0
   countsForDoorProgress: 1
   triggerSelfDialogueID: 
@@ -1974,6 +1974,11 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
+  playDoorTransition: 0
+  doorSceneName: 
+  doorTransition: {fileID: 0}
 --- !u!114 &906235659
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,10 +37,13 @@ public class FruitPiercerGMS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
         {
             score = 14;
         }
+        #endif
 
         if (!fruitActive && score < 15){
             fruitActive = true;

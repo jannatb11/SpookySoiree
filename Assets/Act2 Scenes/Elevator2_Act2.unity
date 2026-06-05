@@ -2875,6 +2875,12 @@ MonoBehaviour:
       voiceClips: []
       speakerNames:
       - Daisy
+    - lines:
+      - Alright well Lets go try and find other neighbors.
+      isNPCSpeaking: 
+      voiceClips: []
+      speakerNames:
+      - Daisy
   beforeDoor:
     stateName: 
     conversations: []
@@ -3135,6 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298ac22b29cfdf74594f7d50e3da96b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  daisyInvUI: {fileID: 1108294838}
 --- !u!1 &1739636860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,6 +3616,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3972,6 +3984,11 @@ MonoBehaviour:
   disappearAfterCutscene: 0
   loadSceneAfterCutscene: 0
   cutsceneSceneName: 
+  playActTransition: 0
+  sceneTransition: {fileID: 0}
+  playDoorTransition: 0
+  doorSceneName: 
+  doorTransition: {fileID: 0}
 --- !u!114 &2063046766
 MonoBehaviour:
   m_ObjectHideFlags: 0

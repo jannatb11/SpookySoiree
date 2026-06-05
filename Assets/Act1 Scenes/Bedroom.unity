@@ -205,7 +205,7 @@ MonoBehaviour:
   teleportAfterDialogue: 0
   sceneSwitcher: {fileID: 0}
   disappearAfterDialogue: 1
-  disableUntilTriggered: 0
+  disableUntilTriggered: 1
   requiredTriggerID: Elevator
   playVideoAfterDialogue: 1
   videoPlayer: {fileID: 678869343}
@@ -215,6 +215,9 @@ MonoBehaviour:
   cutsceneSceneName: Bedroom_Act2
   playActTransition: 1
   sceneTransition: {fileID: 2058543387}
+  playDoorTransition: 0
+  doorSceneName: 
+  doorTransition: {fileID: 0}
 --- !u!114 &132207474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,7 +1552,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://github.com/jannatb11/SpookySoiree/raw/refs/heads/new-main/GurtsDeath%20(online-video-cutter.com)%20(1).mp4
+  m_Url: https://raw.githubusercontent.com/jannatb11/SpookySoiree/new-main/GurtsDeath%20(online-video-cutter.com)%20(1).mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
