@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endDemoTransition: {fileID: 0}
+  triggerEndDemo: 0
   requiredNPCToTalkTo: 
   dialogueSpawnEvents: []
   npcID: Gurt_Cutscene
@@ -218,6 +220,10 @@ MonoBehaviour:
   playDoorTransition: 0
   doorSceneName: 
   doorTransition: {fileID: 0}
+  showEndDemoScreen: 0
+  fadeScreen: {fileID: 0}
+  endDemoText: {fileID: 0}
+  endDemoFadeTime: 2
 --- !u!114 &132207474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,6 +4086,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

@@ -188,6 +188,22 @@ public class NPCInteraction : MonoBehaviour
 
     public void OnDialogueComplete()
     {
+        Debug.Log("OnDialogueComplete called for: " + npcName);
+
+        Debug.Log("triggerEndDemo = " + triggerEndDemo);
+
+        if (endDemoTransition == null)
+            Debug.LogError("endDemoTransition is NULL!");
+        else
+            Debug.Log("endDemoTransition found.");
+
+        if (triggerEndDemo && endDemoTransition != null)
+        {
+            Debug.Log("STARTING END DEMO");
+
+            endDemoTransition.StartEndDemo();
+            return;
+        }
         if (triggerEndDemo && endDemoTransition != null)
         {
             endDemoTransition.StartEndDemo();

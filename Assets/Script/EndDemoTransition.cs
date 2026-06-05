@@ -26,6 +26,7 @@ public class EndDemoTransition : MonoBehaviour
 
     public void StartEndDemo()
     {
+        Debug.Log("END DEMO STARTED");  
         StartCoroutine(EndDemoRoutine());
     }
 
