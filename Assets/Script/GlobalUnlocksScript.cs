@@ -9,5 +9,6 @@ public static class GlobalUnlocksScript
     public static bool completedConnect4Puzzle = false;
     public static bool completedFruitPiercer = false;
     public static bool completedDodgeMinigame = false;
+    public static bool completedpennypuzzle = false;
 
 }

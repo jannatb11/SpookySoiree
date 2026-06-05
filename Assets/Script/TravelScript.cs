@@ -36,6 +36,7 @@ public class TravelScript : MonoBehaviour
         public string autoStartNPCID;
     }
 
+
     [Header("Scene Requirements")]
     public SceneRequirement[] sceneRequirements;
 
@@ -135,7 +136,8 @@ public class TravelScript : MonoBehaviour
         }
 
         if(sceneName == "FruitPiercer" &&
-            !(GlobalUnlocksScript.completedDodgeMinigame))
+            !(GlobalUnlocksScript.completedDodgeMinigame &&
+            GlobalUnlocksScript.completedpennypuzzle))
         {
             Debug.Log("Complete the puzzles first.");
             isLoading = false;
@@ -143,10 +145,7 @@ public class TravelScript : MonoBehaviour
         }
 
 
-        if (MusicManager.Instance != null)
-        {
-            MusicManager.Instance.SetDistanceLevel(GetDistanceForScene(sceneName));
-        }
+        
 
       
         if (matchingRequirement != null &&

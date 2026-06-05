@@ -1,24 +1,30 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    public AudioSource musicSource;
+    [Header("Audio Sources")]
+    public AudioSource menuSource;
     public AudioSource ambienceSource;
+    public AudioSource radioSource;
 
-    // 0 = far, 3 = close
+    [Header("Settings")]
+    public float volumeMultiplier = 1f;
+
+    [Header("Scene Settings")]
+    public string mainMenuSceneName = "MainMenu";
+
+    // Radio distance steps
     private float[] volumeSteps = { 0f, 0.2f, 0.5f, 1f };
     private int currentStep = 3;
 
-    private bool musicStarted = false;
-
-    public float volumeMultiplier;
+    private bool isMenuScene = false;
 
     void Awake()
     {
-        volumeMultiplier = 1f;
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,100 +33,151 @@ public class MusicManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
     {
-        // Start ambience immediately
-        ambienceSource.loop = true;
-        ambienceSource.Play();
+        menuSource.Stop();
+        ambienceSource.Stop();
+        radioSource.Stop();
 
-        // Music prepared but NOT playing yet
-        musicSource.loop = true;
-        musicSource.volume = 0f;
+        Scene currentScene = SceneManager.GetActiveScene();
+        OnSceneLoaded(currentScene, LoadSceneMode.Single);
     }
 
-    public void StartMusic()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        musicStarted = true;
-        currentStep = 3;
+        if (scene.name == mainMenuSceneName)
+        {
+            isMenuScene = true;
 
-        // Stop ambience
-        if (ambienceSource.isPlaying)
+            menuSource.volume = volumeMultiplier;
+            menuSource.loop = true;
+            menuSource.Play();
+
             ambienceSource.Stop();
 
-        ApplyVolume();
-    }
-
-    public void PlayNewTrack(AudioClip clip)
-    {
-        if (clip == null)
-            return;
-
-        if (!musicStarted)
-            StartMusic();
-
-        // Prevent restarting same track
-        if (musicSource.clip == clip && musicSource.isPlaying)
-            return;
-
-        musicSource.clip = clip;
-        musicSource.Play();
-
-        ApplyVolume();
-    }
-
-    public void ReturnToAmbience()
-    {
-        musicStarted = false;
-
-        musicSource.Stop();
-        musicSource.clip = null;
-
-        if (!ambienceSource.isPlaying)
-            ambienceSource.Play();
-    }
-
-    public void ApplyVolume()
-    {
-        float volume = volumeSteps[currentStep];
-
-        musicSource.volume = volume * volumeMultiplier;
-
-        // If very far away
-        if (volume == 0f)
-        {
-            if (!ambienceSource.isPlaying)
-                ambienceSource.Play();
+            
         }
         else
         {
+            isMenuScene = false;
+
+            menuSource.Stop();
+
+            
+            if (!radioSource.isPlaying)
+            {
+                ambienceSource.volume = volumeMultiplier;
+                ambienceSource.loop = true;
+                ambienceSource.Play();
+            }
+
+           
+
+            StartCoroutine(ApplyDistanceNextFrame(scene.name));
+        }
+    }
+
+   
+    public void PlayRadioTrack(AudioClip clip)
+    {
+        if (clip == null || isMenuScene)
+            return;
+
+        radioSource.clip = clip;
+        radioSource.loop = true;
+
+        ApplyRadioVolume();
+        radioSource.Play();
+    }
+
+    public void StopRadio()
+    {
+        if (isMenuScene)
+            return;
+
+        radioSource.Stop();
+        radioSource.clip = null;
+
+        if (!ambienceSource.isPlaying)
+        {
+            ambienceSource.volume = volumeMultiplier;
+            ambienceSource.Play();
+        }
+    }
+
+   
+    public void SetDistanceLevel(int level)
+    {
+        currentStep = Mathf.Clamp(level, 0, volumeSteps.Length - 1);
+        ApplyRadioVolume();
+    }
+
+    void ApplyRadioVolume()
+    {
+        if (radioSource.clip == null)
+        {
+            if (!isMenuScene && !ambienceSource.isPlaying)
+                ambienceSource.Play();
+
+            return;
+        }
+
+        float volume = volumeSteps[currentStep] * volumeMultiplier;
+        radioSource.volume = volume;
+
+        if (volume > 0f)
+        {
+            if (!radioSource.isPlaying)
+                radioSource.Play();
+
             if (ambienceSource.isPlaying)
                 ambienceSource.Stop();
         }
-    }
-
-    public void ChangeVolume()
-    {
-        if (ambienceSource.isPlaying)
-        {
-            ambienceSource.volume =
-                volumeSteps[currentStep] * volumeMultiplier;
-        }
         else
         {
-            musicSource.volume =
-                volumeSteps[currentStep] * volumeMultiplier;
+            if (radioSource.isPlaying)
+                radioSource.Stop();
+
+            if (!isMenuScene && !ambienceSource.isPlaying)
+                ambienceSource.Play();
         }
     }
 
-    public void SetDistanceLevel(int level)
+   
+    public void ChangeVolume(float value)
     {
-        if (!musicStarted)
-            return;
+        volumeMultiplier = value;
 
-        currentStep = Mathf.Clamp(level, 0, volumeSteps.Length - 1);
+        menuSource.volume = value;
+        ambienceSource.volume = value;
 
-        ApplyVolume();
+        if (radioSource.clip != null)
+            ApplyRadioVolume();
+    }
+
+    
+    public int GetDistanceForScene(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "Dining": return 3;
+            case "LRS1": return 2;
+            case "Storage": return 2;
+            case "LRS3": return 1;
+            case "Kitchen": return 1;
+            case "LRS2": return 1;
+            default: return 0;
+        }
+    }
+
+    
+    IEnumerator ApplyDistanceNextFrame(string sceneName)
+    {
+        yield return null;
+        SetDistanceLevel(GetDistanceForScene(sceneName));
     }
 }

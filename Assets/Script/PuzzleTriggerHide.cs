@@ -8,7 +8,8 @@ public class PuzzleTriggerHide : MonoBehaviour
         Piano,
         Lock,
         DodgeMinigame,
-        FruitPiercer
+        FruitPiercer,
+        PenniesPuzzle
     }
 
     public PuzzleType puzzle;
@@ -42,6 +43,10 @@ public class PuzzleTriggerHide : MonoBehaviour
 
             case PuzzleType.FruitPiercer:
                 completed = GlobalUnlocksScript.completedFruitPiercer;
+                break;
+
+            case PuzzleType.PenniesPuzzle:
+                completed = GlobalUnlocksScript.completedpennypuzzle;
                 break;
         }
 

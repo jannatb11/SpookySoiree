@@ -6,6 +6,7 @@ public class GM : MonoBehaviour
     public static GM Instance;
 
     [SerializeField] private GameObject winUI;
+    [SerializeField] private GameObject exitButton; // reference
 
     private List<Penny> pennies = new List<Penny>();
 
@@ -22,6 +23,11 @@ public class GM : MonoBehaviour
         if (winUI != null)
         {
             winUI.SetActive(false);
+        }
+
+        if (exitButton != null) // <-- HIDE AT START
+        {
+            exitButton.SetActive(false);
         }
 
         pennies.AddRange(FindObjectsOfType<Penny>());
@@ -75,7 +81,7 @@ public class GM : MonoBehaviour
     private void WinGame()
     {
         Debug.Log("YOU WIN!");
-
+        GlobalUnlocksScript.completedLockPuzzle = true;
         foreach (Penny p in pennies)
         {
             p.gameObject.SetActive(false);
@@ -85,5 +91,12 @@ public class GM : MonoBehaviour
         {
             winUI.SetActive(true);
         }
+
+        if (exitButton != null) 
+        {
+            exitButton.SetActive(true);
+        }
+
+
     }
 }

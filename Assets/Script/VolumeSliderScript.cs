@@ -1,29 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class VolumeSliderScript : MonoBehaviour
 {
-    public Slider bar;// The slider
-    public float value;// Value of slider
-    // Start is called before the first frame update
+    public Slider bar;
+
     void Start()
     {
-        bar = gameObject.GetComponent<Slider>();
-        value = GameObject.Find("MusicManager").GetComponent<MusicManager>().volumeMultiplier;
-        bar.value = value;
+        bar = GetComponent<Slider>();
+
+        if (MusicManager.Instance != null)
+        {
+            bar.value = MusicManager.Instance.volumeMultiplier;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Hook this to the slider OnValueChanged event
+    public void UpdateValue()
     {
-        
-    }
-    public void UpdateValue(){
-        value = bar.value;
-        GameObject.Find("MusicManager").GetComponent<MusicManager>().volumeMultiplier = value;
-        GameObject.Find("MusicManager").GetComponent<MusicManager>().ChangeVolume();
+        if (MusicManager.Instance == null)
+            return;
+
+        MusicManager.Instance.ChangeVolume(bar.value);
     }
 }

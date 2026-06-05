@@ -764,7 +764,7 @@ MonoBehaviour:
   choicePanel: {fileID: 1989346916}
   yesButton: {fileID: 1778964167}
   noButton: {fileID: 619052600}
-  roomNavigationUI: {fileID: 0}
+  roomNavigationUI: {fileID: 1850860172}
   playerName: Player
   typingSpeed: 0.03
   audioSource: {fileID: 0}
@@ -2062,7 +2062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 60455680}
   actText: {fileID: 1368965401}
-  fadeDuration: 1
+  fadeDuration: 0.5
   textDuration: 2
 --- !u!114 &1576103621
 MonoBehaviour:
