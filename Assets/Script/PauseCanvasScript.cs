@@ -22,7 +22,8 @@ public class PauseCanvasScript : MonoBehaviour
     public void Resume(){
         PMS.Resume();
     }
-    public void Restart(){
-        SceneManager.LoadScene(0);
+    public void Restart()
+    {
+        PMS.RestartGame();
     }
 }

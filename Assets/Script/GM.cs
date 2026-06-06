@@ -81,7 +81,7 @@ public class GM : MonoBehaviour
     private void WinGame()
     {
         Debug.Log("YOU WIN!");
-        GlobalUnlocksScript.completedLockPuzzle = true;
+        GlobalUnlocksScript.completedpennypuzzle = true;
         foreach (Penny p in pennies)
         {
             p.gameObject.SetActive(false);

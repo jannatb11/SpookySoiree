@@ -2819,10 +2819,22 @@ MonoBehaviour:
   - sceneName: Apartment_20_Entrance
     requiredNPCID: Zuek
     requiredNPCToShowArrow: 
-    blockedDialogueLines: []
-    blockedSpeakerNames: []
+    blockedDialogueLines:
+    - Hello..., Neighbor?
+    - ...
+    - ..
+    - No one seems to be home
+    blockedSpeakerNames:
+    - Player
+    - Player
+    - Player
+    - Player
     blockedIsNPCSpeaking: 
-    blockedVoiceClips: []
+    blockedVoiceClips:
+    - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     playDialogueBeforeEntering: 0
     enterDialogueLines: []
     enterSpeakerNames: []
@@ -3037,6 +3049,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3275,6 +3292,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3457,6 +3479,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1

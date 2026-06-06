@@ -11,4 +11,15 @@ public static class GlobalUnlocksScript
     public static bool completedDodgeMinigame = false;
     public static bool completedpennypuzzle = false;
 
+
+    public static void ResetProgress()
+    {
+        completedLockPuzzle = false;
+        completedPianoPuzzle = false;
+        completedConnect4Puzzle = false;
+
+        // Add any other unlocks here
+    }
 }
+
+

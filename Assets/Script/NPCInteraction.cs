@@ -125,6 +125,9 @@ public class NPCInteraction : MonoBehaviour
     }
     void Awake()
     {
+        Debug.Log($"[NPC SPAWN] {npcID}");
+        Debug.Log($"RemovedNPCs contains {npcID}: {GameState.removedNPCs.Contains(npcID)}");
+
         if (GameState.removedNPCs.Contains(npcID))
         {
             Destroy(gameObject);

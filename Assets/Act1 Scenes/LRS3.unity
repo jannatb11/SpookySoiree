@@ -2118,6 +2118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endDemoTransition: {fileID: 0}
+  triggerEndDemo: 0
   requiredNPCToTalkTo: 
   dialogueSpawnEvents: []
   npcID: Gurt_Entrance
@@ -2175,6 +2177,10 @@ MonoBehaviour:
   playDoorTransition: 0
   doorSceneName: 
   doorTransition: {fileID: 0}
+  showEndDemoScreen: 0
+  fadeScreen: {fileID: 0}
+  endDemoText: {fileID: 0}
+  endDemoFadeTime: 2
 --- !u!114 &1161980030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2646,6 +2652,9 @@ MonoBehaviour:
   requiredNPCIDs: []
   requireItem: 0
   requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3140,6 +3149,9 @@ MonoBehaviour:
   requiredNPCIDs: []
   requireItem: 0
   requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -3367,8 +3379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23.696, y: -21.731}
-  m_SizeDelta: {x: 170.217, y: 159.92}
+  m_AnchoredPosition: {x: 23.696, y: -10.7}
+  m_SizeDelta: {x: 170.22, y: 190.21}
   m_Pivot: {x: 0.64493483, y: 0.36411428}
 --- !u!95 &1500997986
 Animator:
@@ -3848,7 +3860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879980691}
-  - component: {fileID: 1879980690}
+  - component: {fileID: 1879980692}
   m_Layer: 0
   m_Name: SelfDialogueTrigger
   m_TagString: Untagged
@@ -3856,58 +3868,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1879980690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879980689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requiredNPCToTalkTo: 
-  dialogueSpawnEvents: []
-  npcID: player
-  npcName: knocking
-  dialogueLines:
-  - Oh it seems someones at the door.
-  - I should go get it.
-  speakerNames:
-  - Player
-  - Player
-  isNPCSpeaking: 
-  voiceClips:
-  - {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
-  animator: {fileID: 0}
-  animationStates: []
-  requireDaisyToAppear: 0
-  requireDoorToAppear: 0
-  requireAllDoorNPCs: 0
-  countsForDoorProgress: 0
-  triggerSelfDialogueID: Gurt_Kitchen
-  unlockDaisyProgress: 0
-  unlockIntro: 0
-  unlockKitchen: 0
-  countsForKitchenExitProgress: 0
-  teleportAfterDialogue: 0
-  sceneSwitcher: {fileID: 0}
-  disappearAfterDialogue: 0
-  disableUntilTriggered: 0
-  requiredTriggerID: 
-  playVideoAfterDialogue: 0
-  videoPlayer: {fileID: 0}
-  cutscenePanel: {fileID: 0}
-  disappearAfterCutscene: 0
-  loadSceneAfterCutscene: 0
-  cutsceneSceneName: 
-  playActTransition: 0
-  sceneTransition: {fileID: 0}
-  playDoorTransition: 0
-  doorSceneName: 
-  doorTransition: {fileID: 0}
 --- !u!4 &1879980691
 Transform:
   m_ObjectHideFlags: 0
@@ -3923,6 +3883,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879980692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879980689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9149dfdf3d8829c49beb8aec3bf63be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerID: Gurt_Kitchen
+  lines:
+  - Oh it seems someones at the door.
+  - I should go get it.
+  dialogueSound: {fileID: 8300000, guid: 3c62c03375a06434aa399def3e4eb198, type: 3}
+  audioSource: {fileID: 204049079}
 --- !u!1 &1898796554
 GameObject:
   m_ObjectHideFlags: 0

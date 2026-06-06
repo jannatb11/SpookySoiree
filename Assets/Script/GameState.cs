@@ -1,7 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class GameState
 {
+
+    public static bool inventoryManagerInitialized = false;
+
+
+
     // =========================
     // NPC REMOVAL SYSTEM
     // =========================
@@ -52,4 +58,28 @@ public static class GameState
     }
 
     public static bool hasFrontDoorKey = false;
+
+
+    public static void ResetGame()
+    {
+        Debug.Log("RESET CALLED - BEFORE: " + removedNPCs.Count);
+
+        removedNPCs.Clear();
+        talkedToNPCs.Clear();
+        kitchenNPCsTalkedTo.Clear();
+        triggeredIDs.Clear();
+        playedVideoCutscenes.Clear();
+
+        talkedToDaisy = false;
+        openedDoor = false;
+        allDoorNPCsTalkedTo = false;
+
+        resetInventoryOnNextScene = false;
+        hasFrontDoorKey = false;
+        completedConnect4Puzzle = false;
+
+        pendingSelfDialogueID = "";
+
+        Debug.Log("RESET CALLED - AFTER: " + removedNPCs.Count);
+    }
 }

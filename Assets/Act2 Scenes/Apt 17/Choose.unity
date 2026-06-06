@@ -1144,7 +1144,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: END OF DEMO <3
+  m_text: 'END OF DEMO....?
+
+    Thanks for playing!
+
+
+    Continue on with the story
+    by checking out our Book!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1207,7 +1213,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 47.39064}
+  m_margin: {x: -61.741837, y: 0, z: -58.291306, w: 47.39064}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1844,8 +1850,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f9d514fc37a9d47b26b6098035675d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endDemoPanel: {fileID: 1394134389}
   fadeScreen: {fileID: 1935687446}
   endDemoText: {fileID: 596306322}
+  objectsToHide:
+  - {fileID: 513295358}
+  canvasGroupsToHide: []
   fadeDuration: 1
   textFadeDuration: 1
   freezeTime: 1
@@ -2179,7 +2189,7 @@ MonoBehaviour:
   doorTransition: {fileID: 0}
   showEndDemoScreen: 1
   fadeScreen: {fileID: 1935687446}
-  endDemoText: {fileID: 0}
+  endDemoText: {fileID: 596306322}
   endDemoFadeTime: 2
 --- !u!114 &1121730178
 MonoBehaviour:
@@ -3016,7 +3026,7 @@ MonoBehaviour:
   doorTransition: {fileID: 0}
   showEndDemoScreen: 1
   fadeScreen: {fileID: 1935687446}
-  endDemoText: {fileID: 0}
+  endDemoText: {fileID: 596306322}
   endDemoFadeTime: 2
 --- !u!114 &1806295702
 MonoBehaviour:

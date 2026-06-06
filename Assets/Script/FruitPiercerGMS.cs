@@ -22,7 +22,7 @@ public class FruitPiercerGMS : MonoBehaviour
     void Start()
     {
         fruitActive = false;
-        gameSpeed = 1f;
+        gameSpeed = 0.7f;
         score = 0;
         Victory.SetActive(false);
         Defeat.SetActive(false);
@@ -58,7 +58,7 @@ public class FruitPiercerGMS : MonoBehaviour
     }
     public void FruitHit(){
         fruitActive = false;
-        gameSpeed *= 1.1f;
+        gameSpeed *= 1.05f;
         score += 1;
     }
     public void Win()

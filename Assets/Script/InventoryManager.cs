@@ -60,12 +60,28 @@ public class InventoryManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
-            return;
-        }
+            string existingScene = Instance.gameObject.scene.name;
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+            if (existingScene == "DontDestroyOnLoad")
+            {
+                Debug.Log("Replacing old InventoryManager with scene version.");
+
+                Destroy(Instance.gameObject);
+
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -78,7 +94,6 @@ public class InventoryManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(SetupUI());
-        StartCoroutine(LateRefresh());
 
         if (GameState.resetInventoryOnNextScene)
         {
@@ -95,8 +110,7 @@ public class InventoryManager : MonoBehaviour
 
         FindUI();
         SetupButtons();
-
-     
+        RefreshUI();
     }
     IEnumerator DelayedRefresh()
     {
@@ -108,10 +122,22 @@ public class InventoryManager : MonoBehaviour
 
     void FindUI()
     {
-        daisyinv = GameObject.Find("daisyinv");
-        daisyinv2 = GameObject.Find("daisyinv2");
-        pianoinv = GameObject.Find("pianoinv");
-        mouseinv = GameObject.Find("mouseinv");
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == "daisyinv")
+                daisyinv = obj;
+
+            if (obj.name == "daisyinv2")
+                daisyinv2 = obj;
+
+            if (obj.name == "pianoinv")
+                pianoinv = obj;
+
+            if (obj.name == "mouseinv")
+                mouseinv = obj;
+        }
 
         Debug.Log($"UI FOUND -> daisyinv:{daisyinv}, daisyinv2:{daisyinv2}");
     }
@@ -143,7 +169,8 @@ public class InventoryManager : MonoBehaviour
 
     void RefreshUI()
     {
-        if (daisyinv == null || daisyinv2 == null || pianoinv == null || mouseinv == null)
+        if (daisyinv == null || daisyinv2 == null ||
+            pianoinv == null || mouseinv == null)
         {
             FindUI();
         }
@@ -165,10 +192,22 @@ public class InventoryManager : MonoBehaviour
     public void CollectDaisy()
     {
         hasDaisy = true;
-        Debug.Log("Collected Daisy");
-        Debug.Log("daisyinv is null? " + (daisyinv == null));
 
-        StartCoroutine(DelayedRefresh());
+        Debug.Log("Collected Daisy");
+
+        GameObject daisyUI = GameObject.Find("daisyinv");
+
+        if (daisyUI != null)
+        {
+            daisyUI.SetActive(true);
+            Debug.Log("Forced daisyinv visible");
+        }
+        else
+        {
+            Debug.LogError("Could not find daisyinv!");
+        }
+
+        RefreshUI();
     }
     public void CollectPiano()
     {

@@ -1,38 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPaused;
     public GameObject currentPauseMenu;
-    // Start is called before the first frame update
+
     void Start()
     {
         isPaused = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P)){
-            if(isPaused){ //Resume the game if it is paused.
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isPaused)
                 Resume();
-            } else{ // Pause the game if it is playing.
+            else
                 Pause();
-            }
         }
     }
-    public void Pause(){
+
+    public void Pause()
+    {
         isPaused = true;
+
         currentPauseMenu = Instantiate(pauseMenu);
-        currentPauseMenu.GetComponent<PauseCanvasScript>().PMS = GetComponent<PauseMenuScript>();
-        Debug.Log("pause");
+        currentPauseMenu.GetComponent<PauseCanvasScript>().PMS = this;
+
+        Debug.Log("Game Paused");
     }
-    public void Resume(){
+
+    public void Resume()
+    {
         isPaused = false;
-        Debug.Log("unpause");
-        Destroy(currentPauseMenu);
+
+        if (currentPauseMenu != null)
+            Destroy(currentPauseMenu);
+
+        Debug.Log("Game Resumed");
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Restarting Game...");
+
+        // 1. Reset EVERYTHING
+        GameBootstrap.ResetAllGameData();
+
+        // 2. Make sure time is normal
+        Time.timeScale = 1f;
+
+        // 3. Reload first scene
+        SceneManager.LoadScene(0);
     }
 }

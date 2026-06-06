@@ -4,8 +4,16 @@ using UnityEngine;
 public class EndDemoTransition : MonoBehaviour
 {
     [Header("UI")]
-    public CanvasGroup fadeScreen;     // black full-screen image
-    public CanvasGroup endDemoText;    // "END OF DEMO"
+    public GameObject endDemoPanel;
+
+    public CanvasGroup fadeScreen;
+    public CanvasGroup endDemoText;
+
+    [Header("Hide When Fade Starts")]
+    public GameObject[] objectsToHide;
+
+    [Header("Hide CanvasGroups When Fade Starts")]
+    public CanvasGroup[] canvasGroupsToHide;
 
     [Header("Timing")]
     public float fadeDuration = 1f;
@@ -14,60 +22,88 @@ public class EndDemoTransition : MonoBehaviour
     [Header("Options")]
     public bool freezeTime = true;
 
-    private void Awake()
-    {
-        // SAFETY: make sure nothing blocks clicks in the world
-        if (fadeScreen != null)
-            fadeScreen.blocksRaycasts = false;
-
-        if (endDemoText != null)
-            endDemoText.blocksRaycasts = false;
-    }
-
     public void StartEndDemo()
     {
-        Debug.Log("END DEMO STARTED");  
+        Debug.Log("EndDemoTransition.StartEndDemo() CALLED");
+
         StartCoroutine(EndDemoRoutine());
     }
 
     IEnumerator EndDemoRoutine()
     {
-        // Freeze gameplay if needed
+        // Enable panel
+        if (endDemoPanel != null)
+            endDemoPanel.SetActive(true);
+
+        // Hide objects
+        foreach (GameObject obj in objectsToHide)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
+
+        // Hide canvas groups
+        foreach (CanvasGroup cg in canvasGroupsToHide)
+        {
+            if (cg != null)
+            {
+                cg.alpha = 0f;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
+            }
+        }
+
+        // Freeze game if desired
         if (freezeTime)
             Time.timeScale = 0f;
 
-        // Ensure objects are active
-        fadeScreen.gameObject.SetActive(true);
-        endDemoText.gameObject.SetActive(true);
+        // Reset alphas
+        if (fadeScreen != null)
+            fadeScreen.alpha = 0f;
 
-        // Reset alpha
-        fadeScreen.alpha = 0f;
-        endDemoText.alpha = 0f;
+        if (endDemoText != null)
+            endDemoText.alpha = 0f;
 
-        
-        yield return StartCoroutine(FadeCanvas(fadeScreen, 0f, 1f, fadeDuration));
+        // Fade screen to black
+        if (fadeScreen != null)
+        {
+            yield return StartCoroutine(
+                FadeCanvas(fadeScreen, 0f, 1f, fadeDuration)
+            );
+        }
 
-        // Small pause (unscaled so it works even when timeScale = 0)
+        // Small pause
         yield return new WaitForSecondsRealtime(0.3f);
 
-        
-        yield return StartCoroutine(FadeCanvas(endDemoText, 0f, 1f, textFadeDuration));
-
-       
+        // Fade text in
+        if (endDemoText != null)
+        {
+            yield return StartCoroutine(
+                FadeCanvas(endDemoText, 0f, 1f, textFadeDuration)
+            );
+        }
     }
 
-    IEnumerator FadeCanvas(CanvasGroup cg, float start, float end, float duration)
+    IEnumerator FadeCanvas(
+        CanvasGroup cg,
+        float start,
+        float end,
+        float duration)
     {
         float t = 0f;
-        cg.alpha = start;
 
-      
-        cg.blocksRaycasts = false;
+        cg.alpha = start;
 
         while (t < duration)
         {
             t += Time.unscaledDeltaTime;
-            cg.alpha = Mathf.Lerp(start, end, t / duration);
+
+            cg.alpha = Mathf.Lerp(
+                start,
+                end,
+                t / duration
+            );
+
             yield return null;
         }
 

@@ -5,9 +5,6 @@ public class DaisyPickup : MonoBehaviour
 {
     private Button button;
 
-    [Header("Inventory UI Reference")]
-    public GameObject daisyInvUI; // drag daisyinv here in inspector
-
     void Start()
     {
         button = GetComponent<Button>();
@@ -21,19 +18,15 @@ public class DaisyPickup : MonoBehaviour
 
     void Pickup()
     {
-        
         if (InventoryManager.Instance != null)
         {
             InventoryManager.Instance.CollectDaisy();
         }
-
-        
-        if (daisyInvUI != null)
+        else
         {
-            daisyInvUI.SetActive(true);
+            Debug.LogError("InventoryManager.Instance is NULL!");
         }
 
-        
         gameObject.SetActive(false);
     }
 }

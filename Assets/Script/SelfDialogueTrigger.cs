@@ -10,11 +10,15 @@ public class SelfDialogueTrigger : MonoBehaviour
     [TextArea(2, 5)]
     public string[] lines;
 
+    [Header("Audio")]
+    public AudioClip dialogueSound;
+    public AudioSource audioSource;
+
     void Start()
     {
         if (GameState.pendingSelfDialogueID == triggerID)
         {
-            GameState.pendingSelfDialogueID = null; // safer reset
+            GameState.pendingSelfDialogueID = null;
 
             StartCoroutine(PlayDialogue());
         }
@@ -23,6 +27,15 @@ public class SelfDialogueTrigger : MonoBehaviour
     IEnumerator PlayDialogue()
     {
         yield return new WaitForSeconds(0.5f);
+
+        // Play sound before dialogue starts
+        if (dialogueSound != null)
+        {
+            if (audioSource != null)
+                audioSource.PlayOneShot(dialogueSound);
+            else
+                AudioSource.PlayClipAtPoint(dialogueSound, transform.position);
+        }
 
         if (DialogueManager.Instance == null)
             yield break;

@@ -14,11 +14,34 @@ public class FruitPiercerRotatorScript : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(0, 0, rotation * 90);
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)){
-            rotation += Input.GetAxisRaw("Horizontal");
-            if(GameObject.Find("Instructions") != null){
-                GameObject.Find("Instructions").SetActive(false);
-            }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            rotation = 2; // Top
+            HideInstructions();
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            rotation = 1; // Right
+            HideInstructions();
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            rotation = 0; // Bottom
+            HideInstructions();
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            rotation = 3; // Left
+            HideInstructions();
+        }
+    }
+
+    void HideInstructions()
+    {
+        if (GameObject.Find("Instructions") != null)
+        {
+            GameObject.Find("Instructions").SetActive(false);
         }
     }
 }

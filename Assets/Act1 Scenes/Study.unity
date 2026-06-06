@@ -497,6 +497,11 @@ MonoBehaviour:
   sceneName: 
   useSpecificNPCs: 0
   requiredNPCIDs: []
+  requireItem: 0
+  requiredItem: 0
+  requireSpecificPuzzles: 0
+  puzzle1: 0
+  puzzle2: 0
   validColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   hoverAlpha: 1
@@ -1920,6 +1925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c68ee4d7dceb346ba4f60d3f40e2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endDemoTransition: {fileID: 0}
+  triggerEndDemo: 0
   requiredNPCToTalkTo: 
   dialogueSpawnEvents: []
   npcID: Sarah_1
@@ -1935,15 +1942,13 @@ MonoBehaviour:
   - ???
   - Player
   - Sarah
-  - Player
   - Sarah
   - Player
-  isNPCSpeaking: 010001000100
+  isNPCSpeaking: 0100010001
   voiceClips:
   - {fileID: 8300000, guid: 24f3fa8dc5f05b74a81607854f428a64, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: 201a5bada3e1d6e4095c50e7a16304bb, type: 3}
-  - {fileID: 0}
   - {fileID: 8300000, guid: c04fe70a0087e5c448bedb0f391b26d6, type: 3}
   - {fileID: 0}
   animator: {fileID: 356025944}
@@ -1951,7 +1956,6 @@ MonoBehaviour:
   - Sarah_Talking
   - Sarah_Idle
   - Sarah_Talking
-  - Sarah_Idle
   - Sarah_Talking
   - Sarah_Idle
   requireDaisyToAppear: 0
@@ -1979,6 +1983,10 @@ MonoBehaviour:
   playDoorTransition: 0
   doorSceneName: 
   doorTransition: {fileID: 0}
+  showEndDemoScreen: 0
+  fadeScreen: {fileID: 0}
+  endDemoText: {fileID: 0}
+  endDemoFadeTime: 2
 --- !u!114 &906235659
 MonoBehaviour:
   m_ObjectHideFlags: 0
